@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Кирилл Тертунов](https://up.htmlacademy.ru/react/3/user/991329).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Фаллер](https://up.htmlacademy.ru/ecmascript/10/user/505933).
 
 ---
 
