@@ -129,9 +129,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  films: PropTypes.arrayOf(
-    Proptypes.string
-  )
+  films: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
 
 export default MainPage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MainPage from '../main-page/main-page.jsx';
 
 const App = (props) => {
@@ -13,9 +14,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  films: PropTypes.arrayOf(
-    Proptypes.string
-  )
+  films: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
 
 export default App;
