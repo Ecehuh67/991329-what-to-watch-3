@@ -1,7 +1,17 @@
 const path = require(`path`);
+const webpack = require(`webpack`);
 
 module.exports = {
   entry: `./src/index.js`,
+  resolve: {
+    extensions: [`.js`, `.jsx`]
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      React: `react`,
+      PropTypes: `prop-types`,
+    })
+  ],
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)

@@ -1,11 +1,11 @@
-import React from 'react';
+import {createFilmsTemplate} from './films-template';
 import PropTypes from 'prop-types';
-import {createFilmsTemplate} from './films-template.jsx';
+import React from 'react';
 
 const MainPage = (props) => {
 
-  const {films} = props;
-  const filmsTemplate = createFilmsTemplate(films);
+  const {films, onTitleButtonHandler} = props;
+  const filmsTemplate = createFilmsTemplate(films, onTitleButtonHandler);
 
   return (
     <div>
@@ -129,7 +129,8 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.string.isRequired)
+  films: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onTitleButtonHandler: PropTypes.func.isRequired
 };
 
 export default MainPage;

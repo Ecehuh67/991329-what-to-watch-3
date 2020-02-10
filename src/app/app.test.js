@@ -1,13 +1,25 @@
-import React from 'react';
 import renderer from "react-test-renderer";
-import App from './app.jsx';
+import App from './app';
+import React from 'react';
+import {movies} from '../utils/test-mocks';
 
-it(`Render App`, () => {
-  const tree = renderer
-    .create(<App
-      films={[]}
-    />)
-    .toJSON();
+describe(`render App`, () => {
+  it(`Render an empty array correctly`, () => {
+    const tree = renderer
+      .create(<App
+        films={[]}
+      />)
+      .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
+  it(`Render the mocks data right way`, () => {
+    const tree = renderer
+      .create(<App
+        films={movies}
+      />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

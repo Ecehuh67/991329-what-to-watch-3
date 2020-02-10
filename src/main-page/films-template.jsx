@@ -6,7 +6,7 @@ export const getRandomNumber = (max) => {
   return 1 + Math.floor(Math.random() * max);
 };
 
-const createFilmMarkup = (filmTitle) => {
+const createFilmMarkup = (filmTitle, handler) => {
 
   const poster = filmTitle.toLowerCase().replace(/ /g, `-`);
   const pictureLink = `img/${poster}.jpg`;
@@ -15,21 +15,21 @@ const createFilmMarkup = (filmTitle) => {
   return (
     <article className="small-movie-card catalog__movies-card" key={keyId}>
       <div className="small-movie-card__image">
-        <img src={pictureLink} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+        <img src={pictureLink} alt={filmTitle} width="280" height="175" />
       </div>
-      <h3 className="small-movie-card__title">
+      <h3 className="small-movie-card__title" onClick={handler}>
         <a className="small-movie-card__link" href="movie-page.html">{filmTitle}</a>
       </h3>
     </article>
   );
 };
 
-export const createFilmsTemplate = (filmsList) => {
-  const filmsMarkup = filmsList.map((film) => createFilmMarkup(film));
+export const createFilmsTemplate = (filmsList, clickHandler) => {
+  const filmsMarkup = filmsList.map((film) => createFilmMarkup(film, clickHandler));
 
   return (
-    <React.Fragment>
+    <>
       {filmsMarkup}
-    </React.Fragment>
+    </>
   );
 };
