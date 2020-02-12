@@ -1,6 +1,8 @@
+import MainPage from '../main-page/main-page';
 import React from 'react';
 import PropTypes from 'prop-types';
-import MainPage from '../main-page/main-page.jsx';
+
+const titleButtonHandler = () => {};
 
 const App = (props) => {
 
@@ -9,6 +11,7 @@ const App = (props) => {
   return (
     <MainPage
       films={films}
+      onTitleButtonHandler={titleButtonHandler}
     />
   );
 };

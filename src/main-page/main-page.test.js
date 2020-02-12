@@ -1,13 +1,29 @@
-import React from 'react';
 import renderer from "react-test-renderer";
-import MainPage from './main-page.jsx';
+import React from 'react';
+import MainPage from './main-page';
+import {movies} from '../utils/test-mocks';
 
-it(`Render main-page correctly`, () => {
-  const tree = renderer
-    .create(<MainPage
-      films={[]}
-    />)
-    .toJSON();
+const clickHandler = () => {};
 
-  expect(tree).toMatchSnapshot();
+describe(`render Main-Page`, () => {
+  it(`Render an empty array correctly`, () => {
+    const tree = renderer
+      .create(<MainPage
+        films={[]}
+        onTitleButtonHandler={clickHandler}
+      />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+  it(`Render the mocks data right way`, () => {
+    const tree = renderer
+      .create(<MainPage
+        films={movies}
+        onTitleButtonHandler={clickHandler}
+      />)
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });
