@@ -1,14 +1,11 @@
 import MainPage from '../main-page/main-page';
 
-const titleButtonHandler = () => {};
-
 const App = (props) => {
   const {films} = props;
 
   return (
     <MainPage
       films={films}
-      onTitleButtonHandler={titleButtonHandler}
     />
   );
 };

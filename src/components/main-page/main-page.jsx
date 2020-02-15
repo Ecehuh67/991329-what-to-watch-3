@@ -2,7 +2,7 @@ import FilmsList from '../films-list/films-list';
 
 const MainPage = (props) => {
 
-  const {films, onTitleButtonHandler} = props;
+  const {films} = props;
 
   return (
     <div>
@@ -100,7 +100,6 @@ const MainPage = (props) => {
 
           <FilmsList
             films={films}
-            onTitleButtonHandler={onTitleButtonHandler}
           />
 
           <div className="catalog__more">
@@ -132,8 +131,7 @@ MainPage.propTypes = {
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired
       })
-  ).isRequired,
-  onTitleButtonHandler: PropTypes.func.isRequired
+  ).isRequired
 };
 
 export default MainPage;

@@ -6,10 +6,16 @@ export default class FilmsList extends PureComponent {
     super(props);
 
     this.state = null;
+
+    this._onTitleButtonHandler = this._onTitleButtonHandler.bind(this);
+  }
+
+  _onTitleButtonHandler(value) {
+    this.setState = value;
   }
 
   render() {
-    const {films, onTitleButtonHandler} = this.props;
+    const {films} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -17,7 +23,7 @@ export default class FilmsList extends PureComponent {
           return (
             <FilmCard
               film={film}
-              onTitleButtonHandler={onTitleButtonHandler}
+              handler={this._onTitleButtonHandler}
             />
           );
         })}
@@ -33,5 +39,5 @@ FilmsList.propTypes = {
         image: PropTypes.string.isRequired
       })
   ).isRequired,
-  onTitleButtonHandler: PropTypes.func.isRequired
+
 };
