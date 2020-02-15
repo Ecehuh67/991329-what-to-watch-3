@@ -1,11 +1,8 @@
-import {createFilmsTemplate} from './films-template';
-import PropTypes from 'prop-types';
-import React from 'react';
+import FilmsList from '../films-list/films-list';
 
 const MainPage = (props) => {
 
   const {films, onTitleButtonHandler} = props;
-  const filmsTemplate = createFilmsTemplate(films, onTitleButtonHandler);
 
   return (
     <div>
@@ -101,9 +98,10 @@ const MainPage = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {filmsTemplate}
-          </div>
+          <FilmsList
+            films={films}
+            onTitleButtonHandler={onTitleButtonHandler}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -129,7 +127,12 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.string.isRequired),
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+      })
+  ).isRequired,
   onTitleButtonHandler: PropTypes.func.isRequired
 };
 

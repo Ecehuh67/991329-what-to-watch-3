@@ -1,11 +1,8 @@
 import MainPage from '../main-page/main-page';
-import React from 'react';
-import PropTypes from 'prop-types';
 
 const titleButtonHandler = () => {};
 
 const App = (props) => {
-
   const {films} = props;
 
   return (
@@ -17,7 +14,12 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.string.isRequired)
+  films: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired
+      })
+  ).isRequired
 };
 
 export default App;

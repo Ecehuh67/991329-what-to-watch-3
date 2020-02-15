@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render Main-Page Render an empty array correctly 1`] = `
+exports[`render App Render an empty array correctly 1`] = `
 <div>
   <section
     className="movie-card"
@@ -306,7 +306,7 @@ exports[`render Main-Page Render an empty array correctly 1`] = `
 </div>
 `;
 
-exports[`render Main-Page Render the mocks data right way 1`] = `
+exports[`render App Render the mocks data right way 1`] = `
 <div>
   <section
     className="movie-card"
@@ -570,9 +570,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             className="small-movie-card__image"
           >
             <img
-              alt="The Lord of the Rings"
               height="175"
-              src="img/the-lord-of-the-rings.jpg"
               width="280"
             />
           </div>
@@ -583,9 +581,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              The Lord of the Rings
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -595,9 +591,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             className="small-movie-card__image"
           >
             <img
-              alt="The Ghostbusters"
               height="175"
-              src="img/the-ghostbusters.jpg"
               width="280"
             />
           </div>
@@ -608,9 +602,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              The Ghostbusters
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -620,9 +612,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             className="small-movie-card__image"
           >
             <img
-              alt="The Mortal Combat"
               height="175"
-              src="img/the-mortal-combat.jpg"
               width="280"
             />
           </div>
@@ -633,9 +623,7 @@ exports[`render Main-Page Render the mocks data right way 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              The Mortal Combat
-            </a>
+            />
           </h3>
         </article>
       </div>

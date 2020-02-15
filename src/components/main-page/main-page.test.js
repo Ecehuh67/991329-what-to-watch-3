@@ -1,7 +1,5 @@
-import renderer from "react-test-renderer";
-import React from 'react';
 import MainPage from './main-page';
-import {movies} from '../utils/test-mocks';
+import {movies} from '../../utils/test-mocks';
 
 const clickHandler = () => {};
 
