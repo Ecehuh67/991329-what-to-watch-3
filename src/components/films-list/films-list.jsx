@@ -19,11 +19,12 @@ export default class FilmsList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {films.map((film) => {
+        {films.map((film, i) => {
           return (
             <FilmCard
               film={film}
               handler={this._onTitleButtonHandler}
+              key={i}
             />
           );
         })}
