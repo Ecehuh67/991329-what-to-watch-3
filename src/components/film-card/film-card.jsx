@@ -13,7 +13,7 @@ const FilmCard = (props) => {
       <div className="small-movie-card__image">
         <img src={image} alt={title} width="280" height="175" />
       </div>
-      <h3 className="small-movie-card__title" onClick={handler(film)}>
+      <h3 className="small-movie-card__title" onClick={() => handler(film)}>
         <a className="small-movie-card__link" href="movie-page.html">{title}</a>
       </h3>
     </article>

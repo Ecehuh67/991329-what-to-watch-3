@@ -11,7 +11,7 @@ export default class FilmsList extends PureComponent {
   }
 
   _onTitleButtonHandler(value) {
-    this.setState = value;
+    this.setState(value);
   }
 
   render() {
