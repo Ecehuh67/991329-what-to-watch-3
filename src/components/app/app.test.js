@@ -1,7 +1,5 @@
-import renderer from "react-test-renderer";
 import App from './app';
-import React from 'react';
-import {movies} from '../utils/test-mocks';
+import {movies} from '../../utils/test-mocks';
 
 describe(`render App`, () => {
   it(`Render an empty array correctly`, () => {

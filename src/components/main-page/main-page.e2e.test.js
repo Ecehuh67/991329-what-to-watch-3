@@ -1,12 +1,6 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import {shallow} from 'enzyme';
 import MainPage from './main-page';
-import {movies} from '../utils/test-mocks';
-
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+import {movies} from '../../utils/test-mocks';
 
 it(`Should title of the film be clicked`, () => {
   const onTitleButtonHandler = jest.fn();

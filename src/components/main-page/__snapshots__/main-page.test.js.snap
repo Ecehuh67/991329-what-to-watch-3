@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render App Render an empty array correctly 1`] = `
+exports[`render Main-Page Render an empty array correctly 1`] = `
 <div>
   <section
     className="movie-card"
@@ -306,7 +306,7 @@ exports[`render App Render an empty array correctly 1`] = `
 </div>
 `;
 
-exports[`render App Render the mocks data right way 1`] = `
+exports[`render Main-Page Render the mocks data right way 1`] = `
 <div>
   <section
     className="movie-card"
@@ -568,6 +568,7 @@ exports[`render App Render the mocks data right way 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="The Lord of the Rings"
@@ -578,7 +579,6 @@ exports[`render App Render the mocks data right way 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -593,6 +593,7 @@ exports[`render App Render the mocks data right way 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="The Ghostbusters"
@@ -603,7 +604,6 @@ exports[`render App Render the mocks data right way 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
@@ -618,6 +618,7 @@ exports[`render App Render the mocks data right way 1`] = `
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="The Mortal Combat"
@@ -628,7 +629,6 @@ exports[`render App Render the mocks data right way 1`] = `
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
