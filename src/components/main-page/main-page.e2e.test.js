@@ -8,11 +8,11 @@ it(`Should title of the film be clicked`, () => {
   const mainPage = shallow(
       <MainPage
         films={movies}
-        onTitleButtonHandler={onTitleButtonHandler}
+        onDataChange={onTitleButtonHandler}
       />
   );
 
-  const titleElement = mainPage.find(`.small-movie-card__title`);
+  const titleElement = mainPage.find(`.small-movie-card__image`);
 
   titleElement.forEach((el) => el.props().onClick());
 

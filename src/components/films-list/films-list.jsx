@@ -11,7 +11,10 @@ export default class FilmsList extends PureComponent {
   }
 
   _onTitleButtonHandler(value) {
+    const {onDataChange} = this.props;
+
     this.setState(value);
+    onDataChange(value);
   }
 
   render() {
@@ -40,5 +43,5 @@ FilmsList.propTypes = {
         image: PropTypes.string.isRequired
       })
   ).isRequired,
-
+  onDataChange: PropTypes.func.isRequired
 };

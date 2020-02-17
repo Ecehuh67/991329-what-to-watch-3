@@ -17,6 +17,7 @@ describe(`Render FilmsList correctly`, () => {
     const tree = renderer.create(
         <FilmsList
           films={emptyData}
+          onDataChange={()=>{}}
         />
     ).toJSON();
 
@@ -26,6 +27,7 @@ describe(`Render FilmsList correctly`, () => {
     const tree = renderer.create(
         <FilmsList
           films={movies}
+          onDataChange={()=>{}}
         />
     ).toJSON();
 
