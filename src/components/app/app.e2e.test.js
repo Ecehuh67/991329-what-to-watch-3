@@ -1,5 +1,5 @@
 import {shallow} from "enzyme";
-import App from './App';
+import App from './app';
 import {movies} from '../../utils/test-mocks';
 
 it(`When user click on an image the func return the data of film`, () => {
