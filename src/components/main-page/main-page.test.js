@@ -8,7 +8,7 @@ describe(`render Main-Page`, () => {
     const tree = renderer
       .create(<MainPage
         films={[]}
-        onTitleButtonHandler={clickHandler}
+        onDataChange={clickHandler}
       />)
       .toJSON();
 
@@ -18,7 +18,7 @@ describe(`render Main-Page`, () => {
     const tree = renderer
       .create(<MainPage
         films={movies}
-        onTitleButtonHandler={clickHandler}
+        onDataChange={clickHandler}
       />)
       .toJSON();
 

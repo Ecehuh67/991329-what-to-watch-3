@@ -1,4 +1,4 @@
-import FilmCard from './film-card';
+import Popup from './popup';
 
 const emptyData = {
   title: ``,
@@ -10,12 +10,11 @@ const film = {
   image: `img/the corn.jpg`
 };
 
-describe(`Render FilmCard correctly`, () => {
+describe(`Render Popup correctly`, () => {
   it(`Render empty data like obj`, () => {
     const tree = renderer.create(
-        <FilmCard
+        <Popup
           film={emptyData}
-          handler={() => {}}
         />
     ).toJSON();
 
@@ -23,9 +22,8 @@ describe(`Render FilmCard correctly`, () => {
   });
   it(`Render mock data the right way`, () => {
     const tree = renderer.create(
-        <FilmCard
+        <Popup
           film={film}
-          handler={() => {}}
         />
     ).toJSON();
 

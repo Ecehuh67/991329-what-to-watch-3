@@ -2,7 +2,7 @@ import FilmsList from '../films-list/films-list';
 
 const MainPage = (props) => {
 
-  const {films} = props;
+  const {films, onDataChange} = props;
 
   return (
     <div>
@@ -59,8 +59,8 @@ const MainPage = (props) => {
             </div>
           </div>
         </div>
-      </section>
 
+      </section>
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -100,6 +100,7 @@ const MainPage = (props) => {
 
           <FilmsList
             films={films}
+            onDataChange={onDataChange}
           />
 
           <div className="catalog__more">
@@ -131,7 +132,8 @@ MainPage.propTypes = {
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onDataChange: PropTypes.func.isRequired
 };
 
 export default MainPage;

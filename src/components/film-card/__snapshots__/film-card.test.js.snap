@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render FilmCard correctly Render empty data like obj and func 1`] = `
+exports[`Render FilmCard correctly Render empty data like obj 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
 >
