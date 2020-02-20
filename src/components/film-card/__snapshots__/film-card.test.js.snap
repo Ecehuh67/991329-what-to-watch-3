@@ -7,11 +7,13 @@ exports[`Render FilmCard correctly Render empty data like obj 1`] = `
   <div
     className="small-movie-card__image"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <img
-      alt=""
+      alt="Fantastic Beasts: The Crimes of Grindelwald"
       height="175"
-      src=""
+      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
     />
   </div>
@@ -35,11 +37,13 @@ exports[`Render FilmCard correctly Render mock data the right way 1`] = `
   <div
     className="small-movie-card__image"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <img
-      alt="The corn"
+      alt="Fantastic Beasts: The Crimes of Grindelwald"
       height="175"
-      src="img/the corn.jpg"
+      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
       width="280"
     />
   </div>

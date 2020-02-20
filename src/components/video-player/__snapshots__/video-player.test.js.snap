@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer is rendered correctly 1`] = `
+<video
+  className="video-title"
+  muted={true}
+  poster="img/the corn.jpg"
+  src="https://player.vimeo.com/external/352010586.sd.mp4?s=2e414f16dc7380d1d48fd68c61db096db8ca1b06&profile_id=139&oauth2_token_id=57447761"
+  width="300"
+/>
+`;
