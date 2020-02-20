@@ -1,9 +1,8 @@
-import {PureComponent} from 'react';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 
-export default class App extends PureComponent {
+export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
 

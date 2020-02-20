@@ -1,23 +1,45 @@
 import {getRandomNumber} from '../../utils/utils';
+import VideoPlayer from '../video-player/video-player';
 
-const MAX_COUNT_KEY_ID = 10000;
+class FilmCard extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-const FilmCard = (props) => {
-  const {film, handler} = props;
-  const {title, image} = film;
-  const keyId = getRandomNumber(MAX_COUNT_KEY_ID);
+    this.state = {
+      isPlaying: false
+    };
 
-  return (
-    <article className="small-movie-card catalog__movies-card" key={keyId}>
-      <div className="small-movie-card__image" onClick={() => handler(film)}>
-        <img src={image} alt={title} width="280" height="175" />
-      </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
-      </h3>
-    </article>
-  );
-};
+    this._onMouseChange = this._onMouseChange.bind(this);
+
+  }
+
+  _onMouseChange() {
+    const changeState = () => this.setState({isPlaying: !this.state.isPlaying});
+
+    !this.state.isPlaying ? setTimeout(changeState, 1000) : changeState();
+  }
+
+  render() {
+    const {film, handler} = this.props;
+    const {title, image, preview} = film;
+
+    return(
+      <article className="small-movie-card catalog__movies-card">
+        <div className="small-movie-card__image" onClick={() => handler(film)} onMouseEnter={this._onMouseChange} onMouseLeave={this._onMouseChange}>
+          <VideoPlayer
+            preview={preview}
+            image={image}
+            title={title}
+            isPlaying={this.state.isPlaying}
+          />
+        </div>
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        </h3>
+      </article>
+    )
+  }
+}
 
 FilmCard.propTypes = {
   film: PropTypes.shape({

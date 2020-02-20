@@ -1,7 +1,6 @@
-import {PureComponent} from 'react';
 import FilmCard from '../film-card/film-card';
 
-export default class FilmsList extends PureComponent {
+export default class FilmsList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -12,7 +11,7 @@ export default class FilmsList extends PureComponent {
 
   _onTitleButtonHandler(value) {
     const {onDataChange} = this.props;
-
+    console.log(this.props)
     this.setState(value);
     onDataChange(value);
   }
