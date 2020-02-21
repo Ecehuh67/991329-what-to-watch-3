@@ -569,11 +569,13 @@ exports[`render App Render the mocks data right way 1`] = `
           <div
             className="small-movie-card__image"
             onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <img
-              alt="The Lord of the Rings"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="img/the-lord-of-the-rings.jpg"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -594,11 +596,13 @@ exports[`render App Render the mocks data right way 1`] = `
           <div
             className="small-movie-card__image"
             onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <img
-              alt="The Ghostbusters"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="img/the-ghostbusters.jpg"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>
@@ -619,11 +623,13 @@ exports[`render App Render the mocks data right way 1`] = `
           <div
             className="small-movie-card__image"
             onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
           >
             <img
-              alt="The Mortal Combat"
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
-              src="img/the-mortal-combat.jpg"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
           </div>

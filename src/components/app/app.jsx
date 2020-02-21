@@ -1,9 +1,8 @@
-import {PureComponent} from 'react';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 
-export default class App extends PureComponent {
+export default class App extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -25,13 +24,13 @@ export default class App extends PureComponent {
           onDataChange={this._onDataChange}
         />
       );
-    } else {
-      return (
-        <Popup
-          film={this.state}
-        />
-      );
     }
+
+    return (
+      <Popup
+        film={this.state}
+      />
+    );
   }
 
   render() {
@@ -57,7 +56,8 @@ App.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired
+        image: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired
       })
   ).isRequired
 };

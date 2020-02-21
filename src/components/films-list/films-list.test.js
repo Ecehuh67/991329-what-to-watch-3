@@ -4,11 +4,13 @@ import {movies} from '../../utils/test-mocks';
 const emptyData = [
   {
     title: ``,
-    image: ``
+    image: ``,
+    preview: ``
   },
   {
     title: ``,
-    image: ``
+    image: ``,
+    preview: ``
   }
 ];
 
