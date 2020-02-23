@@ -12,12 +12,29 @@ const film = {
   preview: `https://player.vimeo.com/external/352010586.sd.mp4?s=2e414f16dc7380d1d48fd68c61db096db8ca1b06&profile_id=139&oauth2_token_id=57447761`
 };
 
+const similarFilms = [
+  {
+    title: `The mafia`,
+    image: `img/the-mafia.jpg`,
+    preview: `https://player.vimeo.com/external/352010586.sd.mp4?s=2e414f16dc7380d1d48fd68c61db096db8ca1b06&profile_id=139&oauth2_token_id=57447761`,
+    genre: `Drama`
+  },
+  {
+    title: `The Titanic`,
+    image: `img/the.jpg`,
+    preview: `https://player.vimeo.com/external/352010586.sd.mp4?s=2e414f16dc7380d1d48fd68c61db096db8ca1b06&profile_id=139&oauth2_token_id=57447761`,
+    genre: `Drama`
+  }
+];
+
 describe(`Render FilmCard correctly`, () => {
   it(`Render empty data like obj`, () => {
     const tree = renderer.create(
         <FilmCard
           film={emptyData}
           onDataChange={() => {}}
+          getSimilarFilms={() => {}}
+          similarFilms={[]}
         />
     ).toJSON();
 
@@ -28,6 +45,8 @@ describe(`Render FilmCard correctly`, () => {
         <FilmCard
           film={film}
           onDataChange={() => {}}
+          getSimilarFilms={() => {}}
+          similarFilms={similarFilms}
         />
     ).toJSON();
 

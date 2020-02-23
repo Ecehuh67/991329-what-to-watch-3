@@ -1,10 +1,10 @@
 const VideoPlayer = (props) => {
-  const {image, preview, isPlaying} = props;
+  const {image, preview, isActive} = props;
 
   return (
     <video
       className="video-title"
-      {...isPlaying ? {autoPlay: true} : {}}
+      {...isActive ? {autoPlay: true} : {}}
       width="300"
       muted
       src={preview}
@@ -18,5 +18,5 @@ export default VideoPlayer;
 VideoPlayer.propTypes = {
   image: PropTypes.string.isRequired,
   preview: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  isActive: PropTypes.bool.isRequired
 };
