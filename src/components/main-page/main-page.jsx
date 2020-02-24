@@ -2,7 +2,7 @@ import FilmsList from '../films-list/films-list';
 
 const MainPage = (props) => {
 
-  const {films, onDataChange} = props;
+  const {films, onDataChange, getSimilarFilms} = props;
 
   return (
     <div>
@@ -101,6 +101,7 @@ const MainPage = (props) => {
           <FilmsList
             films={films}
             onDataChange={onDataChange}
+            getSimilarFilms={getSimilarFilms}
           />
 
           <div className="catalog__more">
@@ -133,7 +134,8 @@ MainPage.propTypes = {
         image: PropTypes.string.isRequired
       })
   ).isRequired,
-  onDataChange: PropTypes.func.isRequired
+  onDataChange: PropTypes.func.isRequired,
+  getSimilarFilms: PropTypes.func.isRequired,
 };
 
 export default MainPage;

@@ -1,39 +1,61 @@
 import VideoPlayer from '../video-player/video-player';
 
-class FilmCard extends React.PureComponent {
+export default class FilmCard extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.timeoutId = null;
+
+    this.tr = 100;
+
     this.state = {
-      isPlaying: false
+      isActive: false
     };
 
-    this._onMouseChange = this._onMouseChange.bind(this);
+    this._onMouseEnter = this._onMouseEnter.bind(this);
+    this._onMouseLeave = this._onMouseLeave.bind(this);
+    this._onFocusChange = this._onFocusChange.bind(this);
   }
 
-  _onMouseChange() {
-    const changeState = () => this.setState({isPlaying: !this.state.isPlaying});
+  _onFocusChange() {
+    this.setState({isActive: !this.state.isActive});
+  }
 
-    if (!this.state.isPlaying) {
-      setTimeout(changeState, 1000);
-    } else {
-      changeState();
+  _onMouseEnter() {
+    this.timeoutId = setTimeout(this._onFocusChange, 1000);
+  }
+
+  _onMouseLeave() {
+    clearTimeout(this.timeoutId);
+
+    if (this.state.isActive) {
+      this._onFocusChange();
     }
   }
 
   render() {
-    const {film, onDataChange} = this.props;
+    const {film, onDataChange, getSimilarFilms, similarFilms} = this.props;
     const {title, image, preview} = film;
 
     return (
       <article className="small-movie-card catalog__movies-card">
-        <div className="small-movie-card__image" onClick={() => onDataChange(film)} onMouseEnter={this._onMouseChange} onMouseLeave={this._onMouseChange}>
-          {this.state.isPlaying ?
+        <div
+          className="small-movie-card__image"
+          onClick={() => {
+            onDataChange(film);
+            getSimilarFilms(similarFilms);
+          }
+          }
+          onMouseEnter={this._onMouseEnter}
+          onMouseLeave={this._onMouseLeave}
+        >
+
+          {this.state.isActive ?
             <VideoPlayer
               preview={preview}
               image={image}
               title={title}
-              isPlaying={this.state.isPlaying}
+              isActive={this.state.isActive}
             />
             :
             <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
@@ -53,7 +75,14 @@ FilmCard.propTypes = {
     image: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onDataChange: PropTypes.func.isRequired
+  onDataChange: PropTypes.func.isRequired,
+  getSimilarFilms: PropTypes.func.isRequired,
+  similarFilms: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        preview: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired
+      })
+  ).isRequired,
 };
-
-export default FilmCard;

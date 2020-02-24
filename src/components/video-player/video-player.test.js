@@ -12,7 +12,7 @@ it(`VideoPlayer is rendered correctly`, () => {
         preview={film.preview}
         image={film.image}
         title={film.title}
-        isPlaying={false}
+        isActive={false}
       />,
       {
         createNodeMock: () => {

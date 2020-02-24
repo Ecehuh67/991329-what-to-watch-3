@@ -7,11 +7,18 @@ export default class App extends React.PureComponent {
     super(props);
 
     this.state = null;
+    this.similarFilms = [];
+
     this._onDataChange = this._onDataChange.bind(this);
+    this._getSimilarFilms = this._getSimilarFilms.bind(this);
   }
 
   _onDataChange(value) {
     this.setState(value);
+  }
+
+  _getSimilarFilms(list) {
+    this.similarFilms = list;
   }
 
   _renderApp() {
@@ -22,6 +29,7 @@ export default class App extends React.PureComponent {
         <MainPage
           films={films}
           onDataChange={this._onDataChange}
+          getSimilarFilms={this._getSimilarFilms}
         />
       );
     }
@@ -29,6 +37,7 @@ export default class App extends React.PureComponent {
     return (
       <Popup
         film={this.state}
+        similarFilms={this.similarFilms}
       />
     );
   }
@@ -44,6 +53,7 @@ export default class App extends React.PureComponent {
           <Route exact path="/popup">
             <Popup
               film={this.state}
+              similarFilms={this.similarFilms}
             />
           </Route>
         </Switch>

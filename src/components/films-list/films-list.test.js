@@ -5,12 +5,14 @@ const emptyData = [
   {
     title: ``,
     image: ``,
-    preview: ``
+    preview: ``,
+    genre: ``
   },
   {
     title: ``,
     image: ``,
-    preview: ``
+    preview: ``,
+    genre: ``
   }
 ];
 
@@ -20,6 +22,7 @@ describe(`Render FilmsList correctly`, () => {
         <FilmsList
           films={emptyData}
           onDataChange={()=>{}}
+          getSimilarFilms={()=>{}}
         />
     ).toJSON();
 
@@ -30,6 +33,7 @@ describe(`Render FilmsList correctly`, () => {
         <FilmsList
           films={movies}
           onDataChange={()=>{}}
+          getSimilarFilms={()=>{}}
         />
     ).toJSON();
 

@@ -15,7 +15,7 @@ describe(`VideoPlayer changes attribute autoPlay`, () => {
           preview={film.preview}
           image={film.image}
           title={film.title}
-          isPlaying={true}
+          isActive={true}
         />
     );
 
@@ -28,7 +28,7 @@ describe(`VideoPlayer changes attribute autoPlay`, () => {
           preview={film.preview}
           image={film.image}
           title={film.title}
-          isPlaying={false}
+          isActive={false}
         />
     );
 
