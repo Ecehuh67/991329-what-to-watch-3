@@ -7,7 +7,6 @@ describe(`render Main-Page`, () => {
       .create(<MainPage
         films={[]}
         onDataChange={() => {}}
-        getSimilarFilms={() => {}}
       />)
       .toJSON();
 
@@ -18,7 +17,6 @@ describe(`render Main-Page`, () => {
       .create(<MainPage
         films={movies}
         onDataChange={() => {}}
-        getSimilarFilms={() => {}}
       />)
       .toJSON();
 

@@ -46,5 +46,11 @@ export const films = [
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     preview: `https://cdn.videvo.net/videvo_files/video/free/2019-07/small_watermarked/190625_04_CityMisc_HD_05_preview.webm`,
     genre: `Romance`
+  },
+  {
+    title: `Watch dogs`,
+    image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    preview: `https://cdn.videvo.net/videvo_files/video/free/2019-07/small_watermarked/190625_04_CityMisc_HD_05_preview.webm`,
+    genre: `Romance`
   }
 ];

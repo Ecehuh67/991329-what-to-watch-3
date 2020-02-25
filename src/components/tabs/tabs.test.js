@@ -1,11 +1,22 @@
 import Tabs from './tabs';
 
+const state = {
+  activeTab: `Due`,
+  tabsList: [`Due`, `Vue`],
+  listener: () => {}
+};
+
+const emptyData = {
+  activeTab: ``,
+  tabsList: [``, ``],
+  listener: () => {}
+};
+
 describe(`Render Tabs correctly`, () => {
   it(`Render empty data`, () => {
     const tree = renderer.create(
         <Tabs
-          isActive={``}
-          onDataChange={() => {}}
+          state={emptyData}
         />
     ).toJSON();
 
@@ -14,8 +25,7 @@ describe(`Render Tabs correctly`, () => {
   it(`Render mock data the right way`, () => {
     const tree = renderer.create(
         <Tabs
-          isActive={`Details`}
-          onDataChange={() => {}}
+          state={state}
         />
     ).toJSON();
 
