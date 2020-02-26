@@ -1,5 +1,5 @@
 import {films} from './mocks/films';
-import {DEFAULT_GENRE} from './utils/consts';
+import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from './utils/consts';
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -8,14 +8,20 @@ const extend = (a, b) => {
 const initialState = {
   chosenGenre: DEFAULT_GENRE,
   isPopupActive: false,
-  activeFilmCard: ``,
-  films
+  showedFilms: DEFAULT_SHOWED_FILMS,
+  activeFilmCard: {
+    title: ``,
+    image: ``,
+    genre: ``,
+    preview: ``
+  },
+  films,
 };
 
 const ActionType = {
   CHANGE_FILTERED_GENRE: `CHANGE_FILTERED_GENRE`,
-  FILTER_FILMS: `FILTER_FILMS`,
-  SET_ACTIVE_CARD_GENRE: `SET_ACTIVE_CARD_GENRE`
+  SET_ACTIVE_CARD_GENRE: `SET_ACTIVE_CARD_GENRE`,
+  SHOW_MORE_FILMS: `SHOW_MORE_FILMS`
 };
 
 const ActionCreator = {
@@ -30,6 +36,12 @@ const ActionCreator = {
       type: ActionType.CHANGE_FILTERED_GENRE,
       payload: genre
     };
+  },
+  showeMoreFilms: () => {
+    return {
+      type: ActionType.SHOW_MORE_FILMS,
+      payload: DEFAULT_SHOWED_FILMS
+    };
   }
 };
 
@@ -38,7 +50,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_FILTERED_GENRE:
       return extend(
           state,
-          {chosenGenre: action.payload}
+          {
+            chosenGenre: action.payload,
+            showedFilms: DEFAULT_SHOWED_FILMS
+          }
       );
     case ActionType.SET_ACTIVE_CARD_GENRE:
       return extend(
@@ -46,6 +61,13 @@ const reducer = (state = initialState, action) => {
           {
             activeFilmCard: action.payload,
             isPopupActive: true
+          }
+      );
+    case ActionType.SHOW_MORE_FILMS:
+      return extend(
+          state,
+          {
+            showedFilms: state.showedFilms + action.payload
           }
       );
   }

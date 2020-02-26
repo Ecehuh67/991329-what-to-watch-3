@@ -92,7 +92,7 @@ const mapStateToProps = (state) => {
     filteredFilms: getSimilarFilms(state.films, state.activeFilmCard),
     films: (() => {
       if (state.chosenGenre === DEFAULT_GENRE) {
-        return state.films;
+        return state.films.slice(0, state.showedFilms);
       }
       return state.films.slice().filter((film) => film.genre === state.chosenGenre);
     })(),

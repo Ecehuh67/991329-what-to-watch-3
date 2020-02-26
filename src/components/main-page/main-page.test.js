@@ -1,23 +1,28 @@
 import MainPage from './main-page';
 import {movies} from '../../utils/test-mocks';
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 
-describe(`render Main-Page`, () => {
-  it(`Render an empty array correctly`, () => {
-    const tree = renderer
-      .create(<MainPage
-        films={[]}
-        onDataChange={() => {}}
-      />)
-      .toJSON();
+const mockStore = configureStore([]);
 
-    expect(tree).toMatchSnapshot();
-  });
-  it(`Render the mocks data right way`, () => {
+describe(`render MainPage`, () => {
+  it(`Render Main page`, () => {
+    const store = mockStore({
+      films: movies,
+      onFilmCardClick: () => {},
+      chosenGenre: `All genres`,
+      showedFilms: 4
+    });
+
     const tree = renderer
-      .create(<MainPage
-        films={movies}
-        onDataChange={() => {}}
-      />)
+      .create(
+          <Provider store={store}>
+            <MainPage
+              films={movies}
+              onDataChange={() => {}}
+            />
+          </Provider>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
