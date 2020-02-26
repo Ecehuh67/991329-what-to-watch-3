@@ -1,5 +1,6 @@
 import VideoPlayer from '../video-player/video-player';
 
+
 export default class FilmCard extends React.PureComponent {
   constructor(props) {
     super(props);

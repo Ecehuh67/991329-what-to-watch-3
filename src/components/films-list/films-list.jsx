@@ -19,8 +19,6 @@ const FilmsList = (props) => {
   );
 };
 
-export default FilmsList;
-
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
       PropTypes.shape({
@@ -32,3 +30,6 @@ FilmsList.propTypes = {
   ).isRequired,
   onDataChange: PropTypes.func.isRequired,
 };
+
+
+export default FilmsList;

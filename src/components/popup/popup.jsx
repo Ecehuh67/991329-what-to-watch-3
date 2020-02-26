@@ -4,7 +4,6 @@ import TabsTemplate from '../tabs/tabs-template';
 
 const BOOKMARKS_LIST = [`Overview`, `Details`, `Reviews`];
 const DEFAULT_BOOKMARK = `Overview`;
-const AMOUT_SIMILAR_FILMS = 4;
 
 export default class Popup extends React.PureComponent {
   constructor(props) {
@@ -36,22 +35,9 @@ export default class Popup extends React.PureComponent {
     this.setState({activeTab: evt.target.text});
   }
 
-  _getSimilarFilms() {
-    const {film, films} = this.props;
-    const index = films.map((it) => it.title).indexOf(film.title);
-    const newList = [].concat(films.slice(0, index), films.slice(index + 1));
-
-    return newList
-      .slice()
-      .filter((movie) => movie.genre === film.genre)
-      .slice(0, AMOUT_SIMILAR_FILMS);
-  }
-
   render() {
-    const {film, onDataChange} = this.props;
-
+    const {film, onDataChange, films} = this.props;
     const {title, image} = film;
-    const filteredFilms = this._getSimilarFilms();
     const tabDescription = this._getTabTemplate();
 
     return (
@@ -128,7 +114,7 @@ export default class Popup extends React.PureComponent {
             <h2 className="catalog__title">More like this</h2>
 
             <FilmsList
-              films={filteredFilms}
+              films={films}
               onDataChange={onDataChange}
             />
 
