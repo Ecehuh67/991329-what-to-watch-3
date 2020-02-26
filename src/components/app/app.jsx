@@ -1,14 +1,13 @@
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
+import {connect} from "react-redux";
 
-export default class App extends React.PureComponent {
-  constructor(props) {
-    super(props);
+class App extends React.PureComponent {
+  constructor() {
+    super();
 
     this.state = null;
-    this.similarFilms = [];
-
     this._onDataChange = this._onDataChange.bind(this);
   }
 
@@ -68,3 +67,10 @@ App.propTypes = {
       })
   ).isRequired
 };
+
+const mapStateToProps = (state) => ({
+  films: state.films
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
