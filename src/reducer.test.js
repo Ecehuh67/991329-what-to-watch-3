@@ -1,4 +1,5 @@
-import {reducer, ActionType, ActionCreator} from "./reducer.js";
+import {reducer} from "./reducer";
+import {ActionType} from './actions';
 import {films} from './mocks/films';
 import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from './utils/consts';
 
@@ -7,7 +8,7 @@ const film = {
   image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   genre: `Drama`
-}
+};
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({

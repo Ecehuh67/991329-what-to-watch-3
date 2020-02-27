@@ -1,10 +1,8 @@
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
-import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
-import {getSimilarFilms} from '../../utils/utils';
-import {DEFAULT_GENRE} from '../../utils/consts';
+import {mapStateToProps, mapDispatchToProps} from './app.connect';
 
 class App extends React.PureComponent {
   _renderApp() {
@@ -84,26 +82,6 @@ App.propTypes = {
       })
   ).isRequired,
 };
-
-const mapStateToProps = (state) => {
-  return {
-    isPopupActive: state.isPopupActive,
-    activeFilmCard: state.activeFilmCard,
-    filteredFilms: getSimilarFilms(state.films, state.activeFilmCard),
-    films: (() => {
-      if (state.chosenGenre === DEFAULT_GENRE) {
-        return state.films.slice(0, state.showedFilms);
-      }
-      return state.films.slice().filter((film) => film.genre === state.chosenGenre);
-    })(),
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onFilmCardClick(film) {
-    dispatch(ActionCreator.setActiveFIlm(film));
-  }
-});
 
 export {App};
 export default connect(mapStateToProps, mapDispatchToProps)(App);
