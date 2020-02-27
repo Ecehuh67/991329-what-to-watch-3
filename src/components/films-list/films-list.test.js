@@ -22,7 +22,6 @@ describe(`Render FilmsList correctly`, () => {
         <FilmsList
           films={emptyData}
           onDataChange={()=>{}}
-          getSimilarFilms={()=>{}}
         />
     ).toJSON();
 
@@ -33,7 +32,6 @@ describe(`Render FilmsList correctly`, () => {
         <FilmsList
           films={movies}
           onDataChange={()=>{}}
-          getSimilarFilms={()=>{}}
         />
     ).toJSON();
 

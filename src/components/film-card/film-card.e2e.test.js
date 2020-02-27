@@ -9,14 +9,11 @@ const film = {
 
 it(`When user click on an image the func return the data of film`, () => {
   const onTitleClick = jest.fn((value) => value);
-  const condactFilms = jest.fn((value) => value);
 
   const filmCard = shallow(
       <FilmCard
         film={film}
         onDataChange={onTitleClick}
-        getSimilarFilms={condactFilms}
-        similarFilms={[]}
       />
   );
 
@@ -26,7 +23,4 @@ it(`When user click on an image the func return the data of film`, () => {
 
   expect(onTitleClick.mock.calls.length).toBe(1);
   expect(onTitleClick.mockReturnValue(`return value`));
-
-  expect(condactFilms.mock.calls.length).toBe(1);
-  expect(condactFilms.mockReturnValue(`return value`));
 });

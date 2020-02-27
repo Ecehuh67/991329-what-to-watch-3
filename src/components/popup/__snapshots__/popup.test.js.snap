@@ -583,7 +583,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The mafia
+              The Lord of the Rings
             </a>
           </h3>
         </article>
@@ -610,7 +610,34 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Titanic
+              The Ghostbusters
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <img
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              height="175"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              The Mortal Combat
             </a>
           </h3>
         </article>

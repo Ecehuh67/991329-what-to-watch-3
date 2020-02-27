@@ -1,12 +1,11 @@
 import VideoPlayer from '../video-player/video-player';
 
+
 export default class FilmCard extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.timeoutId = null;
-
-    this.tr = 100;
 
     this.state = {
       isActive: false
@@ -34,7 +33,7 @@ export default class FilmCard extends React.PureComponent {
   }
 
   render() {
-    const {film, onDataChange, getSimilarFilms, similarFilms} = this.props;
+    const {film, onDataChange} = this.props;
     const {title, image, preview} = film;
 
     return (
@@ -43,7 +42,6 @@ export default class FilmCard extends React.PureComponent {
           className="small-movie-card__image"
           onClick={() => {
             onDataChange(film);
-            getSimilarFilms(similarFilms);
           }
           }
           onMouseEnter={this._onMouseEnter}
@@ -67,6 +65,10 @@ export default class FilmCard extends React.PureComponent {
       </article>
     );
   }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId);
+  }
 }
 
 FilmCard.propTypes = {
@@ -75,14 +77,5 @@ FilmCard.propTypes = {
     image: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onDataChange: PropTypes.func.isRequired,
-  getSimilarFilms: PropTypes.func.isRequired,
-  similarFilms: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
-      })
-  ).isRequired,
+  onDataChange: PropTypes.func.isRequired
 };

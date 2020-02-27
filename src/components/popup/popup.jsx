@@ -1,26 +1,44 @@
 import Tabs from '../tabs/tabs';
-import FilmCard from '../film-card/film-card';
+import FilmsList from '../films-list/films-list';
+import TabsTemplate from '../tabs/tabs-template';
 
+const BOOKMARKS_LIST = [`Overview`, `Details`, `Reviews`];
 const DEFAULT_BOOKMARK = `Overview`;
 
 export default class Popup extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isActive: DEFAULT_BOOKMARK
-    };
-
     this._onBookmarksChange = this._onBookmarksChange.bind(this);
+    this._getTabTemplate = this._getTabTemplate.bind(this);
+
+    this.state = {
+      activeTab: DEFAULT_BOOKMARK,
+      tabsList: BOOKMARKS_LIST,
+      listener: this._onBookmarksChange
+    };
+  }
+
+  _getTabTemplate() {
+    const {film} = this.props;
+
+    return (
+      <TabsTemplate
+        activeTab={this.state.activeTab}
+        tabsList={this.state.tabsList}
+        film={film}
+      />
+    );
   }
 
   _onBookmarksChange(evt) {
-    this.setState({isActive: evt.target.text, prevElement: evt.currentTarget});
+    this.setState({activeTab: evt.target.text});
   }
 
   render() {
-    const {film, similarFilms} = this.props;
+    const {film, onDataChange, films} = this.props;
     const {title, image} = film;
+    const tabDescription = this._getTabTemplate();
 
     return (
       <>
@@ -83,8 +101,8 @@ export default class Popup extends React.PureComponent {
 
               <div className="movie-card__desc">
                 <Tabs
-                  isActive={this.state.isActive}
-                  onDataChange={this._onBookmarksChange}
+                  state={this.state}
+                  template={tabDescription}
                 />
               </div>
             </div>
@@ -95,20 +113,11 @@ export default class Popup extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <div className="catalog__movies-list">
-              {similarFilms.map((movie, i) => {
+            <FilmsList
+              films={films}
+              onDataChange={onDataChange}
+            />
 
-                return (
-                  <FilmCard
-                    film={movie}
-                    onDataChange={() => {}}
-                    getSimilarFilms={() => {}}
-                    similarFilms={[]}
-                    key={i}
-                  />
-                );
-              })}
-            </div>
           </section>
 
           <footer className="page-footer">
@@ -133,14 +142,15 @@ export default class Popup extends React.PureComponent {
 Popup.propTypes = {
   film: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired
   }),
-  similarFilms: PropTypes.arrayOf(
+  films: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired
+        image: PropTypes.string.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onDataChange: PropTypes.func.isRequired
 };

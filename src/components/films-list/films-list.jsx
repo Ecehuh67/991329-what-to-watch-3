@@ -1,28 +1,15 @@
 import FilmCard from '../film-card/film-card';
 
-const getIdenticalFilms = (movies, measure) => {
-  const index = movies.indexOf(measure);
-  const newList = [].concat(movies.slice(0, index), movies.slice(index + 1));
-
-  return newList
-    .slice()
-    .filter((movie) => movie.genre === measure.genre)
-    .slice(0, 3);
-};
-
 const FilmsList = (props) => {
-  const {films, onDataChange, getSimilarFilms} = props;
+  const {films, onDataChange} = props;
 
   return (
     <div className="catalog__movies-list">
       {films.map((film, i) => {
-        const similarFilms = getIdenticalFilms(films, film);
 
         return (
           <FilmCard
             film={film}
-            similarFilms={similarFilms}
-            getSimilarFilms={getSimilarFilms}
             onDataChange={onDataChange}
             key={i}
           />
@@ -31,8 +18,6 @@ const FilmsList = (props) => {
     </div>
   );
 };
-
-export default FilmsList;
 
 FilmsList.propTypes = {
   films: PropTypes.arrayOf(
@@ -44,5 +29,7 @@ FilmsList.propTypes = {
       })
   ).isRequired,
   onDataChange: PropTypes.func.isRequired,
-  getSimilarFilms: PropTypes.func.isRequired
 };
+
+
+export default FilmsList;
