@@ -100,8 +100,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilmCardClick(genre) {
-    dispatch(ActionCreator.setActiveFIlmGenre(genre));
+  onFilmCardClick(film) {
+    dispatch(ActionCreator.setActiveFIlm(film));
   }
 });
 

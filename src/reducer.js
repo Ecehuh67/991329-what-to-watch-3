@@ -20,14 +20,14 @@ const initialState = {
 
 const ActionType = {
   CHANGE_FILTERED_GENRE: `CHANGE_FILTERED_GENRE`,
-  SET_ACTIVE_CARD_GENRE: `SET_ACTIVE_CARD_GENRE`,
+  SET_ACTIVE_CARD: `SET_ACTIVE_CARD`,
   SHOW_MORE_FILMS: `SHOW_MORE_FILMS`
 };
 
 const ActionCreator = {
-  setActiveFIlmGenre: (film) => {
+  setActiveFIlm: (film) => {
     return {
-      type: ActionType.SET_ACTIVE_CARD_GENRE,
+      type: ActionType.SET_ACTIVE_CARD,
       payload: film
     };
   },
@@ -55,7 +55,7 @@ const reducer = (state = initialState, action) => {
             showedFilms: DEFAULT_SHOWED_FILMS
           }
       );
-    case ActionType.SET_ACTIVE_CARD_GENRE:
+    case ActionType.SET_ACTIVE_CARD:
       return extend(
           state,
           {
