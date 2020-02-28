@@ -1,40 +1,7 @@
-import VideoPlayer from '../video-player/video-player';
-
-
 export default class FilmCard extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.timeoutId = null;
-
-    this.state = {
-      isActive: false
-    };
-
-    this._onMouseEnter = this._onMouseEnter.bind(this);
-    this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onFocusChange = this._onFocusChange.bind(this);
-  }
-
-  _onFocusChange() {
-    this.setState({isActive: !this.state.isActive});
-  }
-
-  _onMouseEnter() {
-    this.timeoutId = setTimeout(this._onFocusChange, 1000);
-  }
-
-  _onMouseLeave() {
-    clearTimeout(this.timeoutId);
-
-    if (this.state.isActive) {
-      this._onFocusChange();
-    }
-  }
-
   render() {
-    const {film, onDataChange} = this.props;
-    const {title, image, preview} = film;
+    const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
+    const {title} = film;
 
     return (
       <article className="small-movie-card catalog__movies-card">
@@ -44,30 +11,18 @@ export default class FilmCard extends React.PureComponent {
             onDataChange(film);
           }
           }
-          onMouseEnter={this._onMouseEnter}
-          onMouseLeave={this._onMouseLeave}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
         >
 
-          {this.state.isActive ?
-            <VideoPlayer
-              preview={preview}
-              image={image}
-              title={title}
-              isActive={this.state.isActive}
-            />
-            :
-            <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-          }
+          {children}
+
         </div>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
         </h3>
       </article>
     );
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeoutId);
   }
 }
 
@@ -77,5 +32,11 @@ FilmCard.propTypes = {
     image: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired
   }).isRequired,
-  onDataChange: PropTypes.func.isRequired
+  onDataChange: PropTypes.func.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
 };

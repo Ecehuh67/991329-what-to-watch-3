@@ -18,8 +18,15 @@ describe(`Render FilmCard correctly`, () => {
         <FilmCard
           film={emptyData}
           onDataChange={() => {}}
-        />
-    ).toJSON();
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        >
+          <video />
+        </FilmCard>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -28,8 +35,15 @@ describe(`Render FilmCard correctly`, () => {
         <FilmCard
           film={film}
           onDataChange={() => {}}
-        />
-    ).toJSON();
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        >
+          <video />
+        </FilmCard>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

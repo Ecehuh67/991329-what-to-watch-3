@@ -1,4 +1,7 @@
 import FilmCard from '../film-card/film-card';
+import withActiveCard from '../../hocs/with-active-card/with-active-card';
+
+const FilmCardWrapped = withActiveCard(FilmCard);
 
 const FilmsList = (props) => {
   const {films, onDataChange} = props;
@@ -8,7 +11,7 @@ const FilmsList = (props) => {
       {films.map((film, i) => {
 
         return (
-          <FilmCard
+          <FilmCardWrapped
             film={film}
             onDataChange={onDataChange}
             key={i}
