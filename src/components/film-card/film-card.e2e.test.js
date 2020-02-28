@@ -14,7 +14,15 @@ it(`When user click on an image the func return the data of film`, () => {
       <FilmCard
         film={film}
         onDataChange={onTitleClick}
-      />
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {}}
+      >
+        <video />
+      </FilmCard>, {
+        createNodeMock: () => {
+          return {};
+        }
+      }
   );
 
   const element = filmCard.find(`.small-movie-card__image`);

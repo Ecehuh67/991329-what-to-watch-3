@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withActiveCard is rendered correctly 1`] = `
+<img
+  alt="Fantastic Beasts: The Crimes of Grindelwald"
+  height="175"
+  src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+  width="280"
+/>
+`;

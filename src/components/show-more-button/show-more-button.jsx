@@ -4,7 +4,7 @@ import {mapStateToProps, mapDispatchToProps} from './show-more-button.connect';
 const ShowMoreButton = (props) => {
   const {onShowMoreButtonClick, showedFilms, films} = props;
 
-  if (showedFilms > films.length) {
+  if (showedFilms >= films.length) {
     return null;
   }
 
