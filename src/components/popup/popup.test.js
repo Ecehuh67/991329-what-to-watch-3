@@ -22,8 +22,13 @@ describe(`Render Popup correctly`, () => {
           film={emptyData}
           films={[]}
           onDataChange={() => {}}
-        />
-    ).toJSON();
+        >
+          <div/>
+        </Popup>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -33,8 +38,13 @@ describe(`Render Popup correctly`, () => {
           film={film}
           films={movies}
           onDataChange={() => {}}
-        />
-    ).toJSON();
+        >
+          <div/>
+        </Popup>, {
+          createNodeMock: () => {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

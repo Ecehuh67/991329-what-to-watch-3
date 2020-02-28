@@ -3,6 +3,9 @@ import {connect} from "react-redux";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
+import withPopup from '../../hocs/with-popup/with-popup';
+
+const PopupWrapped = withPopup(Popup);
 
 class App extends React.PureComponent {
   _renderApp() {
@@ -24,7 +27,7 @@ class App extends React.PureComponent {
     }
 
     return (
-      <Popup
+      <PopupWrapped
         film={activeFilmCard}
         films={filteredFilms}
         onDataChange={onFilmCardClick}
@@ -46,7 +49,7 @@ class App extends React.PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/popup">
-            <Popup
+            <PopupWrapped
               film={activeFilmCard}
               films={filteredFilms}
               onDataChange={onFilmCardClick}

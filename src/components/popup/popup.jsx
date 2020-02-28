@@ -1,44 +1,9 @@
-import Tabs from '../tabs/tabs';
 import FilmsList from '../films-list/films-list';
-import TabsTemplate from '../tabs/tabs-template';
-
-const BOOKMARKS_LIST = [`Overview`, `Details`, `Reviews`];
-const DEFAULT_BOOKMARK = `Overview`;
 
 export default class Popup extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._onBookmarksChange = this._onBookmarksChange.bind(this);
-    this._getTabTemplate = this._getTabTemplate.bind(this);
-
-    this.state = {
-      activeTab: DEFAULT_BOOKMARK,
-      tabsList: BOOKMARKS_LIST,
-      listener: this._onBookmarksChange
-    };
-  }
-
-  _getTabTemplate() {
-    const {film} = this.props;
-
-    return (
-      <TabsTemplate
-        activeTab={this.state.activeTab}
-        tabsList={this.state.tabsList}
-        film={film}
-      />
-    );
-  }
-
-  _onBookmarksChange(evt) {
-    this.setState({activeTab: evt.target.text});
-  }
-
   render() {
-    const {film, onDataChange, films} = this.props;
+    const {film, onDataChange, films, children} = this.props;
     const {title, image} = film;
-    const tabDescription = this._getTabTemplate();
 
     return (
       <>
@@ -100,10 +65,9 @@ export default class Popup extends React.PureComponent {
               </div>
 
               <div className="movie-card__desc">
-                <Tabs
-                  state={this.state}
-                  template={tabDescription}
-                />
+
+                {children}
+
               </div>
             </div>
           </div>
@@ -152,5 +116,9 @@ Popup.propTypes = {
         image: PropTypes.string.isRequired
       })
   ).isRequired,
-  onDataChange: PropTypes.func.isRequired
+  onDataChange: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
 };
