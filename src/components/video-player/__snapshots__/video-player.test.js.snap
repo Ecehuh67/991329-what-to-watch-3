@@ -2,6 +2,7 @@
 
 exports[`VideoPlayer is rendered correctly 1`] = `
 <video
+  autoPlay={true}
   className="video-title"
   muted={true}
   poster="img/the corn.jpg"

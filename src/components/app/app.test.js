@@ -12,7 +12,11 @@ describe(`render App`, () => {
       activeFilmCard: movies[1],
       isPopupActive: false,
       showedFilms: 2,
-      chosenGenre: `All genres`
+      chosenGenre: `All genres`,
+      videoPlayer: {
+        isPlaying: false,
+        isStoped: false,
+      },
     });
 
     const tree = renderer
@@ -24,6 +28,9 @@ describe(`render App`, () => {
               isPopupActive={store.isPopupActive}
               showedFilms={store.showedFilms}
               filteredFilms={movies.slice(0, 2)}
+              onPlayButtonClick={() => {}}
+              onCloseButtonClick={() => {}}
+              videoPlayer={{isPlaying: false}}
             />
           </Provider>
       )
@@ -37,7 +44,11 @@ describe(`render App`, () => {
       activeFilmCard: movies[1],
       isPopupActive: true,
       showedFilms: 4,
-      chosenGenre: `All genres`
+      chosenGenre: `All genres`,
+      videoPlayer: {
+        isPlaying: false,
+        isStoped: false,
+      },
     });
 
     const tree = renderer
@@ -49,6 +60,9 @@ describe(`render App`, () => {
               isPopupActive={store.isPopupActive}
               showedFilms={store.showedFilms}
               filteredFilms={movies.slice(0, 2)}
+              onPlayButtonClick={() => {}}
+              onCloseButtonClick={() => {}}
+              videoPlayer={{isPlaying: false}}
             />
           </Provider>
       )

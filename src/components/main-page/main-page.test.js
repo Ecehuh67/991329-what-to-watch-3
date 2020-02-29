@@ -11,6 +11,10 @@ describe(`render MainPage`, () => {
       films: movies,
       onFilmCardClick: () => {},
       chosenGenre: `All genres`,
+      videoPlayer: {
+        isPlaying: false,
+        isStoped: false,
+      },
       showedFilms: 4
     });
 
@@ -20,6 +24,9 @@ describe(`render MainPage`, () => {
             <MainPage
               films={movies}
               onDataChange={() => {}}
+              onPlayButtonClick={() => {}}
+              onCloseButtonClick={() => {}}
+              videoPlayer={{isPlaying: false}}
             />
           </Provider>
       )

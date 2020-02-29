@@ -3,7 +3,9 @@ import {DEFAULT_SHOWED_FILMS} from './utils/consts';
 export const ActionType = {
   CHANGE_FILTERED_GENRE: `CHANGE_FILTERED_GENRE`,
   SET_ACTIVE_CARD: `SET_ACTIVE_CARD`,
-  SHOW_MORE_FILMS: `SHOW_MORE_FILMS`
+  SHOW_MORE_FILMS: `SHOW_MORE_FILMS`,
+  PLAY_VIDEO: `PLAY_VIDEO`,
+  CLOSE_VIDEO: `CLOSE_VIDEO`
 };
 
 export const ActionCreator = {
@@ -24,5 +26,17 @@ export const ActionCreator = {
       type: ActionType.SHOW_MORE_FILMS,
       payload: DEFAULT_SHOWED_FILMS
     };
-  }
+  },
+  playVideo: (film) => {
+    return {
+      type: ActionType.PLAY_VIDEO,
+      payload: film
+    };
+  },
+  closeVideo: () => {
+    return {
+      type: ActionType.CLOSE_VIDEO,
+      payload: null
+    };
+  },
 };

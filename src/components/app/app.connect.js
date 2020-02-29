@@ -5,6 +5,7 @@ import {DEFAULT_GENRE} from '../../utils/consts';
 const mapStateToProps = (state) => {
   return {
     isPopupActive: state.isPopupActive,
+    videoPlayer: state.videoPlayer,
     activeFilmCard: state.activeFilmCard,
     filteredFilms: getSimilarFilms(state.films, state.activeFilmCard),
     films: (() => {
@@ -19,6 +20,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardClick(film) {
     dispatch(ActionCreator.setActiveFIlm(film));
+  },
+  onPlayButtonClick(film) {
+    dispatch(ActionCreator.playVideo(film));
+  },
+  onCloseButtonClick() {
+    dispatch(ActionCreator.closeVideo());
   }
 });
 

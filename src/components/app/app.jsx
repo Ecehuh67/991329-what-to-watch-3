@@ -14,7 +14,10 @@ class App extends React.PureComponent {
       onFilmCardClick,
       isPopupActive,
       activeFilmCard,
-      filteredFilms
+      filteredFilms,
+      onPlayButtonClick,
+      onCloseButtonClick,
+      videoPlayer
     } = this.props;
 
     if (!isPopupActive) {
@@ -22,6 +25,9 @@ class App extends React.PureComponent {
         <MainPage
           films={films}
           onDataChange={onFilmCardClick}
+          onPlayButtonClick={onPlayButtonClick}
+          onCloseButtonClick={onCloseButtonClick}
+          videoPlayer={videoPlayer}
         />
       );
     }
@@ -31,6 +37,9 @@ class App extends React.PureComponent {
         film={activeFilmCard}
         films={filteredFilms}
         onDataChange={onFilmCardClick}
+        onPlayButtonClick={onPlayButtonClick}
+        onCloseButtonClick={onCloseButtonClick}
+        videoPlayer={videoPlayer}
       />
     );
   }
@@ -39,7 +48,10 @@ class App extends React.PureComponent {
     const {
       onFilmCardClick,
       activeFilmCard,
-      filteredFilms
+      filteredFilms,
+      onPlayButtonClick,
+      onCloseButtonClick,
+      videoPlayer
     } = this.props;
 
     return (
@@ -53,6 +65,9 @@ class App extends React.PureComponent {
               film={activeFilmCard}
               films={filteredFilms}
               onDataChange={onFilmCardClick}
+              onPlayButtonClick={onPlayButtonClick}
+              onCloseButtonClick={onCloseButtonClick}
+              videoPlayer={videoPlayer}
             />
           </Route>
         </Switch>
@@ -84,6 +99,11 @@ App.propTypes = {
         preview: PropTypes.string.isRequired
       })
   ).isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onCloseButtonClick: PropTypes.func.isRequired,
+  videoPlayer: PropTypes.shape({
+    isPlaying: PropTypes.bool.isRequired
+  })
 };
 
 export {App};
