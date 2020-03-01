@@ -15,6 +15,10 @@ it(`Reducer without additional parameters should return initial state`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,
@@ -30,6 +34,10 @@ it(`Reducer should set active film and change flag of Popup`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,
@@ -44,6 +52,10 @@ it(`Reducer should set active film and change flag of Popup`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: true,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: film.title,
       image: film.image,
@@ -59,6 +71,10 @@ it(`Reducer should change chosen Genre`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,
@@ -73,6 +89,10 @@ it(`Reducer should change chosen Genre`, () => {
     chosenGenre: `Crime`,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,
@@ -88,6 +108,10 @@ it(`Reducer should change showed film pf amout`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,
@@ -102,6 +126,10 @@ it(`Reducer should change showed film pf amout`, () => {
     chosenGenre: DEFAULT_GENRE,
     isPopupActive: false,
     showedFilms: DEFAULT_SHOWED_FILMS * 2,
+    videoPlayer: {
+      isPlaying: false,
+      isStoped: false,
+    },
     activeFilmCard: {
       title: ``,
       image: ``,

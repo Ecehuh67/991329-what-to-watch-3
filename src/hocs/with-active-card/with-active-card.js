@@ -34,7 +34,7 @@ const withActiveCard = (Component) => {
 
     render() {
       const {film} = this.props;
-      const {title, image, preview} = film;
+      // const {title, image, preview} = film;
       return (
         <Component
           {...this.props}
@@ -43,10 +43,9 @@ const withActiveCard = (Component) => {
         >
           {this.state.isActive ?
             <VideoPlayer
-              preview={preview}
-              image={image}
-              title={title}
+              film={film}
               isActive={this.state.isActive}
+              onCloseButtonClick={() => {}}
             />
             :
             <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />

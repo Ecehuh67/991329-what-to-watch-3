@@ -22,6 +22,9 @@ describe(`Render Popup correctly`, () => {
           film={emptyData}
           films={[]}
           onDataChange={() => {}}
+          onPlayButtonClick={() => {}}
+          onCloseButtonClick={() => {}}
+          videoPlayer={{isPlaying: false}}
         >
           <div/>
         </Popup>, {
@@ -38,6 +41,9 @@ describe(`Render Popup correctly`, () => {
           film={film}
           films={movies}
           onDataChange={() => {}}
+          onPlayButtonClick={() => {}}
+          onCloseButtonClick={() => {}}
+          videoPlayer={{isPlaying: false}}
         >
           <div/>
         </Popup>, {

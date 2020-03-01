@@ -1,8 +1,9 @@
 import FilmsList from '../films-list/films-list';
+import VideoPlayer from '../video-player/video-player';
 
 export default class Popup extends React.PureComponent {
   render() {
-    const {film, onDataChange, films, children} = this.props;
+    const {film, onDataChange, films, children, onPlayButtonClick, videoPlayer, onCloseButtonClick} = this.props;
     const {title, image} = film;
 
     return (
@@ -40,7 +41,15 @@ export default class Popup extends React.PureComponent {
                 </p>
 
                 <div className="movie-card__buttons">
-                  <button className="btn btn--play movie-card__button" type="button">
+                  <button
+                    className="btn btn--play movie-card__button"
+                    type="button"
+                    onClick={
+                      () => {
+                        onPlayButtonClick();
+                      }
+                    }
+                  >
                     <svg viewBox="0 0 19 19" width="19" height="19">
                       <use xlinkHref="#play-s"></use>
                     </svg>
@@ -57,6 +66,14 @@ export default class Popup extends React.PureComponent {
               </div>
             </div>
           </div>
+
+          {videoPlayer.isPlaying &&
+            <VideoPlayer
+              videoPlayer={videoPlayer}
+              onCloseButtonClick={onCloseButtonClick}
+              film={film}
+            />
+          }
 
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
@@ -121,4 +138,9 @@ Popup.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onCloseButtonClick: PropTypes.func.isRequired,
+  videoPlayer: PropTypes.shape({
+    isPlaying: PropTypes.bool.isRequired
+  })
 };

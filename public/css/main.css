@@ -929,7 +929,7 @@ main {
 
 .player {
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
   top: 0;
   left: 0;
   right: 0;
