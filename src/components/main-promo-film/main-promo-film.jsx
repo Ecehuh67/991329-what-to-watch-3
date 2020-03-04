@@ -5,14 +5,14 @@ const MainPromoFilm = (props) => {
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src={film.image} alt={film.title} width="218" height="327" />
+          <img src={film.poster_image} alt={film.name} width="218" height="327" />
         </div>
 
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{film.title}</h2>
+          <h2 className="movie-card__title">{film.name}</h2>
           <p className="movie-card__meta">
             <span className="movie-card__genre">{film.genre}</span>
-            <span className="movie-card__year">2014</span>
+            <span className="movie-card__year">{film.released}</span>
           </p>
 
           <div className="movie-card__buttons">

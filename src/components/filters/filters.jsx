@@ -2,7 +2,8 @@ import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './filters.connect';
 
 const Filters = (props) => {
-  const {onFilterClick, chosenGenre, listGenres} = props;
+  // const {onFilterClick, chosenGenre, listGenres} = props;
+  const {onFilterClick, listGenres} = props;
 
   return (
     <ul className="catalog__genres-list">

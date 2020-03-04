@@ -1,12 +1,13 @@
 import {ActionCreator} from "../../actions.js";
 import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
+import NameSpace from '../../reducer/name-space';
 
 const mapStateToProps = (state) => {
   return {
-    films: state.films,
-    chosenGenre: state.chosenGenre,
+    films: state[NameSpace.DATA].films,
+    // chosenGenre: state.chosenGenre,
     listGenres: (() => {
-      const uniqueGenres = Array.from(new Set(state.films.map((film) => film.genre))).slice(0, DEFAULT_GENRES_AMOUNT - 1);
+      const uniqueGenres = Array.from(new Set(state[NameSpace.DATA].films.map((film) => film.genre))).slice(0, DEFAULT_GENRES_AMOUNT - 1);
       return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
     })()
   };

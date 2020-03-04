@@ -9,50 +9,59 @@ const PopupWrapped = withPopup(Popup);
 
 class App extends React.PureComponent {
   _renderApp() {
-    const {
-      films,
-      onFilmCardClick,
-      isPopupActive,
-      activeFilmCard,
-      filteredFilms,
-      onPlayButtonClick,
-      onCloseButtonClick,
-      videoPlayer
-    } = this.props;
-
-    if (!isPopupActive) {
-      return (
-        <MainPage
-          films={films}
-          onDataChange={onFilmCardClick}
-          onPlayButtonClick={onPlayButtonClick}
-          onCloseButtonClick={onCloseButtonClick}
-          videoPlayer={videoPlayer}
-        />
-      );
-    }
+    // const {
+    //   films,
+    //   onFilmCardClick,
+    //   isPopupActive,
+    //   activeFilmCard,
+    //   filteredFilms,
+    //   onPlayButtonClick,
+    //   onCloseButtonClick,
+    //   videoPlayer
+    // } = this.props;
+    const {films} = this.props;
 
     return (
-      <PopupWrapped
-        film={activeFilmCard}
-        films={filteredFilms}
-        onDataChange={onFilmCardClick}
-        onPlayButtonClick={onPlayButtonClick}
-        onCloseButtonClick={onCloseButtonClick}
-        videoPlayer={videoPlayer}
+      <MainPage
+        films={films}
+        onDataChange={() => {}}
       />
-    );
+    )
+
+    // if (!isPopupActive) {
+    //   return (
+    //     <MainPage
+    //       films={films}
+    //       onDataChange={onFilmCardClick}
+    //       onPlayButtonClick={onPlayButtonClick}
+    //       onCloseButtonClick={onCloseButtonClick}
+    //       videoPlayer={videoPlayer}
+    //     />
+    //   );
+    // }
+    //
+    // return (
+    //   <PopupWrapped
+    //     // film={activeFilmCard}
+    //     films={filteredFilms}
+    //     onDataChange={onFilmCardClick}
+    //     onPlayButtonClick={onPlayButtonClick}
+    //     onCloseButtonClick={onCloseButtonClick}
+    //     videoPlayer={videoPlayer}
+    //   />
+    // );
   }
 
   render() {
-    const {
-      onFilmCardClick,
-      activeFilmCard,
-      filteredFilms,
-      onPlayButtonClick,
-      onCloseButtonClick,
-      videoPlayer
-    } = this.props;
+    // const {
+    //   onFilmCardClick,
+    //   activeFilmCard,
+    //   filteredFilms,
+    //   onPlayButtonClick,
+    //   onCloseButtonClick,
+    //   videoPlayer
+    // } = this.props;
+    const {films} = this.props;
 
     return (
       <BrowserRouter>
@@ -62,12 +71,13 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/popup">
             <PopupWrapped
-              film={activeFilmCard}
-              films={filteredFilms}
-              onDataChange={onFilmCardClick}
-              onPlayButtonClick={onPlayButtonClick}
-              onCloseButtonClick={onCloseButtonClick}
-              videoPlayer={videoPlayer}
+              films={films}
+              // film={activeFilmCard}
+              // films={filteredFilms}
+              // onDataChange={onFilmCardClick}
+              // onPlayButtonClick={onPlayButtonClick}
+              // onCloseButtonClick={onCloseButtonClick}
+              // videoPlayer={videoPlayer}
             />
           </Route>
         </Switch>
@@ -76,35 +86,35 @@ class App extends React.PureComponent {
   }
 }
 
-App.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onFilmCardClick: PropTypes.func.isRequired,
-  isPopupActive: PropTypes.bool.isRequired,
-  activeFilmCard: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired
-  }),
-  filteredFilms: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onCloseButtonClick: PropTypes.func.isRequired,
-  videoPlayer: PropTypes.shape({
-    isPlaying: PropTypes.bool.isRequired
-  })
-};
+// App.propTypes = {
+//   films: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         image: PropTypes.string.isRequired,
+//         preview: PropTypes.string.isRequired
+//       })
+//   ).isRequired,
+//   onFilmCardClick: PropTypes.func.isRequired,
+//   isPopupActive: PropTypes.bool.isRequired,
+//   activeFilmCard: PropTypes.shape({
+//     title: PropTypes.string.isRequired,
+//     image: PropTypes.string.isRequired,
+//     preview: PropTypes.string.isRequired,
+//     genre: PropTypes.string.isRequired
+//   }),
+//   filteredFilms: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         title: PropTypes.string.isRequired,
+//         image: PropTypes.string.isRequired,
+//         preview: PropTypes.string.isRequired
+//       })
+//   ).isRequired,
+//   onPlayButtonClick: PropTypes.func.isRequired,
+//   onCloseButtonClick: PropTypes.func.isRequired,
+//   videoPlayer: PropTypes.shape({
+//     isPlaying: PropTypes.bool.isRequired
+//   })
+// };
 
 export {App};
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,7 +1,7 @@
 export default class FilmCard extends React.PureComponent {
   render() {
     const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
-    const {title} = film;
+    const {title} = film.name;
 
     return (
       <article className="small-movie-card catalog__movies-card">

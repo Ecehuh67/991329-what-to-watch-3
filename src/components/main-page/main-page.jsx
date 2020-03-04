@@ -6,8 +6,10 @@ import MainPromoFilm from '../main-promo-film/main-promo-film';
 
 const MainPage = (props) => {
 
-  const {films, onDataChange, onPlayButtonClick, videoPlayer, onCloseButtonClick} = props;
-  const {isPlaying} = videoPlayer;
+  // const {films, onDataChange, onPlayButtonClick, onCloseButtonClick} = props;
+  const {films, onDataChange} = props;
+
+  const {isPlaying} = false;
 
   const promoFilm = films[0];
 
@@ -36,19 +38,13 @@ const MainPage = (props) => {
           </div>
         </header>
 
-        <MainPromoFilm
-          film={promoFilm}
-          onPlayButtonClick={onPlayButtonClick}
-        />
 
 
-        {isPlaying &&
-          <VideoPlayer
-            videoPlayer={videoPlayer}
-            onCloseButtonClick={onCloseButtonClick}
-            film={promoFilm}
-          />
-        }
+
+
+
+
+
 
 
       </section>
@@ -56,16 +52,11 @@ const MainPage = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <Filters
-            films={films}
-          />
 
-          <FilmsList
-            films={films}
-            onDataChange={onDataChange}
-          />
 
-          <ShowMoreButton/>
+
+
+
         </section>
 
         <footer className="page-footer">
@@ -102,3 +93,29 @@ MainPage.propTypes = {
 };
 
 export default MainPage;
+
+//
+// <MainPromoFilm
+//   film={promoFilm}
+// />
+
+
+// {isPlaying &&
+//   <VideoPlayer
+//     onCloseButtonClick={onCloseButtonClick}
+//     film={promoFilm}
+//   />
+// }
+
+
+
+// <Filters
+//   films={films}
+// />
+//
+// <FilmsList
+//   films={films}
+//   onDataChange={onDataChange}
+// />
+//
+// <ShowMoreButton/>
