@@ -6,6 +6,8 @@ import NameSpace from '../../reducer/name-space';
 const mapStateToProps = (state) => {
   return {
     films: state[NameSpace.DATA].films,
+    isPending: state[NameSpace.DATA].isPending,
+    isUploaded: state[NameSpace.DATA].isUploaded,
     // isPopupActive: state.isPopupActive,
     // videoPlayer: state.videoPlayer,
     // activeFilmCard: state.activeFilmCard,

@@ -1,19 +1,20 @@
 import {ActionCreator} from "../../actions.js";
 import {DEFAULT_GENRE} from '../../utils/consts';
+import NameSpace from '../../reducer/name-space';
 
-// import {connect} from "react-redux";
-// import ShowMoreButton from './show-more-button';
+import {connect} from "react-redux";
+import ShowMoreButton from './show-more-button';
 
 const mapStateToProps = (state) => {
   return {
     films: (() => {
-      if (state.chosenGenre === DEFAULT_GENRE) {
-        return state.films;
+      if (state[NameSpace.DATA].chosenGenre === DEFAULT_GENRE) {
+        return state[NameSpace.DATA].films;
       }
 
-      return state.films.slice().filter((film) => film.genre === state.chosenGenre);
+      return state[NameSpace.DATA].films.slice().filter((film) => film.genre === state[NameSpace.DATA].chosenGenre);
     })(),
-    showedFilms: state.showedFilms,
+    showedFilms: state[NameSpace.DATA].showedFilms,
     filteredFilms: state.filteredFilms
   };
 };

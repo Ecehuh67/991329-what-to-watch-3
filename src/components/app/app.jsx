@@ -1,13 +1,21 @@
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-import {connect} from "react-redux";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
+import LoadScreen from '../load-screen/load-screen';
+import {Operation as DataOperation} from '../../reducer/data/data';
+import {ActionCreator} from '../../reducer/data/actions';
+import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
+import {store} from '../../index';
 
 const PopupWrapped = withPopup(Popup);
 
 class App extends React.PureComponent {
+  componentDidMount() {
+    store.dispatch(DataOperation.loadFilms());
+  }
+
   _renderApp() {
     // const {
     //   films,
@@ -19,14 +27,30 @@ class App extends React.PureComponent {
     //   onCloseButtonClick,
     //   videoPlayer
     // } = this.props;
-    const {films} = this.props;
+    const {films, isUploaded} = this.props;
 
-    return (
-      <MainPage
-        films={films}
-        onDataChange={() => {}}
-      />
-    )
+    if (!isUploaded) {
+      return (
+        <LoadScreen
+        />
+      );
+    }
+
+    if (isUploaded) {
+      return (
+        <MainPage
+          films={films}
+          onDataChange={() => {}}
+        />
+      );
+    }
+
+    // return (
+    //   <MainPage
+    //     films={films}
+    //     onDataChange={() => {}}
+    //   />
+    // )
 
     // if (!isPopupActive) {
     //   return (

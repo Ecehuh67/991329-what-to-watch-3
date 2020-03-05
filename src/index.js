@@ -18,7 +18,7 @@ const store = createStore(
     )
 );
 
-store.dispatch(DataOperation.loadFilms());
+// store.dispatch(DataOperation.loadFilms());
 
 ReactDOM.render(
     <Provider store={store}>
@@ -26,3 +26,5 @@ ReactDOM.render(
     </Provider>,
     document.querySelector(`#root`)
 );
+
+export {store};

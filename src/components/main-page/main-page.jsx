@@ -9,8 +9,6 @@ const MainPage = (props) => {
   // const {films, onDataChange, onPlayButtonClick, onCloseButtonClick} = props;
   const {films, onDataChange} = props;
 
-  const {isPlaying} = false;
-
   const promoFilm = films[0];
 
   return (
@@ -38,14 +36,9 @@ const MainPage = (props) => {
           </div>
         </header>
 
-
-
-
-
-
-
-
-
+        <MainPromoFilm
+          film={promoFilm}
+        />
 
       </section>
       <div className="page-content">
@@ -53,7 +46,16 @@ const MainPage = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
 
+          <Filters
+            films={films}
+          />
 
+          <FilmsList
+            films={films}
+            onDataChange={onDataChange}
+          />
+
+          <ShowMoreButton/>
 
 
 

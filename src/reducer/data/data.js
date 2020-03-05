@@ -1,8 +1,12 @@
 import {extend} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
+import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 
 const initialState = {
-  films: []
+  films: [],
+  isUploaded: false,
+  chosenGenre: DEFAULT_GENRE,
+  showedFilms: DEFAULT_SHOWED_FILMS
 };
 
 const Operation = {
@@ -20,7 +24,8 @@ const reducer = (state = initialState, action) => {
       return extend(
         state,
         {
-          films: action.payload
+          films: action.payload,
+          isUploaded: true
         }
       );
   }
