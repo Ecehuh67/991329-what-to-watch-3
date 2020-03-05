@@ -48,7 +48,7 @@ const withActiveCard = (Component) => {
               onCloseButtonClick={() => {}}
             />
             :
-            <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+            <img src={film.preview_image} alt={film.name} width="280" height="175" />
           }
         </Component>
       );

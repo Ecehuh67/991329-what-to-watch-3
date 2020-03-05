@@ -1,4 +1,4 @@
-import {ActionCreator} from "../../actions.js";
+import {ActionCreator} from '../../reducer/data/actions';
 import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
 import NameSpace from '../../reducer/name-space';
 

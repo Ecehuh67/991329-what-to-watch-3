@@ -4,8 +4,6 @@ import {mapStateToProps, mapDispatchToProps} from './filters.connect';
 const Filters = (props) => {
   const {onFilterClick, chosenGenre, listGenres} = props;
 
-  console.log(props)
-
   return (
     <ul className="catalog__genres-list">
       {listGenres.map((genre, i) => {

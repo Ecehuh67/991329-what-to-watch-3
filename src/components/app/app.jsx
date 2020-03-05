@@ -27,7 +27,14 @@ class App extends React.PureComponent {
     //   onCloseButtonClick,
     //   videoPlayer
     // } = this.props;
-    const {films, isUploaded} = this.props;
+    const {
+      films,
+       isUploaded,
+       onFilmCardClick,
+       isPopupActive,
+       activeFilmCard,
+       filteredFilms
+    } = this.props;
 
     if (!isUploaded) {
       return (
@@ -36,44 +43,22 @@ class App extends React.PureComponent {
       );
     }
 
-    if (isUploaded) {
+    if (isUploaded && !isPopupActive) {
       return (
         <MainPage
           films={films}
-          onDataChange={() => {}}
+          onDataChange={onFilmCardClick}
         />
       );
     }
 
-    // return (
-    //   <MainPage
-    //     films={films}
-    //     onDataChange={() => {}}
-    //   />
-    // )
-
-    // if (!isPopupActive) {
-    //   return (
-    //     <MainPage
-    //       films={films}
-    //       onDataChange={onFilmCardClick}
-    //       onPlayButtonClick={onPlayButtonClick}
-    //       onCloseButtonClick={onCloseButtonClick}
-    //       videoPlayer={videoPlayer}
-    //     />
-    //   );
-    // }
-    //
-    // return (
-    //   <PopupWrapped
-    //     // film={activeFilmCard}
-    //     films={filteredFilms}
-    //     onDataChange={onFilmCardClick}
-    //     onPlayButtonClick={onPlayButtonClick}
-    //     onCloseButtonClick={onCloseButtonClick}
-    //     videoPlayer={videoPlayer}
-    //   />
-    // );
+    return (
+      <PopupWrapped
+        film={activeFilmCard}
+        films={filteredFilms}
+        onDataChange={onFilmCardClick}
+      />
+    );
   }
 
   render() {
@@ -85,7 +70,14 @@ class App extends React.PureComponent {
     //   onCloseButtonClick,
     //   videoPlayer
     // } = this.props;
-    const {films} = this.props;
+    const {
+      films,
+       isUploaded,
+       onFilmCardClick,
+       isPopupActive,
+       activeFilmCard,
+       filteredFilms
+    } = this.props;
 
     return (
       <BrowserRouter>
@@ -95,10 +87,10 @@ class App extends React.PureComponent {
           </Route>
           <Route exact path="/popup">
             <PopupWrapped
-              films={films}
-              // film={activeFilmCard}
-              // films={filteredFilms}
-              // onDataChange={onFilmCardClick}
+              // films={films}
+              film={activeFilmCard}
+              films={filteredFilms}
+              onDataChange={onFilmCardClick}
               // onPlayButtonClick={onPlayButtonClick}
               // onCloseButtonClick={onCloseButtonClick}
               // videoPlayer={videoPlayer}

@@ -45,7 +45,6 @@ const MainPage = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-
           <Filters
             films={films}
           />
@@ -56,8 +55,6 @@ const MainPage = (props) => {
           />
 
           <ShowMoreButton/>
-
-
 
         </section>
 
@@ -96,10 +93,6 @@ MainPage.propTypes = {
 
 export default MainPage;
 
-//
-// <MainPromoFilm
-//   film={promoFilm}
-// />
 
 
 // {isPlaying &&
@@ -108,16 +101,3 @@ export default MainPage;
 //     film={promoFilm}
 //   />
 // }
-
-
-
-// <Filters
-//   films={films}
-// />
-//
-// <FilmsList
-//   films={films}
-//   onDataChange={onDataChange}
-// />
-//
-// <ShowMoreButton/>

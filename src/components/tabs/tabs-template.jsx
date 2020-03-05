@@ -5,6 +5,8 @@ import TabReviews from "./tab-reviews-template";
 const TabsTemplate = (props) => {
   const {tabsList, activeTab, film} = props;
 
+  console.log(film)
+
   switch (activeTab) {
     case tabsList[0]:
       return (

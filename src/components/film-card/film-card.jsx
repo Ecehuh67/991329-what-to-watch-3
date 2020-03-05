@@ -1,14 +1,13 @@
 export default class FilmCard extends React.PureComponent {
   render() {
     const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
-    const {title} = film.name;
 
     return (
       <article className="small-movie-card catalog__movies-card">
         <div
           className="small-movie-card__image"
           onClick={() => {
-            onDataChange(film);
+            onDataChange(film.id);
           }
           }
           onMouseEnter={onMouseEnter}
@@ -19,7 +18,7 @@ export default class FilmCard extends React.PureComponent {
 
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+          <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
         </h3>
       </article>
     );

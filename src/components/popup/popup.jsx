@@ -3,15 +3,21 @@ import VideoPlayer from '../video-player/video-player';
 
 export default class Popup extends React.PureComponent {
   render() {
-    const {film, onDataChange, films, children, onPlayButtonClick, videoPlayer, onCloseButtonClick} = this.props;
-    const {title, image} = film;
+    // const {film, onDataChange, films, children, onPlayButtonClick, videoPlayer, onCloseButtonClick} = this.props;
+    // const {title, image} = film;
+    const {
+      film,
+      onDataChange,
+      films,
+      children
+    } = this.props;
 
     return (
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src={image} alt={title} />
+              <img src={film.background_image} alt={film.name} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -34,10 +40,10 @@ export default class Popup extends React.PureComponent {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">{title}</h2>
+                <h2 className="movie-card__title">{film.name}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">Drama</span>
-                  <span className="movie-card__year">2014</span>
+                  <span className="movie-card__genre">{film.genre}</span>
+                  <span className="movie-card__year">{film.released}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -67,18 +73,17 @@ export default class Popup extends React.PureComponent {
             </div>
           </div>
 
-          {videoPlayer.isPlaying &&
-            <VideoPlayer
-              videoPlayer={videoPlayer}
-              onCloseButtonClick={onCloseButtonClick}
-              film={film}
-            />
-          }
+
+
+
+
+
+
 
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src={image} alt={title} width="218" height="327" />
+                <img src={film.poster_image} alt={film.name} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
@@ -144,3 +149,11 @@ Popup.propTypes = {
     isPlaying: PropTypes.bool.isRequired
   })
 };
+
+// {videoPlayer.isPlaying &&
+//   <VideoPlayer
+//     videoPlayer={videoPlayer}
+//     onCloseButtonClick={onCloseButtonClick}
+//     film={film}
+//   />
+// }
