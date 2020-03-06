@@ -13,7 +13,7 @@ it(`Should title of the film be clicked`, () => {
         onDataChange={onTitleButtonHandler}
         onPlayButtonClick={onPlayButtonHandler}
         onCloseButtonClick={onCloseButtonHandler}
-        videoPlayer={{isPlaying: true}}
+        isPlaying={false}
       />
   );
 

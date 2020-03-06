@@ -1,6 +1,5 @@
 import {ActionCreator} from '../../reducer/state/actions';
-import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
-import NameSpace from '../../reducer/name-space';
+
 import {
   getFilms,
   getChosenGenre,

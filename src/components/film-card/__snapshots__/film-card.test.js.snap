@@ -1,30 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render FilmCard correctly Render empty data like obj 1`] = `
-<article
-  className="small-movie-card catalog__movies-card"
->
-  <div
-    className="small-movie-card__image"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <video />
-  </div>
-  <h3
-    className="small-movie-card__title"
-  >
-    <a
-      className="small-movie-card__link"
-      href="movie-page.html"
-    >
-      
-    </a>
-  </h3>
-</article>
-`;
-
 exports[`Render FilmCard correctly Render mock data the right way 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
@@ -44,7 +19,7 @@ exports[`Render FilmCard correctly Render mock data the right way 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      The corn
+      Mortal Combat
     </a>
   </h3>
 </article>

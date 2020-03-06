@@ -1,5 +1,3 @@
-import {DEFAULT_SHOWED_FILMS} from '../../utils/consts';
-
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   CHANGE_FILTERED_GENRE: `CHANGE_FILTERED_GENRE`,

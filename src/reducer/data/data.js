@@ -1,6 +1,6 @@
 import {extend} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
-import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
+
 
 const initialState = {
   films: [],
@@ -20,11 +20,11 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_FILMS:
       return extend(
-        state,
-        {
-          films: action.payload,
-          isUploaded: true
-        }
+          state,
+          {
+            films: action.payload,
+            isUploaded: true
+          }
       );
   }
 

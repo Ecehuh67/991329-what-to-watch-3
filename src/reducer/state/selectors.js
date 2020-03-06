@@ -14,66 +14,65 @@ export const getFilms = (state) => state[NameSpace.DATA].films;
 const getActiveCardId = (state) => state[NameSpace.STATE].activeFilmCard;
 
 export const getSimilarFilms = createSelector(
-  getFilms,
-  getActiveFilmCard,
-  (resultOne, resultTwo) => {
-    if (resultTwo === null) {
+    getFilms,
+    getActiveFilmCard,
+    (resultOne, resultTwo) => {
+      if (resultTwo === null) {
         return null;
       }
-    const index = resultOne.map((it) => it.id).indexOf(resultTwo);
-    const targetGenre = resultOne[index].genre;
-    const newList = [].concat(resultOne.slice(0, index), resultOne.slice(index + 1));
+      const index = resultOne.map((it) => it.id).indexOf(resultTwo);
+      const targetGenre = resultOne[index].genre;
+      const newList = [].concat(resultOne.slice(0, index), resultOne.slice(index + 1));
 
-    return newList
-      .slice()
-      .filter((movie) => movie.genre === targetGenre)
-      .slice(0, AMOUT_SIMILAR_FILMS);
-  }
+      return newList
+        .slice()
+        .filter((movie) => movie.genre === targetGenre)
+        .slice(0, AMOUT_SIMILAR_FILMS);
+    }
 );
 
 export const getMovies = createSelector(
-  getChosenGenre,
-  getFilms,
-  getShowedFilmsCount,
-  (resultOne, resultTwo, resultThree) => {
-    if (resultOne === DEFAULT_GENRE) {
+    getChosenGenre,
+    getFilms,
+    getShowedFilmsCount,
+    (resultOne, resultTwo, resultThree) => {
+      if (resultOne === DEFAULT_GENRE) {
         return resultTwo.slice(0, resultThree);
       }
-    return resultTwo.slice().filter((film) => film.genre === resultOne);
-  }
-
+      return resultTwo.slice().filter((film) => film.genre === resultOne);
+    }
 );
 
 export const getActiveCard = createSelector(
-  getFilms,
-  getActiveCardId,
-  (resultOne, resultTwo) => {
-    const index = resultOne.map((film) => film.id).indexOf(resultTwo);
+    getFilms,
+    getActiveCardId,
+    (resultOne, resultTwo) => {
+      const index = resultOne.map((film) => film.id).indexOf(resultTwo);
 
-    return resultOne[index];
-  }
+      return resultOne[index];
+    }
 );
 
 export const getListGenres = createSelector(
-  getFilms,
-  (resultOne) => {
-    const uniqueGenres = Array
-      .from(new Set(resultOne.map((film) => film.genre)))
-      .slice(0, DEFAULT_GENRES_AMOUNT - 1);
-    return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
-  }
+    getFilms,
+    (resultOne) => {
+      const uniqueGenres = Array
+        .from(new Set(resultOne.map((film) => film.genre)))
+        .slice(0, DEFAULT_GENRES_AMOUNT - 1);
+      return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
+    }
 );
 
 export const getFilteredGenreFilms = createSelector(
-  getChosenGenre,
-  getFilms,
-  (resultOne, resultTwo) => {
-    if (resultOne === DEFAULT_GENRE) {
-      return resultTwo;
-    }
+    getChosenGenre,
+    getFilms,
+    (resultOne, resultTwo) => {
+      if (resultOne === DEFAULT_GENRE) {
+        return resultTwo;
+      }
 
-    return resultTwo
-      .slice()
-      .filter((film) => film.genre === resultOne);
-  }
+      return resultTwo
+        .slice()
+        .filter((film) => film.genre === resultOne);
+    }
 );

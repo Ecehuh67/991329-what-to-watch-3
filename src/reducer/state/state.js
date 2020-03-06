@@ -1,5 +1,5 @@
 import {extend} from "../../utils/utils";
-import {ActionType, ActionCreator} from './actions';
+import {ActionType} from './actions';
 import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 
 const initialState = {

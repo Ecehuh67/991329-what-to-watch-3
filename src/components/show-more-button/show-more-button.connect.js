@@ -1,7 +1,5 @@
 import {ActionCreator} from '../../reducer/state/actions';
-import {DEFAULT_GENRE} from '../../utils/consts';
-import NameSpace from '../../reducer/name-space';
-import ShowMoreButton from './show-more-button';
+
 import {
   getShowedFilmsCount,
   getFilteredGenreFilms

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const createAPI = (dispatch) => {
+export const createAPI = () => {
   const api = axios.create({
     baseURL: `https://htmlacademy-react-3.appspot.com/wtw`,
     timeout: 5000,
@@ -8,15 +8,14 @@ export const createAPI = (dispatch) => {
   });
 
   const onSuccess = (response) => {
-    return response
-  }
+    return response;
+  };
 
   const onFail = (err) => {
-    const {response} = err;
     throw err;
-  }
+  };
 
   api.interceptors.response.use(onSuccess, onFail);
 
   return api;
-}
+};

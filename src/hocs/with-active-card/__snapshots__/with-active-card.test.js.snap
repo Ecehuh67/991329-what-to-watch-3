@@ -2,9 +2,9 @@
 
 exports[`withActiveCard is rendered correctly 1`] = `
 <img
-  alt="Fantastic Beasts: The Crimes of Grindelwald"
+  alt="Mortal Combat"
   height="175"
-  src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+  src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
   width="280"
 />
 `;
