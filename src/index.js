@@ -18,8 +18,6 @@ const store = createStore(
     )
 );
 
-// store.dispatch(DataOperation.loadFilms());
-
 ReactDOM.render(
     <Provider store={store}>
       <App/>

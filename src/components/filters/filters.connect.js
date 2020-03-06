@@ -1,15 +1,17 @@
-import {ActionCreator} from '../../reducer/data/actions';
+import {ActionCreator} from '../../reducer/state/actions';
 import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
 import NameSpace from '../../reducer/name-space';
+import {
+  getFilms,
+  getChosenGenre,
+  getListGenres
+} from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    films: state[NameSpace.DATA].films,
-    chosenGenre: state[NameSpace.DATA].chosenGenre,
-    listGenres: (() => {
-      const uniqueGenres = Array.from(new Set(state[NameSpace.DATA].films.map((film) => film.genre))).slice(0, DEFAULT_GENRES_AMOUNT - 1);
-      return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
-    })()
+    films: getFilms(state),
+    chosenGenre: getChosenGenre(state),
+    listGenres: getListGenres(state)
   };
 };
 

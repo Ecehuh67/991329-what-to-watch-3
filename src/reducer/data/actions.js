@@ -13,25 +13,7 @@ const ActionCreator = {
       type: ActionType.LOAD_FILMS,
       payload: films
     };
-  },
-  changeFilteredGenre: (genre) => {
-    return {
-      type: ActionType.CHANGE_FILTERED_GENRE,
-      payload: genre
-    };
-  },
-  showeMoreFilms: () => {
-    return {
-      type: ActionType.SHOW_MORE_FILMS,
-      payload: DEFAULT_SHOWED_FILMS
-    };
-  },
-  setActiveFilm: (filmId) => {
-    return {
-      type: ActionType.SET_ACTIVE_CARD,
-      payload: filmId
-    };
-  },
+  }
 };
 
 export {ActionType, ActionCreator};

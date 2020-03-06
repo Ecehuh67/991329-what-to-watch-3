@@ -7,9 +7,11 @@ import {ActionCreator} from '../../reducer/data/actions';
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
+import withMainPage from '../../hocs/with-main-page/with-main-page';
 import {store} from '../../index';
 
 const PopupWrapped = withPopup(Popup);
+const MainPageWrapped = withMainPage(MainPage);
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -17,16 +19,6 @@ class App extends React.PureComponent {
   }
 
   _renderApp() {
-    // const {
-    //   films,
-    //   onFilmCardClick,
-    //   isPopupActive,
-    //   activeFilmCard,
-    //   filteredFilms,
-    //   onPlayButtonClick,
-    //   onCloseButtonClick,
-    //   videoPlayer
-    // } = this.props;
     const {
       films,
        isUploaded,
@@ -45,7 +37,7 @@ class App extends React.PureComponent {
 
     if (isUploaded && !isPopupActive) {
       return (
-        <MainPage
+        <MainPageWrapped
           films={films}
           onDataChange={onFilmCardClick}
         />
@@ -62,14 +54,6 @@ class App extends React.PureComponent {
   }
 
   render() {
-    // const {
-    //   onFilmCardClick,
-    //   activeFilmCard,
-    //   filteredFilms,
-    //   onPlayButtonClick,
-    //   onCloseButtonClick,
-    //   videoPlayer
-    // } = this.props;
     const {
       films,
        isUploaded,

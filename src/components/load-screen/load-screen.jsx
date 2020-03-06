@@ -35,7 +35,3 @@ const LoadScreen = () => {
 };
 
 export default LoadScreen;
-
-// <div>
-//   <p>Please, wait a few second, films are uploading</p>
-// </div>

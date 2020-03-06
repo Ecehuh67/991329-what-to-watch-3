@@ -11,11 +11,14 @@ const withPopup = (Component) => {
 
       this._onBookmarksChange = this._onBookmarksChange.bind(this);
       this._getTabTemplate = this._getTabTemplate.bind(this);
+      this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
+      this._onCloseButtonClick = this._onCloseButtonClick.bind(this);
 
       this.state = {
         activeTab: DEFAULT_BOOKMARK,
         tabsList: BOOKMARKS_LIST,
-        listener: this._onBookmarksChange
+        listener: this._onBookmarksChange,
+        isPlaying: false
       };
     }
 
@@ -35,12 +38,23 @@ const withPopup = (Component) => {
       this.setState({activeTab: evt.target.text});
     }
 
+    _onPlayButtonClick() {
+      this.setState({isPlaying: true});
+    }
+
+    _onCloseButtonClick() {
+      this.setState({isPlaying: false});
+    }
+
     render() {
       const tabDescription = this._getTabTemplate();
 
       return (
         <Component
           {...this.props}
+          isPlaying={this.state.isPlaying}
+          onPlayButtonClick={this._onPlayButtonClick}
+          onCloseButtonClick={this._onCloseButtonClick}
         >
           <Tabs
             state={this.state}

@@ -5,10 +5,6 @@ import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 const initialState = {
   films: [],
   isUploaded: false,
-  chosenGenre: DEFAULT_GENRE,
-  showedFilms: DEFAULT_SHOWED_FILMS,
-  isPopupActive: false,
-  activeFilm: null
 };
 
 const Operation = {
@@ -29,29 +25,6 @@ const reducer = (state = initialState, action) => {
           films: action.payload,
           isUploaded: true
         }
-      );
-    case ActionType.CHANGE_FILTERED_GENRE:
-      return extend(
-          state,
-          {
-            chosenGenre: action.payload,
-            showedFilms: DEFAULT_SHOWED_FILMS
-          }
-      );
-    case ActionType.SHOW_MORE_FILMS:
-      return extend(
-          state,
-          {
-            showedFilms: state.showedFilms + action.payload
-          }
-      );
-    case ActionType.SET_ACTIVE_CARD:
-      return extend(
-          state,
-          {
-            activeFilmCard: action.payload,
-            isPopupActive: true
-          }
       );
   }
 

@@ -8,14 +8,11 @@ export const createAPI = (dispatch) => {
   });
 
   const onSuccess = (response) => {
-    console.log('data has uploaded');
     return response
   }
 
   const onFail = (err) => {
     const {response} = err;
-    console.log(`Smth bad has happend: ${response}`);
-
     throw err;
   }
 

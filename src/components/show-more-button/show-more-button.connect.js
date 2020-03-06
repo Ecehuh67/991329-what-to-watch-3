@@ -1,19 +1,16 @@
-import {ActionCreator} from '../../reducer/data/actions';
+import {ActionCreator} from '../../reducer/state/actions';
 import {DEFAULT_GENRE} from '../../utils/consts';
 import NameSpace from '../../reducer/name-space';
 import ShowMoreButton from './show-more-button';
+import {
+  getShowedFilmsCount,
+  getFilteredGenreFilms
+} from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    films: (() => {
-      if (state[NameSpace.DATA].chosenGenre === DEFAULT_GENRE) {
-        return state[NameSpace.DATA].films;
-      }
-
-      return state[NameSpace.DATA].films.slice().filter((film) => film.genre === state[NameSpace.DATA].chosenGenre);
-    })(),
-    showedFilms: state[NameSpace.DATA].showedFilms,
-    // filteredFilms: state.filteredFilms
+    films: getFilteredGenreFilms(state),
+    showedFilms: getShowedFilmsCount(state),
   };
 };
 
@@ -24,4 +21,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {mapStateToProps, mapDispatchToProps};
-// export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
