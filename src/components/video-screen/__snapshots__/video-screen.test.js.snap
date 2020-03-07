@@ -7,6 +7,9 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
   <video
     autoPlay={true}
     className="player__video"
+    onClick={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
     src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
   />
   <button
@@ -34,7 +37,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
           className="player__toggler"
           style={
             Object {
-              "left": 30,
+              "left": 0,
             }
           }
         >
@@ -52,6 +55,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
     >
       <button
         className="player__play"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -70,7 +74,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
       <div
         className="player__name"
       >
-        Transpotting
+        Play
       </div>
       <button
         className="player__full-screen"

@@ -8,7 +8,7 @@ describe(`Render LoadScreen correctly`, () => {
     const tree = renderer.create(
         <MainPromoFilm
           film={film}
-          onPlayButtonClick={() => {}}
+          onShowHideButtonClick={() => {}}
         />
     ).toJSON();
 

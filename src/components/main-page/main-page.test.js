@@ -29,8 +29,9 @@ describe(`render MainPage`, () => {
               films={movies}
               onDataChange={() => {}}
               onPlayButtonClick={() => {}}
-              onCloseButtonClick={() => {}}
-              isPlaying={false}
+              onStopButtonClick={() => {}}
+              onShowHideButtonClick={() => {}}
+              state={{isVideoActive: false}}
             />
           </Provider>
       )

@@ -10,7 +10,10 @@ it(`When user click on an image the func return the data of film`, () => {
   const videoScreen = shallow(
       <VideoScreen
         film={film}
-        onCloseButtonClick={onTitleClick}
+        onPlayButtonClick={() => {}}
+        onStopButtonClick={() => {}}
+        onShowHideButtonClick={onTitleClick}
+        state={{isVideoActive: true}}
       />
   );
 

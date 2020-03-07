@@ -1,5 +1,5 @@
 const MainPromoFilm = (props) => {
-  const {film, onPlayButtonClick} = props;
+  const {film, onShowHideButtonClick} = props;
 
   return (
     <div className="movie-card__wrap">
@@ -21,7 +21,7 @@ const MainPromoFilm = (props) => {
               type="button"
               onClick={
                 () => {
-                  onPlayButtonClick();
+                  onShowHideButtonClick();
                 }
               }
             >
@@ -64,7 +64,7 @@ MainPromoFilm.propTypes = {
     video_link: PropTypes.string.isRequired,
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onShowHideButtonClick: PropTypes.func.isRequired,
 };
 
 export default MainPromoFilm;

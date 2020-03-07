@@ -8,23 +8,27 @@ const MainPage = (props) => {
   const {
     films,
     onDataChange,
+    state,
     onPlayButtonClick,
-    onCloseButtonClick,
-    isPlaying
+    onStopButtonClick,
+    onShowHideButtonClick
   } = props;
 
   const promoFilm = films[0];
 
   return (
     <>
-      {isPlaying &&
+      {state.isVideoActive &&
         <VideoScreen
           film={promoFilm}
-          onCloseButtonClick={onCloseButtonClick}
+          state={state}
+          onPlayButtonClick={onPlayButtonClick}
+          onStopButtonClick={onStopButtonClick}
+          onShowHideButtonClick={onShowHideButtonClick}
         />
       }
 
-      {!isPlaying &&
+      {!state.isVideoActive &&
         <>
           <div>
             <section className="movie-card">
@@ -52,7 +56,7 @@ const MainPage = (props) => {
 
               <MainPromoFilm
                 film={promoFilm}
-                onPlayButtonClick={onPlayButtonClick}
+                onShowHideButtonClick={onShowHideButtonClick}
               />
 
             </section>
@@ -118,9 +122,10 @@ MainPage.propTypes = {
       })
   ).isRequired,
   onDataChange: PropTypes.func.isRequired,
+  onShowHideButtonClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  onCloseButtonClick: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  onStopButtonClick: PropTypes.func.isRequired,
+  state: PropTypes.objectOf(PropTypes.bool).isRequired
 };
 
 export default MainPage;

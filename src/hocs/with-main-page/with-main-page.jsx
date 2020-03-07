@@ -3,20 +3,43 @@ const withMainPage = (Component) => {
     constructor(props) {
       super(props);
 
+      this._onShowHideButtonClick = this._onShowHideButtonClick.bind(this);
+
       this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
-      this._onCloseButtonClick = this._onCloseButtonClick.bind(this);
+      this._onStopButtonClick = this._onStopButtonClick.bind(this);
 
       this.state = {
-        isPlaying: false
+        isVideoActive: false,
+        isPlaying: true, // fixing autoPlay attribute
+        isStopped: false
       };
     }
 
-    _onPlayButtonClick() {
-      this.setState({isPlaying: true});
+    _onShowHideButtonClick() {
+      this.setState(
+          {
+            isVideoActive: !this.state.isVideoActive,
+            isPlaying: !this.state.isPlaying,
+          }
+      );
     }
 
-    _onCloseButtonClick() {
-      this.setState({isPlaying: false});
+    _onPlayButtonClick() {
+      this.setState(
+          {
+            isPlaying: true,
+            isStopped: false
+          }
+      );
+    }
+
+    _onStopButtonClick() {
+      this.setState(
+          {
+            isStopped: true,
+            isPlaying: false
+          }
+      );
     }
 
     render() {
@@ -24,9 +47,10 @@ const withMainPage = (Component) => {
       return (
         <Component
           {...this.props}
-          isPlaying={this.state.isPlaying}
+          state={this.state}
           onPlayButtonClick={this._onPlayButtonClick}
-          onCloseButtonClick={this._onCloseButtonClick}
+          onStopButtonClick={this._onStopButtonClick}
+          onShowHideButtonClick={this._onShowHideButtonClick}
         />
       );
     }

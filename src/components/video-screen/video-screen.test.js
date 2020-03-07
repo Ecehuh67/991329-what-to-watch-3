@@ -8,7 +8,10 @@ describe(`Render LoadScreen correctly`, () => {
     const tree = renderer.create(
         <VideoScreen
           film={film}
-          onCloseButtonClick={() => {}}
+          onPlayButtonClick={() => {}}
+          onStopButtonClick={() => {}}
+          onShowHideButtonClick={() => {}}
+          state={{isVideoActive: true}}
         />
     ).toJSON();
 

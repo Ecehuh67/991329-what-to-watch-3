@@ -11,8 +11,9 @@ describe(`Render Popup correctly`, () => {
           films={movies}
           onDataChange={() => {}}
           onPlayButtonClick={() => {}}
-          onCloseButtonClick={() => {}}
-          isPlaying={false}
+          onStopButtonClick={() => {}}
+          onShowHideButtonClick={() => {}}
+          state={{isVideoActive: false}}
         >
           <div/>
         </Popup>, {

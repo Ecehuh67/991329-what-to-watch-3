@@ -9,20 +9,24 @@ export default class Popup extends React.PureComponent {
       films,
       children,
       onPlayButtonClick,
-      onCloseButtonClick,
-      isPlaying
+      onStopButtonClick,
+      onShowHideButtonClick,
+      state
     } = this.props;
 
     return (
       <>
-        {isPlaying &&
+        {state.isVideoActive &&
           <VideoScreen
             film={film}
-            onCloseButtonClick={onCloseButtonClick}
+            state={state}
+            onPlayButtonClick={onPlayButtonClick}
+            onStopButtonClick={onStopButtonClick}
+            onShowHideButtonClick={onShowHideButtonClick}
           />
         }
 
-      {!isPlaying &&
+      {!state.isVideoActive &&
         <>
           <section className="movie-card movie-card--full" style={{background: film.background_color}}>
             <div className="movie-card__hero">
@@ -60,11 +64,7 @@ export default class Popup extends React.PureComponent {
                     <button
                       className="btn btn--play movie-card__button"
                       type="button"
-                      onClick={
-                        () => {
-                          onPlayButtonClick();
-                        }
-                      }
+                      onClick={onShowHideButtonClick}
                     >
                       <svg viewBox="0 0 19 19" width="19" height="19">
                         <use xlinkHref="#play-s"></use>
@@ -177,6 +177,7 @@ Popup.propTypes = {
     PropTypes.node
   ]).isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  onCloseButtonClick: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired
+  onStopButtonClick: PropTypes.func.isRequired,
+  onShowHideButtonClick: PropTypes.func.isRequired,
+  state: PropTypes.objectOf(PropTypes.bool).isRequired
 };
