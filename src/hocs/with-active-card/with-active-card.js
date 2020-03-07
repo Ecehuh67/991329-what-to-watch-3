@@ -34,7 +34,6 @@ const withActiveCard = (Component) => {
 
     render() {
       const {film} = this.props;
-      // const {title, image, preview} = film;
       return (
         <Component
           {...this.props}

@@ -3,8 +3,6 @@ import {ActionType} from './actions';
 import {movies} from '../../utils/test-mocks';
 import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 
-// import {films} from '../../mocks/films';
-
 const film = movies[1];
 
 it(`Reducer without additional parameters should return initial state`, () => {
