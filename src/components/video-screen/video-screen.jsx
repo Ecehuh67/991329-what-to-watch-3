@@ -1,9 +1,20 @@
+import {convertTimeToProgressBar} from '../../utils/utils';
+
+const DEFAULT_WIDTH_PROGRESS_BAR = 860;
+const MAX_VALUE_PROGRESS_BAR = 100;
+
 export default class VideoScreen extends React.PureComponent {
   constructor(props) {
     super(props);
     this.videoRef = React.createRef();
 
     this._stopPlayVideo = this._stopPlayVideo.bind(this);
+    this._onTimeUpdate = this._onTimeUpdate.bind(this);
+
+    this.state = {
+      duration: null,
+      percent: null
+    };
   }
 
   _stopPlayVideo() {
@@ -15,8 +26,22 @@ export default class VideoScreen extends React.PureComponent {
     }
   }
 
+  _onTimeUpdate({target: {currentTime, duration}}) {
+    const time = Math.round(duration - currentTime);
+    const percent = currentTime / duration;
+    this.setState(
+        {
+          duration: time,
+          percent
+        }
+    );
+  }
+
   render() {
     const {film, state, onPlayButtonClick, onStopButtonClick, onShowHideButtonClick} = this.props;
+    const duration = convertTimeToProgressBar(this.state.duration);
+    const position = this.state.percent * DEFAULT_WIDTH_PROGRESS_BAR;
+    const progressPosition = Math.round(this.state.percent * MAX_VALUE_PROGRESS_BAR);
 
     return (
       <div className="player">
@@ -28,6 +53,7 @@ export default class VideoScreen extends React.PureComponent {
           onPlay={onPlayButtonClick}
           ref={this.videoRef}
           onClick={this._stopPlayVideo}
+          onTimeUpdate={this._onTimeUpdate}
         >
         </video>
 
@@ -45,10 +71,10 @@ export default class VideoScreen extends React.PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="30" max="100"></progress>
-              <div className="player__toggler" style={{left: 0}}>Toggler</div>
+              <progress className="player__progress" value={progressPosition} max="100"></progress>
+              <div className="player__toggler" style={{left: position}}>Toggler</div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">{duration}</div>
           </div>
 
           <div className="player__controls-row">

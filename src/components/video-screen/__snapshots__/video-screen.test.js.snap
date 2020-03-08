@@ -10,6 +10,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
     onClick={[Function]}
     onPause={[Function]}
     onPlay={[Function]}
+    onTimeUpdate={[Function]}
     src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
   />
   <button
@@ -31,7 +32,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
         <progress
           className="player__progress"
           max="100"
-          value="30"
+          value={0}
         />
         <div
           className="player__toggler"
@@ -47,7 +48,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
       <div
         className="player__time-value"
       >
-        1:30:29
+        0:0:00
       </div>
     </div>
     <div
