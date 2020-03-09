@@ -1,15 +1,15 @@
 export default class FilmCard extends React.PureComponent {
   render() {
     const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
-    const {title} = film;
 
     return (
       <article className="small-movie-card catalog__movies-card">
         <div
           className="small-movie-card__image"
-          onClick={() => {
-            onDataChange(film);
-          }
+          onClick={
+            () => {
+              onDataChange(film.id);
+            }
           }
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
@@ -19,18 +19,33 @@ export default class FilmCard extends React.PureComponent {
 
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+          <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
         </h3>
       </article>
     );
   }
 }
 
+/* eslint camelcase: ["error", {properties: "never"}] */
 FilmCard.propTypes = {
   film: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    preview: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    poster_image: PropTypes.string.isRequired,
+    preview_image: PropTypes.string.isRequired,
+    background_image: PropTypes.string.isRequired,
+    background_color: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    scores_count: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired),
+    run_time: PropTypes.number.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    is_favorite: PropTypes.bool.isRequired,
+    video_link: PropTypes.string.isRequired,
+    preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
   onDataChange: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,

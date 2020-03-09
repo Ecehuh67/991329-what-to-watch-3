@@ -1,14 +1,16 @@
-import {ActionCreator} from "../../actions.js";
-import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
+import {ActionCreator} from '../../reducer/state/actions';
+
+import {
+  getFilms,
+  getChosenGenre,
+  getListGenres
+} from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    films: state.films,
-    chosenGenre: state.chosenGenre,
-    listGenres: (() => {
-      const uniqueGenres = Array.from(new Set(state.films.map((film) => film.genre))).slice(0, DEFAULT_GENRES_AMOUNT - 1);
-      return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
-    })()
+    films: getFilms(state),
+    chosenGenre: getChosenGenre(state),
+    listGenres: getListGenres(state)
   };
 };
 

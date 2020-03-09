@@ -1,15 +1,25 @@
-const AMOUT_SIMILAR_FILMS = 4;
-
 export const getRandomNumber = (max) => {
   return 1 + Math.floor(Math.random() * max);
 };
 
-export const getSimilarFilms = (films, targetFilm) => {
-  const index = films.map((it) => it.title).indexOf(targetFilm.title);
-  const newList = [].concat(films.slice(0, index), films.slice(index + 1));
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
 
-  return newList
-    .slice()
-    .filter((movie) => movie.genre === targetFilm.genre)
-    .slice(0, AMOUT_SIMILAR_FILMS);
+export const convertTime = (duration) => {
+  const hours = Math.floor(duration / 60);
+  const minutes = Math.round((duration / 60 - hours) * 60);
+
+  return (
+    `${hours}h ${minutes}m`
+  );
+};
+
+export const convertTimeToProgressBar = (duration) => {
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration - hours * 3600) / 60);
+  const seconds = Math.round(duration - hours * 3600 - minutes * 60);
+  return (
+    `${hours}:${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+  );
 };

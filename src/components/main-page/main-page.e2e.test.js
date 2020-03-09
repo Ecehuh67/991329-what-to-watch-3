@@ -5,15 +5,17 @@ import {movies} from '../../utils/test-mocks';
 it(`Should title of the film be clicked`, () => {
   const onTitleButtonHandler = jest.fn();
   const onPlayButtonHandler = jest.fn();
-  const onCloseButtonHandler = jest.fn();
+  const onStopButtonHandler = jest.fn();
+  const onShowHideButtonClick = jest.fn();
 
   const mainPage = shallow(
       <MainPage
         films={movies}
         onDataChange={onTitleButtonHandler}
         onPlayButtonClick={onPlayButtonHandler}
-        onCloseButtonClick={onCloseButtonHandler}
-        videoPlayer={{isPlaying: true}}
+        onStopButtonClick={onStopButtonHandler}
+        onShowHideButtonClick={onShowHideButtonClick}
+        state={{isVideoActive: false}}
       />
   );
 

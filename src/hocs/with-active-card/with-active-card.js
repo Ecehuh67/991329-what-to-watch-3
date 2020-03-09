@@ -34,7 +34,6 @@ const withActiveCard = (Component) => {
 
     render() {
       const {film} = this.props;
-      // const {title, image, preview} = film;
       return (
         <Component
           {...this.props}
@@ -48,7 +47,7 @@ const withActiveCard = (Component) => {
               onCloseButtonClick={() => {}}
             />
             :
-            <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+            <img src={film.preview_image} alt={film.name} width="280" height="175" />
           }
         </Component>
       );
@@ -59,11 +58,26 @@ const withActiveCard = (Component) => {
     }
   }
 
+  /* eslint camelcase: ["error", {properties: "never"}] */
   WithActiveCard.propTypes = {
     film: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      preview: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      poster_image: PropTypes.string.isRequired,
+      preview_image: PropTypes.string.isRequired,
+      background_image: PropTypes.string.isRequired,
+      background_color: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      scores_count: PropTypes.number.isRequired,
+      director: PropTypes.string.isRequired,
+      starring: PropTypes.arrayOf(PropTypes.string.isRequired),
+      run_time: PropTypes.number.isRequired,
+      genre: PropTypes.string.isRequired,
+      released: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+      is_favorite: PropTypes.bool.isRequired,
+      video_link: PropTypes.string.isRequired,
+      preview_video_link: PropTypes.string.isRequired,
     }).isRequired,
     onDataChange: PropTypes.func.isRequired
   };

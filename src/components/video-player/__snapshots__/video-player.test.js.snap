@@ -4,9 +4,9 @@ exports[`VideoPlayer is rendered correctly 1`] = `
 <video
   autoPlay={true}
   className="video-title"
+  height="185"
   muted={true}
-  poster="img/the corn.jpg"
-  src="https://player.vimeo.com/external/352010586.sd.mp4?s=2e414f16dc7380d1d48fd68c61db096db8ca1b06&profile_id=139&oauth2_token_id=57447761"
-  width="300"
+  src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+  width="280"
 />
 `;

@@ -69,9 +69,9 @@ exports[`render MainPage Render Main page 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="The Lord of the Rings"
+            alt="The ghoustbusters"
             height="327"
-            src="img/the-lord-of-the-rings.jpg"
+            src="https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ exports[`render MainPage Render Main page 1`] = `
           <h2
             className="movie-card__title"
           >
-            The Lord of the Rings
+            The ghoustbusters
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ exports[`render MainPage Render Main page 1`] = `
             <span
               className="movie-card__genre"
             >
-              Crime
+              action
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2009
             </span>
           </p>
           <div
@@ -173,7 +173,7 @@ exports[`render MainPage Render Main page 1`] = `
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            action
           </a>
         </li>
         <li
@@ -184,7 +184,7 @@ exports[`render MainPage Render Main page 1`] = `
             className="catalog__genres-link"
             href="#"
           >
-            Drama
+            thriller
           </a>
         </li>
       </ul>
@@ -201,9 +201,9 @@ exports[`render MainPage Render Main page 1`] = `
             onMouseLeave={[Function]}
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="The ghoustbusters"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
               width="280"
             />
           </div>
@@ -214,7 +214,7 @@ exports[`render MainPage Render Main page 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Lord of the Rings
+              The ghoustbusters
             </a>
           </h3>
         </article>
@@ -228,9 +228,9 @@ exports[`render MainPage Render Main page 1`] = `
             onMouseLeave={[Function]}
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Mortal Combat"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
               width="280"
             />
           </div>
@@ -241,7 +241,7 @@ exports[`render MainPage Render Main page 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Ghostbusters
+              Mortal Combat
             </a>
           </h3>
         </article>
@@ -255,9 +255,9 @@ exports[`render MainPage Render Main page 1`] = `
             onMouseLeave={[Function]}
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="The time"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
               width="280"
             />
           </div>
@@ -268,7 +268,7 @@ exports[`render MainPage Render Main page 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Mortal Combat
+              The time
             </a>
           </h3>
         </article>

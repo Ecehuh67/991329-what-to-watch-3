@@ -1,31 +1,25 @@
-import {ActionCreator} from "../../actions.js";
-import {getSimilarFilms} from '../../utils/utils';
-import {DEFAULT_GENRE} from '../../utils/consts';
+import {ActionCreator} from '../../reducer/state/actions';
+import {
+  getUploadingState,
+  getPopupState,
+  getSimilarFilms,
+  getMovies,
+  getActiveCard
+} from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    isPopupActive: state.isPopupActive,
-    videoPlayer: state.videoPlayer,
-    activeFilmCard: state.activeFilmCard,
-    filteredFilms: getSimilarFilms(state.films, state.activeFilmCard),
-    films: (() => {
-      if (state.chosenGenre === DEFAULT_GENRE) {
-        return state.films.slice(0, state.showedFilms);
-      }
-      return state.films.slice().filter((film) => film.genre === state.chosenGenre);
-    })(),
+    films: getMovies(state),
+    isUploaded: getUploadingState(state),
+    isPopupActive: getPopupState(state),
+    filteredFilms: getSimilarFilms(state),
+    activeFilmCard: getActiveCard(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onFilmCardClick(film) {
-    dispatch(ActionCreator.setActiveFIlm(film));
-  },
-  onPlayButtonClick(film) {
-    dispatch(ActionCreator.playVideo(film));
-  },
-  onCloseButtonClick() {
-    dispatch(ActionCreator.closeVideo());
+  onFilmCardClick(id) {
+    dispatch(ActionCreator.setActiveFilm(id));
   }
 });
 

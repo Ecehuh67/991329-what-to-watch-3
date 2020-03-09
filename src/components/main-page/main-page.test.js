@@ -2,20 +2,24 @@ import MainPage from './main-page';
 import {movies} from '../../utils/test-mocks';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import NameSpace from "../../reducer/name-space";
+import {DEFAULT_GENRE} from '../../utils/consts';
 
 const mockStore = configureStore([]);
 
 describe(`render MainPage`, () => {
   it(`Render Main page`, () => {
     const store = mockStore({
-      films: movies,
-      onFilmCardClick: () => {},
-      chosenGenre: `All genres`,
-      videoPlayer: {
-        isPlaying: false,
-        isStoped: false,
+      [NameSpace.DATA]: {
+        films: movies,
+        isUploaded: true,
       },
-      showedFilms: 4
+      [NameSpace.STATE]: {
+        chosenGenre: DEFAULT_GENRE,
+        showedFilms: 5,
+        isPopupActive: false,
+        activeFilmCard: null
+      }
     });
 
     const tree = renderer
@@ -25,8 +29,9 @@ describe(`render MainPage`, () => {
               films={movies}
               onDataChange={() => {}}
               onPlayButtonClick={() => {}}
-              onCloseButtonClick={() => {}}
-              videoPlayer={{isPlaying: false}}
+              onStopButtonClick={() => {}}
+              onShowHideButtonClick={() => {}}
+              state={{isVideoActive: false}}
             />
           </Provider>
       )

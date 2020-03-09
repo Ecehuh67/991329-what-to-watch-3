@@ -1,40 +1,9 @@
 import Popup from './popup';
 import {movies} from '../../utils/test-mocks';
 
-const emptyData = {
-  title: ``,
-  image: ``,
-  genre: ``,
-  preview: ``
-};
-
-const film = {
-  title: `The corn`,
-  image: `img/the corn.jpg`,
-  genre: ``,
-  preview: ``
-};
+const film = movies[1];
 
 describe(`Render Popup correctly`, () => {
-  it(`Render empty data like obj`, () => {
-    const tree = renderer.create(
-        <Popup
-          film={emptyData}
-          films={[]}
-          onDataChange={() => {}}
-          onPlayButtonClick={() => {}}
-          onCloseButtonClick={() => {}}
-          videoPlayer={{isPlaying: false}}
-        >
-          <div/>
-        </Popup>, {
-          createNodeMock: () => {
-            return {};
-          }
-        }).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
   it(`Render mock data the right way`, () => {
     const tree = renderer.create(
         <Popup
@@ -42,8 +11,9 @@ describe(`Render Popup correctly`, () => {
           films={movies}
           onDataChange={() => {}}
           onPlayButtonClick={() => {}}
-          onCloseButtonClick={() => {}}
-          videoPlayer={{isPlaying: false}}
+          onStopButtonClick={() => {}}
+          onShowHideButtonClick={() => {}}
+          state={{isVideoActive: false}}
         >
           <div/>
         </Popup>, {

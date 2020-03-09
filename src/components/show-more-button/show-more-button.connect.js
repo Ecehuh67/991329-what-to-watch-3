@@ -1,20 +1,14 @@
-import {ActionCreator} from "../../actions.js";
-import {DEFAULT_GENRE} from '../../utils/consts';
+import {ActionCreator} from '../../reducer/state/actions';
 
-// import {connect} from "react-redux";
-// import ShowMoreButton from './show-more-button';
+import {
+  getShowedFilmsCount,
+  getFilteredGenreFilms
+} from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    films: (() => {
-      if (state.chosenGenre === DEFAULT_GENRE) {
-        return state.films;
-      }
-
-      return state.films.slice().filter((film) => film.genre === state.chosenGenre);
-    })(),
-    showedFilms: state.showedFilms,
-    filteredFilms: state.filteredFilms
+    films: getFilteredGenreFilms(state),
+    showedFilms: getShowedFilmsCount(state),
   };
 };
 
@@ -25,4 +19,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {mapStateToProps, mapDispatchToProps};
-// export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);

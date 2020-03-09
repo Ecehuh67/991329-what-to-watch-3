@@ -1,20 +1,60 @@
+/* eslint camelcase: ["error", {properties: "never"}] */
 export const movies = [
   {
-    title: `The Lord of the Rings`,
-    image: `img/the-lord-of-the-rings.jpg`,
-    preview: `https://player.vimeo.com/external/376143295.sd.mp4?s=f1c6de2ad35f2925be25e3dc3803534b73bd79ed&profile_id=139&oauth2_token_id=57447761`,
-    genre: `Crime`
+    name: `The ghoustbusters`,
+    poster_image: `https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761`,
+    preview_image: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    background_image: `https://player.vimeo.com/external`,
+    background_color: `#000000`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    rating: 6,
+    scores_count: 102023,
+    director: `Ganibal King`,
+    starring: [`Tom Cruz`, `Jessy Soencer`, `Alf Tompson`],
+    run_time: 100,
+    genre: `action`,
+    released: 2009,
+    id: 12,
+    is_favorite: false,
+    video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    preview_video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`
   },
   {
-    title: `The Ghostbusters`,
-    image: `img/the-ghostbusters.jpg`,
-    preview: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2_token_id=57447761`,
-    genre: `Drama`
+    name: `Mortal Combat`,
+    poster_image: `https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761`,
+    preview_image: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    background_image: `https://player.vimeo.com/external`,
+    background_color: `#000000`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    rating: 6,
+    scores_count: 102023,
+    director: `Ganibal King`,
+    starring: [`Tom Cruz`, `Jessy Soencer`, `Alf Tompson`],
+    run_time: 100,
+    genre: `thriller`,
+    released: 1999,
+    id: 19082,
+    is_favorite: false,
+    video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    preview_video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`
   },
   {
-    title: `The Mortal Combat`,
-    image: `img/the-mortal-combat.jpg`,
-    preview: `https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761`,
-    genre: `Crime`
+    name: `The time`,
+    poster_image: `https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761`,
+    preview_image: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    background_image: `https://player.vimeo.com/external`,
+    background_color: `#000000`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    rating: 6,
+    scores_count: 102023,
+    director: `Ganibal King`,
+    starring: [`Tom Cruz`, `Jessy Soencer`, `Alf Tompson`],
+    run_time: 100,
+    genre: `action`,
+    released: 2099,
+    id: 1908,
+    is_favorite: false,
+    video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`,
+    preview_video_link: `https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2`
   }
 ];
