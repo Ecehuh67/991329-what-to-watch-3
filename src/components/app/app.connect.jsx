@@ -1,3 +1,6 @@
+// import App from './app';
+// import {connect} from "react-redux";
+import {Operation as DataOperation} from '../../reducer/data/data';
 import {ActionCreator} from '../../reducer/state/actions';
 import {
   getUploadingState,
@@ -20,7 +23,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onFilmCardClick(id) {
     dispatch(ActionCreator.setActiveFilm(id));
+  },
+  loadFilms() {
+    dispatch(DataOperation.loadFilms());
   }
 });
 
 export {mapStateToProps, mapDispatchToProps};
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,19 +2,19 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import LoadScreen from '../load-screen/load-screen';
-import {Operation as DataOperation} from '../../reducer/data/data';
+// import {Operation as DataOperation} from '../../reducer/data/data';
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
 import withMainPage from '../../hocs/with-main-page/with-main-page';
-import {store} from '../../index';
 
 const PopupWrapped = withPopup(Popup);
 const MainPageWrapped = withMainPage(MainPage);
 
 class App extends React.PureComponent {
   componentDidMount() {
-    store.dispatch(DataOperation.loadFilms());
+    const {loadFilms} = this.props;
+    loadFilms();
   }
 
   _renderApp() {
@@ -150,6 +150,7 @@ App.propTypes = {
         })
     ),
   ]),
+  loadFilms: PropTypes.func.isRequired
 };
 
 export {App};
