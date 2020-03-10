@@ -3,6 +3,7 @@ import ShowMoreButton from '../show-more-button/show-more-button';
 import Filters from '../filters/filters';
 import VideoScreen from '../video-screen/video-screen';
 import MainPromoFilm from '../main-promo-film/main-promo-film';
+import {AuthorizationStatus} from '../../utils/consts';
 
 const MainPage = (props) => {
   const {
@@ -11,7 +12,8 @@ const MainPage = (props) => {
     state,
     onPlayButtonClick,
     onStopButtonClick,
-    onShowHideButtonClick
+    onShowHideButtonClick,
+    authorizationStatus
   } = props;
 
   const promoFilm = films[0];
@@ -47,11 +49,17 @@ const MainPage = (props) => {
                   </a>
                 </div>
 
-                <div className="user-block">
-                  <div className="user-block__avatar">
-                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                {authorizationStatus === AuthorizationStatus.AUTH &&
+                  <div className="user-block">
+                    <div className="user-block__avatar">
+                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                    </div>
                   </div>
-                </div>
+                }
+
+                {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+                  <h1 className="page-title">Sign in</h1>
+                }
               </header>
 
               <MainPromoFilm
@@ -125,7 +133,8 @@ MainPage.propTypes = {
   onShowHideButtonClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
   onStopButtonClick: PropTypes.func.isRequired,
-  state: PropTypes.objectOf(PropTypes.bool).isRequired
+  state: PropTypes.objectOf(PropTypes.bool).isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 export default MainPage;

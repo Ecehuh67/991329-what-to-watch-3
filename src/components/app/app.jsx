@@ -2,7 +2,8 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import LoadScreen from '../load-screen/load-screen';
-// import {Operation as DataOperation} from '../../reducer/data/data';
+import AuthScreen from '../auth-screen/auth-screen';
+import {AuthorizationStatus} from '../../utils/consts';
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
@@ -13,8 +14,9 @@ const MainPageWrapped = withMainPage(MainPage);
 
 class App extends React.PureComponent {
   componentDidMount() {
-    const {loadFilms} = this.props;
+    const {loadFilms, requireAuth} = this.props;
     loadFilms();
+    requireAuth();
   }
 
   _renderApp() {
@@ -24,7 +26,9 @@ class App extends React.PureComponent {
       onFilmCardClick,
       isPopupActive,
       activeFilmCard,
-      filteredFilms
+      filteredFilms,
+      authorizationStatus,
+      login
     } = this.props;
 
     if (!isUploaded) {
@@ -34,22 +38,33 @@ class App extends React.PureComponent {
       );
     }
 
-    if (isUploaded && !isPopupActive) {
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      if (isUploaded && !isPopupActive) {
+        return (
+          <MainPageWrapped
+            films={films}
+            onDataChange={onFilmCardClick}
+            authorizationStatus={authorizationStatus}
+          />
+        );
+      }
+
       return (
-        <MainPageWrapped
-          films={films}
+        <PopupWrapped
+          film={activeFilmCard}
+          films={filteredFilms}
           onDataChange={onFilmCardClick}
+        />
+      );
+    } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      return (
+        <AuthScreen
+          onSubmit={login}
         />
       );
     }
 
-    return (
-      <PopupWrapped
-        film={activeFilmCard}
-        films={filteredFilms}
-        onDataChange={onFilmCardClick}
-      />
-    );
+    return null;
   }
 
   render() {
@@ -70,6 +85,11 @@ class App extends React.PureComponent {
               film={activeFilmCard}
               films={filteredFilms}
               onDataChange={onFilmCardClick}
+            />
+          </Route>
+          <Route exact path="/dev-auth">
+            <AuthScreen
+              onSubmit={() => {}}
             />
           </Route>
         </Switch>
@@ -150,7 +170,10 @@ App.propTypes = {
         })
     ),
   ]),
-  loadFilms: PropTypes.func.isRequired
+  loadFilms: PropTypes.func.isRequired,
+  requireAuth: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 export {App};
