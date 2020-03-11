@@ -7,12 +7,31 @@ const withMainPage = (Component) => {
 
       this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
       this._onStopButtonClick = this._onStopButtonClick.bind(this);
+      this._onSignInFormClick = this._onSignInFormClick.bind(this);
+      this._onValidateUser = this._onValidateUser.bind(this);
 
       this.state = {
         isVideoActive: false,
         isPlaying: true, // fixing autoPlay attribute
-        isStopped: false
+        isStopped: false,
+        isSingFormActive: false
       };
+    }
+
+    _onSignInFormClick() {
+      this.setState(
+          {
+            isSingFormActive: true
+          }
+      );
+    }
+
+    _onValidateUser() {
+      this.setState(
+          {
+            isSingFormActive: false
+          }
+      );
     }
 
     _onShowHideButtonClick() {
@@ -51,6 +70,8 @@ const withMainPage = (Component) => {
           onPlayButtonClick={this._onPlayButtonClick}
           onStopButtonClick={this._onStopButtonClick}
           onShowHideButtonClick={this._onShowHideButtonClick}
+          onSignInFormClick={this._onSignInFormClick}
+          onValidateUser={this._onValidateUser}
         />
       );
     }

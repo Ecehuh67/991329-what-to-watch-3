@@ -10,11 +10,16 @@ export default class VideoScreen extends React.PureComponent {
 
     this._stopPlayVideo = this._stopPlayVideo.bind(this);
     this._onTimeUpdate = this._onTimeUpdate.bind(this);
+    this._onFullScreenClick = this._onFullScreenClick.bind(this);
 
     this.state = {
       duration: null,
       percent: null
     };
+  }
+
+  _onFullScreenClick() {
+    this.videoRef.current.requestFullscreen();
   }
 
   _stopPlayVideo() {
@@ -60,11 +65,7 @@ export default class VideoScreen extends React.PureComponent {
         <button
           type="button"
           className="player__exit"
-          onClick={
-            () => {
-              onShowHideButtonClick();
-            }
-          }
+          onClick={onShowHideButtonClick}
         >Exit
         </button>
 
@@ -90,7 +91,11 @@ export default class VideoScreen extends React.PureComponent {
             </button>
             <div className="player__name">{!state.isPlaying ? `Play` : `Pause`}</div>
 
-            <button type="button" className="player__full-screen">
+            <button
+              type="button"
+              className="player__full-screen"
+              onClick={this._onFullScreenClick}
+            >
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen"></use>
               </svg>

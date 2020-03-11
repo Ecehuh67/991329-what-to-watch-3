@@ -16,6 +16,10 @@ it(`Should title of the film be clicked`, () => {
         onStopButtonClick={onStopButtonHandler}
         onShowHideButtonClick={onShowHideButtonClick}
         state={{isVideoActive: false}}
+        authorizationStatus={`AUTH`}
+        onSignInFormClick={() => {}}
+        onValidateUser={() => {}}
+        login={() => {}}
       />
   );
 

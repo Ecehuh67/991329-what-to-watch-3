@@ -79,6 +79,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
       </div>
       <button
         className="player__full-screen"
+        onClick={[Function]}
         type="button"
       >
         <svg
