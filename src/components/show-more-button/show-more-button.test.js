@@ -27,8 +27,8 @@ describe(`Render ShowMoreButton correctly`, () => {
           <Provider store={store}>
             <ShowMoreButton
               onShowMoreButtonClick={() => {}}
-              showedFilms={store.showedFilms}
-              films={store.films}
+              showedFilms={10}
+              films={movies}
             />
           </Provider>
       )

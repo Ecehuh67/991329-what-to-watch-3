@@ -1,5 +1,5 @@
-// import App from './app';
-// import {connect} from "react-redux";
+import App from './app';
+import {connect} from "react-redux";
 import {Operation as DataOperation} from '../../reducer/data/data';
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator} from '../../reducer/state/actions';
@@ -38,5 +38,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {mapStateToProps, mapDispatchToProps};
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

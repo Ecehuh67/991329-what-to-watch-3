@@ -69,9 +69,9 @@ exports[`render App Render Main page 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="The Lord of the Rings"
+            alt="The ghoustbusters"
             height="327"
-            src="img/the-lord-of-the-rings.jpg"
+            src="https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ exports[`render App Render Main page 1`] = `
           <h2
             className="movie-card__title"
           >
-            The Lord of the Rings
+            The ghoustbusters
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ exports[`render App Render Main page 1`] = `
             <span
               className="movie-card__genre"
             >
-              Crime
+              action
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2009
             </span>
           </p>
           <div
@@ -173,7 +173,7 @@ exports[`render App Render Main page 1`] = `
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            action
           </a>
         </li>
         <li
@@ -184,7 +184,7 @@ exports[`render App Render Main page 1`] = `
             className="catalog__genres-link"
             href="#"
           >
-            Drama
+            thriller
           </a>
         </li>
       </ul>
@@ -201,9 +201,9 @@ exports[`render App Render Main page 1`] = `
             onMouseLeave={[Function]}
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="The ghoustbusters"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
               width="280"
             />
           </div>
@@ -214,7 +214,7 @@ exports[`render App Render Main page 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Lord of the Rings
+              The ghoustbusters
             </a>
           </h3>
         </article>
@@ -228,9 +228,9 @@ exports[`render App Render Main page 1`] = `
             onMouseLeave={[Function]}
           >
             <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              alt="Mortal Combat"
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
               width="280"
             />
           </div>
@@ -241,21 +241,37 @@ exports[`render App Render Main page 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              The Ghostbusters
+              Mortal Combat
             </a>
           </h3>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
+        <article
+          className="small-movie-card catalog__movies-card"
         >
-          Show more
-        </button>
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <img
+              alt="The time"
+              height="175"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              The time
+            </a>
+          </h3>
+        </article>
       </div>
     </section>
     <footer
@@ -294,4 +310,367 @@ exports[`render App Render Main page 1`] = `
     </footer>
   </div>
 </div>
+`;
+
+exports[`render App Render Popup 1`] = `
+Array [
+  <section
+    className="movie-card movie-card--full"
+    style={
+      Object {
+        "background": "#000000",
+      }
+    }
+  >
+    <div
+      className="movie-card__hero"
+    >
+      <div
+        className="movie-card__bg"
+      >
+        <img
+          alt="Mortal Combat"
+          src="https://player.vimeo.com/external"
+        />
+      </div>
+      <h1
+        className="visually-hidden"
+      >
+        WTW
+      </h1>
+      <header
+        className="page-header movie-card__head"
+      >
+        <div
+          className="logo"
+        >
+          <a
+            className="logo__link"
+            href="main.html"
+          >
+            <span
+              className="logo__letter logo__letter--1"
+            >
+              W
+            </span>
+            <span
+              className="logo__letter logo__letter--2"
+            >
+              T
+            </span>
+            <span
+              className="logo__letter logo__letter--3"
+            >
+              W
+            </span>
+          </a>
+        </div>
+        <div
+          className="user-block"
+        >
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="User avatar"
+              height="63"
+              src="img/avatar.jpg"
+              width="63"
+            />
+          </div>
+        </div>
+      </header>
+      <div
+        className="movie-card__wrap"
+      >
+        <div
+          className="movie-card__desc"
+        >
+          <h2
+            className="movie-card__title"
+          >
+            Mortal Combat
+          </h2>
+          <p
+            className="movie-card__meta"
+          >
+            <span
+              className="movie-card__genre"
+            >
+              thriller
+            </span>
+            <span
+              className="movie-card__year"
+            >
+              1999
+            </span>
+          </p>
+          <div
+            className="movie-card__buttons"
+          >
+            <button
+              className="btn btn--play movie-card__button"
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                height="19"
+                viewBox="0 0 19 19"
+                width="19"
+              >
+                <use
+                  xlinkHref="#play-s"
+                />
+              </svg>
+              <span>
+                Play
+              </span>
+            </button>
+            <button
+              className="btn btn--list movie-card__button"
+              type="button"
+            >
+              <svg
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
+              >
+                <use
+                  xlinkHref="#add"
+                />
+              </svg>
+              <span>
+                My list
+              </span>
+            </button>
+            <a
+              className="btn movie-card__button"
+              href="add-review.html"
+            >
+              Add review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="movie-card__wrap movie-card__translate-top"
+    >
+      <div
+        className="movie-card__info"
+      >
+        <div
+          className="movie-card__poster movie-card__poster--big"
+        >
+          <img
+            alt="Mortal Combat"
+            height="327"
+            src="https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761"
+            width="218"
+          />
+        </div>
+        <div
+          className="movie-card__desc"
+        >
+          <nav
+            className="movie-nav movie-card__nav"
+          >
+            <ul
+              className="movie-nav__list"
+            >
+              <li
+                className="movie-nav__item movie-nav__item--active"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Overview
+                </a>
+              </li>
+              <li
+                className="movie-nav__item"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Details
+                </a>
+              </li>
+              <li
+                className="movie-nav__item"
+                onClick={[Function]}
+              >
+                <a
+                  className="movie-nav__link"
+                  href="#"
+                >
+                  Reviews
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            className="movie-rating"
+          >
+            <div
+              className="movie-rating__score"
+            >
+              6
+            </div>
+            <p
+              className="movie-rating__meta"
+            >
+              <span
+                className="movie-rating__level"
+              >
+                Very good
+              </span>
+              <span
+                className="movie-rating__count"
+              >
+                102023
+                 ratings
+              </span>
+            </p>
+          </div>
+          <div
+            className="movie-card__text"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p
+              className="movie-card__director"
+            >
+              <strong>
+                Director: 
+                Ganibal King
+              </strong>
+            </p>
+            <p
+              className="movie-card__starring"
+            >
+              <strong>
+                Starring:
+                Tom Cruz, 
+                Jessy Soencer, 
+                Alf Tompson
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <div
+        className="catalog__movies-list"
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <img
+              alt="The ghoustbusters"
+              height="175"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              The ghoustbusters
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+        >
+          <div
+            className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <img
+              alt="Mortal Combat"
+              height="175"
+              src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Mortal Combat
+            </a>
+          </h3>
+        </article>
+      </div>
+    </section>
+    <footer
+      className="page-footer"
+    >
+      <div
+        className="logo"
+      >
+        <a
+          className="logo__link logo__link--light"
+          href="main.html"
+        >
+          <span
+            className="logo__letter logo__letter--1"
+          >
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
+        </a>
+      </div>
+      <div
+        className="copyright"
+      >
+        <p>
+          © 2019 What to watch Ltd.
+        </p>
+      </div>
+    </footer>
+  </div>,
+]
 `;

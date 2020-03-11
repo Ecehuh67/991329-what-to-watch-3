@@ -1,3 +1,5 @@
+import {connect} from "react-redux";
+import ShowMoreButton from './show-more-button';
 import {ActionCreator} from '../../reducer/state/actions';
 
 import {
@@ -18,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {mapStateToProps, mapDispatchToProps};
+export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);

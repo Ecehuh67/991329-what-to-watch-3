@@ -5,6 +5,17 @@ exports[`Render Filters correctly Render mock data right way 1`] = `
   className="catalog__genres-list"
 >
   <li
+    className="catalog__genres-item"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Drama
+    </a>
+  </li>
+  <li
     className="catalog__genres-item catalog__genres-item--active"
     onClick={[Function]}
   >
@@ -12,29 +23,7 @@ exports[`Render Filters correctly Render mock data right way 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      All genres
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      action
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      thriller
+      Action
     </a>
   </li>
 </ul>

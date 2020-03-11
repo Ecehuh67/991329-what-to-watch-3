@@ -3,15 +3,13 @@ import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
 import withMainPage from '../../hocs/with-main-page/with-main-page';
 
 const PopupWrapped = withPopup(Popup);
 const MainPageWrapped = withMainPage(MainPage);
 
-class App extends React.PureComponent {
+export default class App extends React.PureComponent {
   componentDidMount() {
     const {loadFilms, requireAuth} = this.props;
 
@@ -81,6 +79,7 @@ class App extends React.PureComponent {
           <Route exact path="/dev-auth">
             <AuthScreen
               onSubmit={() => {}}
+              onValidateUser={() => {}}
             />
           </Route>
         </Switch>
@@ -166,6 +165,3 @@ App.propTypes = {
   login: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired
 };
-
-export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);

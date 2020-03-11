@@ -1,14 +1,14 @@
+import Filters from './filters';
+import {connect} from "react-redux";
 import {ActionCreator} from '../../reducer/state/actions';
 
 import {
-  getFilms,
   getChosenGenre,
   getListGenres
 } from '../../reducer/state/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    films: getFilms(state),
     chosenGenre: getChosenGenre(state),
     listGenres: getListGenres(state)
   };
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {mapStateToProps, mapDispatchToProps};
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
