@@ -3,7 +3,6 @@ import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
-import {AuthorizationStatus} from '../../utils/consts';
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
@@ -15,6 +14,7 @@ const MainPageWrapped = withMainPage(MainPage);
 class App extends React.PureComponent {
   componentDidMount() {
     const {loadFilms, requireAuth} = this.props;
+
     loadFilms();
     requireAuth();
   }
@@ -38,33 +38,24 @@ class App extends React.PureComponent {
       );
     }
 
-    if (authorizationStatus === AuthorizationStatus.AUTH) {
-      if (isUploaded && !isPopupActive) {
-        return (
-          <MainPageWrapped
-            films={films}
-            onDataChange={onFilmCardClick}
-            authorizationStatus={authorizationStatus}
-          />
-        );
-      }
-
+    if (isUploaded && !isPopupActive) {
       return (
-        <PopupWrapped
-          film={activeFilmCard}
-          films={filteredFilms}
+        <MainPageWrapped
+          films={films}
           onDataChange={onFilmCardClick}
-        />
-      );
-    } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      return (
-        <AuthScreen
-          onSubmit={login}
+          authorizationStatus={authorizationStatus}
+          login={login}
         />
       );
     }
 
-    return null;
+    return (
+      <PopupWrapped
+        film={activeFilmCard}
+        films={filteredFilms}
+        onDataChange={onFilmCardClick}
+      />
+    );
   }
 
   render() {

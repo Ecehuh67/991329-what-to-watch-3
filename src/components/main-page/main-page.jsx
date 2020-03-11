@@ -2,6 +2,7 @@ import FilmsList from '../films-list/films-list';
 import ShowMoreButton from '../show-more-button/show-more-button';
 import Filters from '../filters/filters';
 import VideoScreen from '../video-screen/video-screen';
+import AuthScreen from '../auth-screen/auth-screen';
 import MainPromoFilm from '../main-promo-film/main-promo-film';
 import {AuthorizationStatus} from '../../utils/consts';
 
@@ -13,7 +14,10 @@ const MainPage = (props) => {
     onPlayButtonClick,
     onStopButtonClick,
     onShowHideButtonClick,
-    authorizationStatus
+    authorizationStatus,
+    onSignInFormClick,
+    onValidateUser,
+    login
   } = props;
 
   const promoFilm = films[0];
@@ -27,6 +31,13 @@ const MainPage = (props) => {
           onPlayButtonClick={onPlayButtonClick}
           onStopButtonClick={onStopButtonClick}
           onShowHideButtonClick={onShowHideButtonClick}
+        />
+      }
+
+      {state.isSingFormActive &&
+        <AuthScreen
+          onSubmit={login}
+          onValidateUser={onValidateUser}
         />
       }
 
@@ -58,7 +69,15 @@ const MainPage = (props) => {
                 }
 
                 {authorizationStatus === AuthorizationStatus.NO_AUTH &&
-                  <h1 className="page-title">Sign in</h1>
+
+                  <div className="user-block">
+                    <a
+                      href="#"
+                      className="user-block__link"
+                      onClick={onSignInFormClick}
+                    >Sign in
+                    </a>
+                  </div>
                 }
               </header>
 
@@ -134,7 +153,10 @@ MainPage.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   onStopButtonClick: PropTypes.func.isRequired,
   state: PropTypes.objectOf(PropTypes.bool).isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  onSignInFormClick: PropTypes.func.isRequired,
+  onValidateUser: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default MainPage;

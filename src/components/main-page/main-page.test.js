@@ -33,6 +33,9 @@ describe(`render MainPage`, () => {
               onShowHideButtonClick={() => {}}
               state={{isVideoActive: false}}
               authorizationStatus={`AUTH`}
+              onSignInFormClick={() => {}}
+              onValidateUser={() => {}}
+              login={() => {}}
             />
           </Provider>
       )

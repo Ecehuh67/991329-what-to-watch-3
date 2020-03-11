@@ -31,6 +31,9 @@ describe(`render App`, () => {
               isPopupActive={store.isPopupActive}
               activeFilmCard={store.activeFilmCard}
               filteredFilms={movies.slice(0, 2)}
+              authorizationStatus={`AUTH`}
+              login={() => {}}
+              onFilmCardClick={() => {}}
             />
           </Provider>
       )

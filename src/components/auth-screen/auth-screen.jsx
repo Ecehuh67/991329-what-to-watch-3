@@ -6,17 +6,32 @@ export default class AuthScreen extends React.PureComponent {
     this.passwordRef = React.createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this._validateEmail = this._validateEmail.bind(this);
+  }
+
+  _validateEmail() {
+    const symbols = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    const email = this.loginRef.current.value;
+
+    if (symbols.test(email) === false) {
+      return false;
+    }
+
+    return null;
   }
 
   handleSubmit(evt) {
-    const {onSubmit} = this.props;
+    const {onSubmit, onValidateUser} = this.props;
 
     evt.preventDefault();
+    this._validateEmail();
 
     onSubmit({
       email: this.loginRef.current.value,
       password: this.passwordRef.current.value,
     });
+
+    onValidateUser();
   }
 
   render() {
@@ -80,5 +95,6 @@ export default class AuthScreen extends React.PureComponent {
 }
 
 AuthScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  onValidateUser: PropTypes.func.isRequired
 };
