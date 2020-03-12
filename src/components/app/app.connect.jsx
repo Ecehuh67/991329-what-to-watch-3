@@ -12,6 +12,8 @@ import {
 } from '../../reducer/state/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 
+// import {Api} from '../../api';
+
 const mapStateToProps = (state) => {
   return {
     films: getMovies(state),
