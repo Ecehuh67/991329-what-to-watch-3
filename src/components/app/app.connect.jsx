@@ -1,5 +1,5 @@
-// import App from './app';
-// import {connect} from "react-redux";
+import App from './app';
+import {connect} from "react-redux";
 import {Operation as DataOperation} from '../../reducer/data/data';
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator} from '../../reducer/state/actions';
@@ -11,6 +11,8 @@ import {
   getActiveCard
 } from '../../reducer/state/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
+
+// import {Api} from '../../api';
 
 const mapStateToProps = (state) => {
   return {
@@ -35,8 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  postComment(commentData) {
+    dispatch(UserOperation.postComment(commentData));
   }
 });
 
-export {mapStateToProps, mapDispatchToProps};
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,6 +1,3 @@
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from './show-more-button.connect';
-
 const ShowMoreButton = (props) => {
   const {onShowMoreButtonClick, showedFilms, films} = props;
 
@@ -52,5 +49,4 @@ ShowMoreButton.propTypes = {
   ).isRequired,
 };
 
-export {ShowMoreButton};
-export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
+export default ShowMoreButton;

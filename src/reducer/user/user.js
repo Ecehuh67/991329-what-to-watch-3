@@ -1,5 +1,6 @@
 import {extend} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
+
 import {AuthorizationStatus} from '../../utils/consts';
 
 const initialState = {
@@ -23,6 +24,17 @@ const Operation = {
     })
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      });
+  },
+  postComment: (commentData) => (dispatch, getState, api) => {
+    return api.post(`/comments/${commentData.id}`, {
+      rating: commentData.rating,
+      comment: commentData.comment
+    })
+      .then(() => {
+        // there will be smth -)
+      })
+      .catch((err) => {
       });
   }
 };

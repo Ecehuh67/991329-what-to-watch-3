@@ -3,15 +3,13 @@ import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
-import {connect} from "react-redux";
-import {mapStateToProps, mapDispatchToProps} from './app.connect';
 import withPopup from '../../hocs/with-popup/with-popup';
 import withMainPage from '../../hocs/with-main-page/with-main-page';
 
 const PopupWrapped = withPopup(Popup);
 const MainPageWrapped = withMainPage(MainPage);
 
-class App extends React.PureComponent {
+export default class App extends React.PureComponent {
   componentDidMount() {
     const {loadFilms, requireAuth} = this.props;
 
@@ -28,7 +26,8 @@ class App extends React.PureComponent {
       activeFilmCard,
       filteredFilms,
       authorizationStatus,
-      login
+      login,
+      postComment
     } = this.props;
 
     if (!isUploaded) {
@@ -54,6 +53,8 @@ class App extends React.PureComponent {
         film={activeFilmCard}
         films={filteredFilms}
         onDataChange={onFilmCardClick}
+        postComment={postComment}
+        authorizationStatus={authorizationStatus}
       />
     );
   }
@@ -81,6 +82,7 @@ class App extends React.PureComponent {
           <Route exact path="/dev-auth">
             <AuthScreen
               onSubmit={() => {}}
+              onValidateUser={() => {}}
             />
           </Route>
         </Switch>
@@ -164,8 +166,6 @@ App.propTypes = {
   loadFilms: PropTypes.func.isRequired,
   requireAuth: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  postComment: PropTypes.func.isRequired,
 };
-
-export {App};
-export default connect(mapStateToProps, mapDispatchToProps)(App);

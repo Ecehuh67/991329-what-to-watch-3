@@ -1,4 +1,4 @@
-import {App} from './app';
+import App from './app';
 import {movies} from '../../utils/test-mocks';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
@@ -27,13 +27,15 @@ describe(`render App`, () => {
           <Provider store={store}>
             <App
               films={movies}
-              isUploaded={store.isUploaded}
-              isPopupActive={store.isPopupActive}
-              activeFilmCard={store.activeFilmCard}
+              isUploaded={true}
+              isPopupActive={false}
+              activeFilmCard={null}
               filteredFilms={movies.slice(0, 2)}
               authorizationStatus={`AUTH`}
               login={() => {}}
               onFilmCardClick={() => {}}
+              loadFilms={() => {}}
+              requireAuth={() => {}}
             />
           </Provider>
       )
@@ -41,36 +43,39 @@ describe(`render App`, () => {
 
     expect(tree).toMatchSnapshot();
   });
-// it(`Render Popup`, () => {
-//   const store = mockStore({
-//     films: movies,
-//     activeFilmCard: movies[1],
-//     isPopupActive: true,
-//     showedFilms: 4,
-//     chosenGenre: `All genres`,
-//     videoPlayer: {
-//       isPlaying: false,
-//       isStoped: false,
-//     },
-//   });
-//
-//   const tree = renderer
-//     .create(
-//         <Provider store={store}>
-//           <App
-//             films={movies}
-//             onFilmCardClick={() => {}}
-//             isPopupActive={store.isPopupActive}
-//             showedFilms={store.showedFilms}
-//             filteredFilms={movies.slice(0, 2)}
-//             onPlayButtonClick={() => {}}
-//             onCloseButtonClick={() => {}}
-//             videoPlayer={{isPlaying: false}}
-//           />
-//         </Provider>
-//     )
-//     .toJSON();
-//
-//   expect(tree).toMatchSnapshot();
-// });
+  it(`Render Popup`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {
+        films: movies,
+        isUploaded: true,
+      },
+      [NameSpace.STATE]: {
+        chosenGenre: DEFAULT_GENRE,
+        showedFilms: DEFAULT_SHOWED_FILMS,
+        isPopupActive: true,
+        activeFilmCard: movies[1]
+      }
+    });
+
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <App
+              films={movies}
+              isUploaded={true}
+              isPopupActive={true}
+              activeFilmCard={movies[1]}
+              filteredFilms={movies.slice(0, 2)}
+              authorizationStatus={`AUTH`}
+              login={() => {}}
+              onFilmCardClick={() => {}}
+              loadFilms={() => {}}
+              requireAuth={() => {}}
+            />
+          </Provider>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

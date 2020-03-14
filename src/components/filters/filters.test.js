@@ -5,6 +5,8 @@ import {Provider} from "react-redux";
 import NameSpace from "../../reducer/name-space";
 import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 
+
+const genres = [`Drama`, `Action`];
 const mockStore = configureStore([]);
 
 describe(`Render Filters correctly`, () => {
@@ -26,7 +28,9 @@ describe(`Render Filters correctly`, () => {
       .create(
           <Provider store={store}>
             <Filters
-              films={store.films}
+              listGenres={genres}
+              onFilterClick={() => {}}
+              chosenGenre={`Action`}
             />
           </Provider>
       )

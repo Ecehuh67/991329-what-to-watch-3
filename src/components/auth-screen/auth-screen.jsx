@@ -17,21 +17,23 @@ export default class AuthScreen extends React.PureComponent {
       return false;
     }
 
-    return null;
+    return true;
   }
 
   handleSubmit(evt) {
-    const {onSubmit, onValidateUser} = this.props;
-
     evt.preventDefault();
-    this._validateEmail();
 
-    onSubmit({
-      email: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
-    });
+    const {onSubmit, onValidateUser} = this.props;
+    const validEmail = this._validateEmail();
 
-    onValidateUser();
+    if (validEmail) {
+      onSubmit({
+        email: this.loginRef.current.value,
+        password: this.passwordRef.current.value,
+      });
+
+      onValidateUser();
+    }
   }
 
   render() {
