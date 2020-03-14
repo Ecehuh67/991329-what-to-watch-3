@@ -37,6 +37,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  postComment(commentData) {
+    dispatch(UserOperation.postComment(commentData));
   }
 });
 

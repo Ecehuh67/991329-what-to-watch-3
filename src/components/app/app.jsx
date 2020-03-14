@@ -26,7 +26,8 @@ export default class App extends React.PureComponent {
       activeFilmCard,
       filteredFilms,
       authorizationStatus,
-      login
+      login,
+      postComment
     } = this.props;
 
     if (!isUploaded) {
@@ -52,6 +53,8 @@ export default class App extends React.PureComponent {
         film={activeFilmCard}
         films={filteredFilms}
         onDataChange={onFilmCardClick}
+        postComment={postComment}
+        authorizationStatus={authorizationStatus}
       />
     );
   }
@@ -163,5 +166,6 @@ App.propTypes = {
   loadFilms: PropTypes.func.isRequired,
   requireAuth: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  postComment: PropTypes.func.isRequired,
 };

@@ -1,5 +1,7 @@
 import FilmsList from '../films-list/films-list';
 import VideoScreen from '../video-screen/video-screen';
+import Review from '../review/review';
+import {AuthorizationStatus} from '../../utils/consts';
 
 export default class Popup extends React.PureComponent {
   render() {
@@ -11,7 +13,11 @@ export default class Popup extends React.PureComponent {
       onPlayButtonClick,
       onStopButtonClick,
       onShowHideButtonClick,
-      state
+      state,
+      onAddCommentButtonClick,
+      isAddComment,
+      postComment,
+      authorizationStatus
     } = this.props;
 
     return (
@@ -23,6 +29,14 @@ export default class Popup extends React.PureComponent {
             onPlayButtonClick={onPlayButtonClick}
             onStopButtonClick={onStopButtonClick}
             onShowHideButtonClick={onShowHideButtonClick}
+          />
+        }
+
+        {isAddComment &&
+          <Review
+            onSubmit={postComment}
+            onDataChange={onAddCommentButtonClick}
+            film={film}
           />
         }
 
@@ -45,11 +59,25 @@ export default class Popup extends React.PureComponent {
                   </a>
                 </div>
 
-                <div className="user-block">
-                  <div className="user-block__avatar">
-                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                {authorizationStatus === AuthorizationStatus.AUTH &&
+                  <div className="user-block">
+                    <div className="user-block__avatar">
+                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                    </div>
                   </div>
-                </div>
+                }
+
+                {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+
+                  <div className="user-block">
+                    <a
+                      href="#"
+                      className="user-block__link"
+                      onClick={() => {}}
+                    >Sign in
+                    </a>
+                  </div>
+                }
               </header>
 
               <div className="movie-card__wrap">
@@ -77,7 +105,16 @@ export default class Popup extends React.PureComponent {
                       </svg>
                       <span>My list</span>
                     </button>
-                    <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+                    {authorizationStatus === AuthorizationStatus.AUTH &&
+                      <a
+                        href="#"
+                        className="btn movie-card__button"
+                        onClick={onAddCommentButtonClick}
+                      >Add review
+                      </a>
+                    }
+
                   </div>
                 </div>
               </div>

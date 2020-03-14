@@ -16,6 +16,7 @@ const withPopup = (Component) => {
       this._onShowHideButtonClick = this._onShowHideButtonClick.bind(this);
       this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
       this._onStopButtonClick = this._onStopButtonClick.bind(this);
+      this._onAddCommentButtonClick = this._onAddCommentButtonClick.bind(this);
 
       this.state = {
         activeTab: DEFAULT_BOOKMARK,
@@ -25,7 +26,8 @@ const withPopup = (Component) => {
           isVideoActive: false,
           isPlaying: true, // fixing autoPlay attribute
           isStopped: false
-        }
+        },
+        leaveComment: false,
       };
     }
 
@@ -39,6 +41,10 @@ const withPopup = (Component) => {
           film={film}
         />
       );
+    }
+
+    _onAddCommentButtonClick() {
+      this.setState({leaveComment: !this.state.leaveComment});
     }
 
     _onBookmarksChange(evt) {
@@ -100,6 +106,8 @@ const withPopup = (Component) => {
           onPlayButtonClick={this._onPlayButtonClick}
           onStopButtonClick={this._onStopButtonClick}
           onShowHideButtonClick={this._onShowHideButtonClick}
+          onAddCommentButtonClick={this._onAddCommentButtonClick}
+          isAddComment={this.state.leaveComment}
         >
           <Tabs
             state={this.state}
