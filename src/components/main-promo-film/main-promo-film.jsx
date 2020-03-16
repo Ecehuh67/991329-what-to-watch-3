@@ -1,5 +1,8 @@
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
+
 const MainPromoFilm = (props) => {
-  const {film, onShowHideButtonClick} = props;
+  const {film, addToFavorite} = props;
 
   return (
     <div className="movie-card__wrap">
@@ -16,26 +19,33 @@ const MainPromoFilm = (props) => {
           </p>
 
           <div className="movie-card__buttons">
-            <button
+            <Link
               className="btn btn--play movie-card__button"
-              type="button"
-              onClick={
-                () => {
-                  onShowHideButtonClick();
-                }
-              }
+              to={AppRoute.PLAYER(film.id)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
               </svg>
               <span>Play</span>
-            </button>
-            <button className="btn btn--list movie-card__button" type="button">
+            </Link>
+
+
+            <button
+              className="btn btn--list movie-card__button"
+              type="button"
+              onClick={() => {
+                addToFavorite({
+                  id: film.id,
+                  status: `${film.is_favorite ? 0 : 1}`
+                })
+              }}
+            >
               <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
+                <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
               </svg>
               <span>My list</span>
             </button>
+
           </div>
         </div>
       </div>

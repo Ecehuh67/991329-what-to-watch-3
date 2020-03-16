@@ -5,123 +5,106 @@ import VideoScreen from '../video-screen/video-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import MainPromoFilm from '../main-promo-film/main-promo-film';
 import {AuthorizationStatus} from '../../utils/consts';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
 
 const MainPage = (props) => {
   const {
     films,
     onDataChange,
-    state,
-    onPlayButtonClick,
-    onStopButtonClick,
-    onShowHideButtonClick,
+    // state,
+    // onPlayButtonClick,
+    // onStopButtonClick,
+    // onShowHideButtonClick,
     authorizationStatus,
-    onSignInFormClick,
-    onValidateUser,
-    login
+    promoFilm,
+    // onSignInFormClick,
+    // onValidateUser,
+    login,
+    addToFavorite
   } = props;
 
-  const promoFilm = films[0];
-
   return (
-    <>
-      {state.isVideoActive &&
-        <VideoScreen
-          film={promoFilm}
-          state={state}
-          onPlayButtonClick={onPlayButtonClick}
-          onStopButtonClick={onStopButtonClick}
-          onShowHideButtonClick={onShowHideButtonClick}
-        />
-      }
+    <div>
+      <section className="movie-card">
+        <div className="movie-card__bg">
+          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        </div>
 
-      {state.isSingFormActive &&
-        <AuthScreen
-          onSubmit={login}
-          onValidateUser={onValidateUser}
-        />
-      }
+        <h1 className="visually-hidden">WTW</h1>
 
-      {!state.isVideoActive &&
-        <>
-          <div>
-            <section className="movie-card">
-              <div className="movie-card__bg">
-                <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-              </div>
-
-              <h1 className="visually-hidden">WTW</h1>
-
-              <header className="page-header movie-card__head">
-                <div className="logo">
-                  <a className="logo__link">
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                  </a>
-                </div>
-
-                {authorizationStatus === AuthorizationStatus.AUTH &&
-                  <div className="user-block">
-                    <div className="user-block__avatar">
-                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                    </div>
-                  </div>
-                }
-
-                {authorizationStatus === AuthorizationStatus.NO_AUTH &&
-
-                  <div className="user-block">
-                    <a
-                      href="#"
-                      className="user-block__link"
-                      onClick={onSignInFormClick}
-                    >Sign in
-                    </a>
-                  </div>
-                }
-              </header>
-
-              <MainPromoFilm
-                film={promoFilm}
-                onShowHideButtonClick={onShowHideButtonClick}
-              />
-
-            </section>
-            <div className="page-content">
-              <section className="catalog">
-                <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-                <Filters
-                  films={films}
-                />
-
-                <FilmsList
-                  films={films}
-                  onDataChange={onDataChange}
-                />
-
-                <ShowMoreButton/>
-
-              </section>
-
-              <footer className="page-footer">
-                <div className="logo">
-                  <a className="logo__link logo__link--light">
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                  </a>
-                </div>
-
-                <div className="copyright">
-                  <p>© 2019 What to watch Ltd.</p>
-                </div>
-              </footer>
-            </div>
+        <header className="page-header movie-card__head">
+          <div className="logo">
+            <a className="logo__link">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
           </div>
-        </>
-      }
-    </>
+
+          {authorizationStatus === AuthorizationStatus.AUTH &&
+            <div className="user-block">
+              <Link
+                to={AppRoute.MY_LIST}
+              >
+                <div className="user-block__avatar">
+                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </div>
+              </Link>
+            </div>
+          }
+
+          {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+
+            <div className="user-block">
+              <Link
+                className="user-block__link"
+                to={AppRoute.SIGN_IN}
+              >Sign in
+              </Link>
+            </div>
+          }
+
+        </header>
+
+        <MainPromoFilm
+          film={promoFilm}
+          addToFavorite={addToFavorite}
+        />
+
+      </section>
+      <div className="page-content">
+        <section className="catalog">
+          <h2 className="catalog__title visually-hidden">Catalog</h2>
+
+          <Filters
+            films={films}
+          />
+
+          <FilmsList
+            films={films}
+            onDataChange={onDataChange}
+          />
+
+          <ShowMoreButton/>
+
+        </section>
+
+        <footer className="page-footer">
+          <div className="logo">
+            <a className="logo__link logo__link--light">
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </a>
+          </div>
+
+          <div className="copyright">
+            <p>© 2019 What to watch Ltd.</p>
+          </div>
+        </footer>
+      </div>
+    </div>
   );
 };
 
@@ -160,3 +143,10 @@ MainPage.propTypes = {
 };
 
 export default MainPage;
+
+// {state.isSingFormActive &&
+//   <AuthScreen
+//     onSubmit={login}
+//     onValidateUser={onValidateUser}
+//   />
+// }

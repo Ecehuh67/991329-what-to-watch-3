@@ -2,166 +2,153 @@ import FilmsList from '../films-list/films-list';
 import VideoScreen from '../video-screen/video-screen';
 import Review from '../review/review';
 import {AuthorizationStatus} from '../../utils/consts';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
 
 export default class Popup extends React.PureComponent {
+  componentDidMount() {
+    const {loadComments, film} = this.props;
+
+    this.comments = loadComments(film.id);
+  }
+
   render() {
     const {
       film,
       onDataChange,
       films,
       children,
-      onPlayButtonClick,
-      onStopButtonClick,
-      onShowHideButtonClick,
-      state,
       onAddCommentButtonClick,
       isAddComment,
       postComment,
-      authorizationStatus
+      authorizationStatus,
     } = this.props;
 
     return (
       <>
-        {state.isVideoActive &&
-          <VideoScreen
-            film={film}
-            state={state}
-            onPlayButtonClick={onPlayButtonClick}
-            onStopButtonClick={onStopButtonClick}
-            onShowHideButtonClick={onShowHideButtonClick}
-          />
-        }
-
-        {isAddComment &&
-          <Review
-            onSubmit={postComment}
-            onDataChange={onAddCommentButtonClick}
-            film={film}
-          />
-        }
-
-      {!state.isVideoActive &&
-        <>
-          <section className="movie-card movie-card--full" style={{background: film.background_color}}>
-            <div className="movie-card__hero">
-              <div className="movie-card__bg">
-                <img src={film.background_image} alt={film.name} />
-              </div>
-
-              <h1 className="visually-hidden">WTW</h1>
-
-              <header className="page-header movie-card__head">
-                <div className="logo">
-                  <a href="main.html" className="logo__link">
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                  </a>
-                </div>
-
-                {authorizationStatus === AuthorizationStatus.AUTH &&
-                  <div className="user-block">
-                    <div className="user-block__avatar">
-                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                    </div>
-                  </div>
-                }
-
-                {authorizationStatus === AuthorizationStatus.NO_AUTH &&
-
-                  <div className="user-block">
-                    <a
-                      href="#"
-                      className="user-block__link"
-                      onClick={() => {}}
-                    >Sign in
-                    </a>
-                  </div>
-                }
-              </header>
-
-              <div className="movie-card__wrap">
-                <div className="movie-card__desc">
-                  <h2 className="movie-card__title">{film.name}</h2>
-                  <p className="movie-card__meta">
-                    <span className="movie-card__genre">{film.genre}</span>
-                    <span className="movie-card__year">{film.released}</span>
-                  </p>
-
-                  <div className="movie-card__buttons">
-                    <button
-                      className="btn btn--play movie-card__button"
-                      type="button"
-                      onClick={onShowHideButtonClick}
-                    >
-                      <svg viewBox="0 0 19 19" width="19" height="19">
-                        <use xlinkHref="#play-s"></use>
-                      </svg>
-                      <span>Play</span>
-                    </button>
-                    <button className="btn btn--list movie-card__button" type="button">
-                      <svg viewBox="0 0 19 20" width="19" height="20">
-                        <use xlinkHref="#add"></use>
-                      </svg>
-                      <span>My list</span>
-                    </button>
-
-                    {authorizationStatus === AuthorizationStatus.AUTH &&
-                      <a
-                        href="#"
-                        className="btn movie-card__button"
-                        onClick={onAddCommentButtonClick}
-                      >Add review
-                      </a>
-                    }
-
-                  </div>
-                </div>
-              </div>
+        <section className="movie-card movie-card--full" style={{background: film.background_color}}>
+          <div className="movie-card__hero">
+            <div className="movie-card__bg">
+              <img src={film.background_image} alt={film.name} />
             </div>
-            <div className="movie-card__wrap movie-card__translate-top">
-              <div className="movie-card__info">
-                <div className="movie-card__poster movie-card__poster--big">
-                  <img src={film.poster_image} alt={film.name} width="218" height="327" />
-                </div>
 
-                <div className="movie-card__desc">
+            <h1 className="visually-hidden">WTW</h1>
 
-                  {children}
-
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="page-content">
-            <section className="catalog catalog--like-this">
-              <h2 className="catalog__title">More like this</h2>
-
-              <FilmsList
-                films={films}
-                onDataChange={onDataChange}
-              />
-
-            </section>
-
-            <footer className="page-footer">
+            <header className="page-header movie-card__head">
               <div className="logo">
-                <a href="main.html" className="logo__link logo__link--light">
+                <Link
+                  className="logo__link"
+                  to={AppRoute.MAIN}
+                >
                   <span className="logo__letter logo__letter--1">W</span>
                   <span className="logo__letter logo__letter--2">T</span>
                   <span className="logo__letter logo__letter--3">W</span>
-                </a>
+                </Link>
               </div>
 
-              <div className="copyright">
-                <p>© 2019 What to watch Ltd.</p>
+              {authorizationStatus === AuthorizationStatus.AUTH &&
+                <div className="user-block">
+                  <Link
+                    to={AppRoute.MY_LIST}
+                  >
+                    <div className="user-block__avatar">
+                      <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                    </div>
+                  </Link>
+                </div>
+              }
+
+              {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+
+                <div className="user-block">
+                  <Link
+                    className="user-block__link"
+                    to={AppRoute.SIGN_IN}
+                  >Sign in
+                  </Link>
+                </div>
+              }
+            </header>
+
+            <div className="movie-card__wrap">
+              <div className="movie-card__desc">
+                <h2 className="movie-card__title">{film.name}</h2>
+                <p className="movie-card__meta">
+                  <span className="movie-card__genre">{film.genre}</span>
+                  <span className="movie-card__year">{film.released}</span>
+                </p>
+
+                <div className="movie-card__buttons">
+                  <Link
+                    className="btn btn--play movie-card__button"
+                    to={AppRoute.PLAYER(film.id)}
+                  >
+                    <svg viewBox="0 0 19 19" width="19" height="19">
+                      <use xlinkHref="#play-s"></use>
+                    </svg>
+                    <span>Play</span>
+                  </Link>
+                  <Link
+                    className="btn btn--list movie-card__button"
+                    to={AppRoute.MY_LIST}
+                  >
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
+                    </svg>
+                    <span>My list</span>
+                  </Link>
+                    <Link
+                      // href="#"
+                      className="btn movie-card__button"
+                      to={AppRoute.REVIEW(film.id)}
+                      // onClick={onAddCommentButtonClick}
+                    >Add review
+                    </Link>
+                </div>
               </div>
-            </footer>
+            </div>
           </div>
-        </>
-      }
-    </>
+          <div className="movie-card__wrap movie-card__translate-top">
+            <div className="movie-card__info">
+              <div className="movie-card__poster movie-card__poster--big">
+                <img src={film.poster_image} alt={film.name} width="218" height="327" />
+              </div>
+
+              <div className="movie-card__desc">
+
+                {children}
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+
+            <FilmsList
+              films={films}
+              onDataChange={onDataChange}
+            />
+
+          </section>
+
+          <footer className="page-footer">
+            <div className="logo">
+              <a href="main.html" className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
+
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
+        </div>
+      </>
     );
   }
 }

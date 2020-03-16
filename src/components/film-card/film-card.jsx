@@ -1,23 +1,30 @@
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
+
 export default class FilmCard extends React.PureComponent {
   render() {
     const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
 
     return (
       <article className="small-movie-card catalog__movies-card">
-        <div
-          className="small-movie-card__image"
-          onClick={
-            () => {
-              onDataChange(film.id);
-            }
-          }
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+        <Link
+          to={AppRoute.FILM(film.id)}
         >
+          <div
+            className="small-movie-card__image"
+            onClick={
+              () => {
+                onDataChange(film.id);
+              }
+            }
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
 
-          {children}
+            {children}
 
-        </div>
+          </div>
+        </Link>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
         </h3>

@@ -3,7 +3,7 @@ import TabOverview from "./tab-overview-template";
 import TabReviews from "./tab-reviews-template";
 
 const TabsTemplate = (props) => {
-  const {tabsList, activeTab, film} = props;
+  const {tabsList, activeTab, film, comments} = props;
 
   switch (activeTab) {
     case tabsList[0]:
@@ -22,6 +22,7 @@ const TabsTemplate = (props) => {
       return (
         <TabReviews
           film={film}
+          comments={comments}
         />
       );
   }

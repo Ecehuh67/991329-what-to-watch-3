@@ -1,5 +1,5 @@
 import Tabs from '../../components/tabs/tabs';
-import TabsTemplate from '../../components/tabs/tabs-template';
+import TabsTemplate from '../../components/tabs/tabs-template.connect';
 import {extend} from '../../utils/utils';
 
 const BOOKMARKS_LIST = [`Overview`, `Details`, `Reviews`];
@@ -13,20 +13,20 @@ const withPopup = (Component) => {
       this._onBookmarksChange = this._onBookmarksChange.bind(this);
       this._getTabTemplate = this._getTabTemplate.bind(this);
 
-      this._onShowHideButtonClick = this._onShowHideButtonClick.bind(this);
-      this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
-      this._onStopButtonClick = this._onStopButtonClick.bind(this);
+      // this._onShowHideButtonClick = this._onShowHideButtonClick.bind(this);
+      // this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
+      // this._onStopButtonClick = this._onStopButtonClick.bind(this);
       this._onAddCommentButtonClick = this._onAddCommentButtonClick.bind(this);
 
       this.state = {
         activeTab: DEFAULT_BOOKMARK,
         tabsList: BOOKMARKS_LIST,
         listener: this._onBookmarksChange,
-        videoPlayer: {
-          isVideoActive: false,
-          isPlaying: true, // fixing autoPlay attribute
-          isStopped: false
-        },
+        // videoPlayer: {
+        //   isVideoActive: false,
+        //   isPlaying: true, // fixing autoPlay attribute
+        //   isStopped: false
+        // },
         leaveComment: false,
       };
     }
@@ -51,50 +51,50 @@ const withPopup = (Component) => {
       this.setState({activeTab: evt.target.text});
     }
 
-    _onShowHideButtonClick() {
-      this.setState(
-          extend(
-              this.state.videoPlayer,
-              {
-                videoPlayer: {
-                  isVideoActive: !this.state.videoPlayer.isVideoActive,
-                  isPlaying: !this.state.videoPlayer.isPlaying,
-                  isStopped: false
-                }
-              }
-          )
-      );
-    }
+    // _onShowHideButtonClick() {
+    //   this.setState(
+    //       extend(
+    //           this.state.videoPlayer,
+    //           {
+    //             videoPlayer: {
+    //               isVideoActive: !this.state.videoPlayer.isVideoActive,
+    //               isPlaying: !this.state.videoPlayer.isPlaying,
+    //               isStopped: false
+    //             }
+    //           }
+    //       )
+    //   );
+    // }
 
-    _onPlayButtonClick() {
-      this.setState(
-          extend(
-              this.state.videoPlayer,
-              {
-                videoPlayer: {
-                  isVideoActive: true,
-                  isStopped: false,
-                  isPlaying: true,
-                }
-              }
-          )
-      );
-    }
+    // _onPlayButtonClick() {
+    //   this.setState(
+    //       extend(
+    //           this.state.videoPlayer,
+    //           {
+    //             videoPlayer: {
+    //               isVideoActive: true,
+    //               isStopped: false,
+    //               isPlaying: true,
+    //             }
+    //           }
+    //       )
+    //   );
+    // }
 
-    _onStopButtonClick() {
-      this.setState(
-          extend(
-              this.state.videoPlayer,
-              {
-                videoPlayer: {
-                  isVideoActive: true,
-                  isStopped: true,
-                  isPlaying: false,
-                }
-              }
-          )
-      );
-    }
+    // _onStopButtonClick() {
+    //   this.setState(
+    //       extend(
+    //           this.state.videoPlayer,
+    //           {
+    //             videoPlayer: {
+    //               isVideoActive: true,
+    //               isStopped: true,
+    //               isPlaying: false,
+    //             }
+    //           }
+    //       )
+    //   );
+    // }
 
     render() {
       const tabDescription = this._getTabTemplate();
@@ -102,10 +102,10 @@ const withPopup = (Component) => {
       return (
         <Component
           {...this.props}
-          state={this.state.videoPlayer}
-          onPlayButtonClick={this._onPlayButtonClick}
-          onStopButtonClick={this._onStopButtonClick}
-          onShowHideButtonClick={this._onShowHideButtonClick}
+          // state={this.state.videoPlayer}
+          // onPlayButtonClick={this._onPlayButtonClick}
+          // onStopButtonClick={this._onStopButtonClick}
+          // onShowHideButtonClick={this._onShowHideButtonClick}
           onAddCommentButtonClick={this._onAddCommentButtonClick}
           isAddComment={this.state.leaveComment}
         >

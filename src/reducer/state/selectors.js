@@ -5,13 +5,14 @@ import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
 const AMOUT_SIMILAR_FILMS = 4;
 
 export const getUploadingState = (state) => state[NameSpace.DATA].isUploaded;
-export const getPopupState = (state) => state[NameSpace.STATE].isPopupActive;
+// export const getPopupState = (state) => state[NameSpace.STATE].isPopupActive;
+export const getPromoFilm = (state) => state[NameSpace.DATA].promoFilm;
 export const getActiveFilmCard = (state) => state[NameSpace.STATE].activeFilmCard;
 export const getChosenGenre = (state) => state[NameSpace.STATE].chosenGenre;
 export const getShowedFilmsCount = (state) => state[NameSpace.STATE].showedFilms;
 export const getFilms = (state) => state[NameSpace.DATA].films;
-
-const getActiveCardId = (state) => state[NameSpace.STATE].activeFilmCard;
+export const getComments = (state) => state[NameSpace.DATA].comments;
+export const getFavorites = (state) => state[NameSpace.DATA].favorites;
 
 export const getSimilarFilms = createSelector(
     getFilms,
@@ -45,7 +46,7 @@ export const getMovies = createSelector(
 
 export const getActiveCard = createSelector(
     getFilms,
-    getActiveCardId,
+    getActiveFilmCard,
     (resultOne, resultTwo) => {
       const index = resultOne.map((film) => film.id).indexOf(resultTwo);
 
@@ -58,7 +59,7 @@ export const getListGenres = createSelector(
     (resultOne) => {
       const uniqueGenres = Array
         .from(new Set(resultOne.map((film) => film.genre)))
-        .slice(0, DEFAULT_GENRES_AMOUNT - 1);
+        .slice(0, DEFAULT_GENRES_AMOUNT);
       return [].concat(DEFAULT_GENRE).concat(uniqueGenres);
     }
 );

@@ -1,3 +1,6 @@
+
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
 import {convertTimeToProgressBar} from '../../utils/utils';
 
 const DEFAULT_WIDTH_PROGRESS_BAR = 860;
@@ -8,14 +11,45 @@ export default class VideoScreen extends React.PureComponent {
     super(props);
     this.videoRef = React.createRef();
 
+    this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
+    this._onStopButtonClick = this._onStopButtonClick.bind(this);
+    this._onCloseButtounClick = this._onCloseButtounClick.bind(this);
+
     this._stopPlayVideo = this._stopPlayVideo.bind(this);
     this._onTimeUpdate = this._onTimeUpdate.bind(this);
     this._onFullScreenClick = this._onFullScreenClick.bind(this);
 
     this.state = {
       duration: null,
-      percent: null
+      percent: null,
+      // isVideoActive: false,
+      isPlaying: true, // fixing autoPlay attribute
+      isStopped: false,
     };
+  }
+
+  _onCloseButtounClick() {
+    const {history} = this.props;
+
+    history.goBack();
+  }
+
+  _onStopButtonClick() {
+    this.setState(
+        {
+          isStopped: true,
+          isPlaying: false
+        }
+    );
+  }
+
+  _onPlayButtonClick() {
+    this.setState(
+        {
+          isPlaying: true,
+          isStopped: false
+        }
+    );
   }
 
   _onFullScreenClick() {
@@ -23,8 +57,8 @@ export default class VideoScreen extends React.PureComponent {
   }
 
   _stopPlayVideo() {
-    const {state} = this.props;
-    if (state.isPlaying) {
+    // const {state} = this.props;
+    if (this.state.isPlaying) {
       this.videoRef.current.pause();
     } else {
       this.videoRef.current.play();
@@ -43,7 +77,7 @@ export default class VideoScreen extends React.PureComponent {
   }
 
   render() {
-    const {film, state, onPlayButtonClick, onStopButtonClick, onShowHideButtonClick} = this.props;
+    const {film} = this.props;
     const duration = convertTimeToProgressBar(this.state.duration);
     const position = this.state.percent * DEFAULT_WIDTH_PROGRESS_BAR;
     const progressPosition = Math.round(this.state.percent * MAX_VALUE_PROGRESS_BAR);
@@ -54,8 +88,8 @@ export default class VideoScreen extends React.PureComponent {
           src={film.video_link}
           className="player__video"
           autoPlay
-          onPause={onStopButtonClick}
-          onPlay={onPlayButtonClick}
+          onPause={this._onStopButtonClick}
+          onPlay={this._onPlayButtonClick}
           ref={this.videoRef}
           onClick={this._stopPlayVideo}
           onTimeUpdate={this._onTimeUpdate}
@@ -63,9 +97,10 @@ export default class VideoScreen extends React.PureComponent {
         </video>
 
         <button
+        // to={AppRoute.MAIN}
           type="button"
           className="player__exit"
-          onClick={onShowHideButtonClick}
+          onClick={this._onCloseButtounClick}
         >Exit
         </button>
 
@@ -85,11 +120,11 @@ export default class VideoScreen extends React.PureComponent {
               onClick={this._stopPlayVideo}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref={!state.isPlaying ? `#play-s` : `#pause`}></use>
+                <use xlinkHref={!this.state.isPlaying ? `#play-s` : `#pause`}></use>
               </svg>
-              <span>{!state.isPlaying ? `Play` : `Pause`}</span>
+              <span>{!this.state.isPlaying ? `Play` : `Pause`}</span>
             </button>
-            <div className="player__name">{!state.isPlaying ? `Play` : `Pause`}</div>
+            <div className="player__name">{!this.state.isPlaying ? `Play` : `Pause`}</div>
 
             <button
               type="button"

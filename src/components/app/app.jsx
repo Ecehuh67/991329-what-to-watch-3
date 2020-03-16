@@ -1,20 +1,26 @@
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
+import VideoScreen from '../video-screen/video-screen';
+import PrivateRoute from "../private-route/private-route.connect";
 import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
+import Review from '../review/review';
 import withPopup from '../../hocs/with-popup/with-popup';
-import withMainPage from '../../hocs/with-main-page/with-main-page';
+import history from '../../history';
+import {AppRoute} from '../../utils/consts';
+import Favorites from '../favorite-list/favorite-list';
 
 const PopupWrapped = withPopup(Popup);
-const MainPageWrapped = withMainPage(MainPage);
 
 export default class App extends React.PureComponent {
   componentDidMount() {
-    const {loadFilms, requireAuth} = this.props;
+    const {loadFilms, requireAuth, loadPromoFilm, loadFavorites} = this.props;
 
     loadFilms();
+    loadPromoFilm();
     requireAuth();
+    loadFavorites();
   }
 
   _renderApp() {
@@ -22,13 +28,17 @@ export default class App extends React.PureComponent {
       films,
       isUploaded,
       onFilmCardClick,
-      isPopupActive,
+      // isPopupActive,
       activeFilmCard,
       filteredFilms,
       authorizationStatus,
       login,
-      postComment
+      postComment,
+      promoFilm,
+      addToFavorite
     } = this.props;
+
+    console.log(addToFavorite)
 
     if (!isUploaded) {
       return (
@@ -37,56 +47,110 @@ export default class App extends React.PureComponent {
       );
     }
 
-    if (isUploaded && !isPopupActive) {
       return (
-        <MainPageWrapped
+        <MainPage
           films={films}
           onDataChange={onFilmCardClick}
           authorizationStatus={authorizationStatus}
           login={login}
+          promoFilm={promoFilm}
+          addToFavorite={addToFavorite}
         />
       );
-    }
 
-    return (
-      <PopupWrapped
-        film={activeFilmCard}
-        films={filteredFilms}
-        onDataChange={onFilmCardClick}
-        postComment={postComment}
-        authorizationStatus={authorizationStatus}
-      />
-    );
+      // return history.push(AppRoute.MAIN)
+
+    // return (
+    //   <PopupWrapped
+    //     film={activeFilmCard}
+    //     films={filteredFilms}
+    //     onDataChange={onFilmCardClick}
+    //     postComment={postComment}
+    //     authorizationStatus={authorizationStatus}
+    //   />
+    // );
   }
 
   render() {
     const {
+      films,
+      favorites,
+      isUploaded,
       onFilmCardClick,
       activeFilmCard,
-      filteredFilms
+      filteredFilms,
+      authorizationStatus,
+      login,
+      postComment,
+      currentCardId,
+      promoFilm,
+      loadComments,
+      addToFavorite
     } = this.props;
 
     return (
-      <BrowserRouter>
+      <Router
+        history={history}
+      >
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.MAIN}>
             {this._renderApp()}
           </Route>
-          <Route exact path="/popup">
+          <Route exact path={AppRoute.SIGN_IN}
+            render={(props) =>
+              <AuthScreen
+                {...props}
+                onSubmit={login}
+              />
+            }
+          />
+          <Route exact path="/player/:id"
+            render={(props) =>
+              <VideoScreen
+                {...props}
+                film={promoFilm}
+              />
+            }
+          />
+          <Route exact path="/films/:id">
             <PopupWrapped
               film={activeFilmCard}
               films={filteredFilms}
               onDataChange={onFilmCardClick}
+              postComment={postComment}
+              authorizationStatus={authorizationStatus}
+              loadComments={loadComments}
             />
           </Route>
-          <Route exact path="/dev-auth">
-            <AuthScreen
-              onSubmit={() => {}}
-              onValidateUser={() => {}}
-            />
-          </Route>
+
+          <PrivateRoute
+            exact
+            path={AppRoute.MY_LIST}
+            render={() => {
+              return (
+                <Favorites
+                  films={favorites}
+                  onDataChange={onFilmCardClick}
+                />
+              );
+            }}
+          />
+
+          <PrivateRoute
+            exact
+            path="/films/:id/review"
+            render={(props) => {
+              return (
+                <Review
+                  {...props}
+                  film={activeFilmCard}
+                  onSubmit={postComment}
+                />
+              );
+            }}
+          />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

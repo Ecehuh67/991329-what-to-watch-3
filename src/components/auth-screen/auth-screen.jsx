@@ -1,3 +1,6 @@
+import {AppRoute} from '../../utils/consts';
+import {Link} from 'react-router-dom';
+
 export default class AuthScreen extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -23,8 +26,9 @@ export default class AuthScreen extends React.PureComponent {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    const {onSubmit, onValidateUser} = this.props;
+    const {onSubmit, history} = this.props;
     const validEmail = this._validateEmail();
+
 
     if (validEmail) {
       onSubmit({
@@ -32,7 +36,7 @@ export default class AuthScreen extends React.PureComponent {
         password: this.passwordRef.current.value,
       });
 
-      onValidateUser();
+      history.push(AppRoute.MAIN)
     }
   }
 
@@ -42,11 +46,14 @@ export default class AuthScreen extends React.PureComponent {
       <div className="user-page">
         <header className="page-header user-page__head">
           <div className="logo">
-            <a href="main.html" className="logo__link">
+            <Link
+              className="logo__link"
+              to={AppRoute.MAIN}
+            >
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <h1 className="page-title user-page__title">Sign in</h1>

@@ -5,3 +5,12 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+
+export const AppRoute = {
+  MAIN: `/`,
+  SIGN_IN: `/login`,
+  MY_LIST: `/mylist`,
+  FILM: (id) => `/films/${id}`,
+  PLAYER: (id) => `/player/${id}`,
+  REVIEW: (id) => `/films/${id}/review`
+}

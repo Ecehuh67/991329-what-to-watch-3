@@ -6,8 +6,6 @@ const VideoPlayer = (props) => {
       <video
         className="video-title"
         {...isActive ? {autoPlay: true} : {}}
-        width="280"
-        height="185"
         muted
         src={film.video_link}
       />

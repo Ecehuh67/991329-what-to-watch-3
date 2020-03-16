@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../utils/consts';
 
 const MAX_RATING = 5;
 
@@ -29,7 +31,7 @@ export default class Review extends React.PureComponent {
   _handleSubmit(evt) {
     evt.preventDefault();
 
-    const {onSubmit, film, onDataChange} = this.props;
+    const {onSubmit, film, history} = this.props;
     // const text = this.textRef.current.value;
     const text = this.state.text;
     const rating = this.state.rating;
@@ -39,7 +41,8 @@ export default class Review extends React.PureComponent {
       rating,
       comment: text
     });
-    onDataChange();
+
+    history.goBack();
   }
 
   render() {
@@ -56,11 +59,14 @@ export default class Review extends React.PureComponent {
 
           <header className="page-header">
             <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
+            <Link
+              className="logo__link"
+              to={AppRoute.MAIN}
+            >
+              <span className="logo__letter logo__letter--1">W</span>
+              <span className="logo__letter logo__letter--2">T</span>
+              <span className="logo__letter logo__letter--3">W</span>
+            </Link>
             </div>
 
             <nav className="breadcrumbs">
@@ -75,9 +81,13 @@ export default class Review extends React.PureComponent {
             </nav>
 
             <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
+              <Link
+                to={AppRoute.MY_LIST}
+              >
+                <div className="user-block__avatar">
+                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </div>
+              </Link>
             </div>
           </header>
 

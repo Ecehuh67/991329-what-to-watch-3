@@ -1,3 +1,18 @@
+const MONTHS = {
+  0: `January`,
+  1: `February`,
+  2: `March`,
+  3: `April`,
+  4: `May`,
+  5: `June`,
+  6: `Juily`,
+  7: `Augest`,
+  8: `September`,
+  9: `October`,
+  10: `November`,
+  11: `December`
+}
+
 export const getRandomNumber = (max) => {
   return 1 + Math.floor(Math.random() * max);
 };
@@ -23,3 +38,19 @@ export const convertTimeToProgressBar = (duration) => {
     `${hours}:${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
   );
 };
+
+export const getCommentDate = (date) => {
+  const month = date.getMonth();
+  const day = date.getDay();
+  const year = date.getFullYear();
+
+  return `${MONTHS[month]} ${day}, ${year}`;
+}
+
+export const getAttrDate = (date) => {
+  const month = date.getMonth();
+  const day = date.getDay();
+  const year = date.getFullYear();
+
+  return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+}

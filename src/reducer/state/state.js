@@ -5,7 +5,7 @@ import {DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
 const initialState = {
   chosenGenre: DEFAULT_GENRE,
   showedFilms: DEFAULT_SHOWED_FILMS,
-  isPopupActive: false,
+  // isPopupActive: false,
   activeFilmCard: null
 };
 
@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
           state,
           {
             activeFilmCard: action.payload,
-            isPopupActive: true
+            // isPopupActive: true
           }
       );
   }
