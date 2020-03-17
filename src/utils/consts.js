@@ -14,3 +14,11 @@ export const AppRoute = {
   PLAYER: (id) => `/player/${id}`,
   REVIEW: (id) => `/films/${id}/review`
 }
+
+export const EstimateValue = {
+  3: "Bad",
+  5: "Normal",
+  8: "Good",
+  10: "Very good",
+  11: "Awesome"
+};

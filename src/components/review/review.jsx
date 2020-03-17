@@ -32,6 +32,7 @@ export default class Review extends React.PureComponent {
     evt.preventDefault();
 
     const {onSubmit, film, history} = this.props;
+    console.log(this.props)
     // const text = this.textRef.current.value;
     const text = this.state.text;
     const rating = this.state.rating;

@@ -22,6 +22,7 @@ export default class Popup extends React.PureComponent {
       isAddComment,
       postComment,
       authorizationStatus,
+      addToFavorite
     } = this.props;
 
     return (
@@ -88,15 +89,21 @@ export default class Popup extends React.PureComponent {
                     </svg>
                     <span>Play</span>
                   </Link>
-                  <Link
+                  <button
                     className="btn btn--list movie-card__button"
-                    to={AppRoute.MY_LIST}
+                    type="button"
+                    onClick={() => {
+                      addToFavorite({
+                        id: film.id,
+                        status: `${film.is_favorite ? 0 : 1}`
+                      })
+                    }}
                   >
                     <svg viewBox="0 0 19 20" width="19" height="20">
                       <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
                     </svg>
                     <span>My list</span>
-                  </Link>
+                  </button>
                     <Link
                       // href="#"
                       className="btn movie-card__button"

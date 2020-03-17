@@ -1,12 +1,15 @@
+import {getRank} from '../../utils/utils';
 const TabOverview = (props) => {
   const {film} = props;
+
+  const rating = getRank(film.rating);
 
   return (
     <>
       <div className="movie-rating">
         <div className="movie-rating__score">{film.rating}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">Very good</span>
+          <span className="movie-rating__level">{rating}</span>
           <span className="movie-rating__count">{film.scores_count} ratings</span>
         </p>
       </div>

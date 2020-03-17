@@ -1,5 +1,6 @@
-import {extend} from "../../utils/utils";
+import {extend, getNewData, sortData} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
+import NameSpace from "../name-space";
 
 const initialState = {
   films: [],
@@ -19,6 +20,7 @@ const Operation = {
   loadPromoFilm: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
+
         dispatch(ActionCreator.loadPromoFilm(response.data));
       });
   },
@@ -48,10 +50,21 @@ const Operation = {
   addToFavorite: (favData) => (dispatch, getState, api) => {
     return api.post(`/favorite/${favData.id}/${favData.status}`)
       .then((response) => {
-        // dispatch(ActionCreator.updateFavorites(response.data));
-      })
-      .catch((err) => {
+        const newFilm = response.data;
+        const oldData = getState().DATA.films;
 
+        dispatch(ActionCreator.loadFilms(getNewData(newFilm, oldData)));
+
+        const favoriteList = getState().DATA.favorites;
+
+        dispatch(ActionCreator.loadFavorites(sortData(newFilm, favoriteList)));
+
+        const promo = getState().DATA.promoFilm;
+        const isPromoActive = promo.id === newFilm.id;
+
+        if (isPromoActive) {
+          dispatch(ActionCreator.loadPromoFilm(newFilm));
+        }
       });
   }
 };
@@ -94,15 +107,6 @@ const reducer = (state = initialState, action) => {
             comments: action.payload
           }
       );
-    case ActionType.ADD_TO_FAVORITES:
-      return state;
-    // case ActionType.UPDATE_FAVORITES:
-    // return extend(
-    //     state,
-    //     {
-    //       smth: action.payload
-    //     }
-    // );
   }
 
   return state;

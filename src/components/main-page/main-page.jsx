@@ -12,16 +12,12 @@ const MainPage = (props) => {
   const {
     films,
     onDataChange,
-    // state,
-    // onPlayButtonClick,
-    // onStopButtonClick,
-    // onShowHideButtonClick,
     authorizationStatus,
-    promoFilm,
     // onSignInFormClick,
     // onValidateUser,
     login,
-    addToFavorite
+    userAvatar,
+    loadFavorites
   } = props;
 
   return (
@@ -48,7 +44,7 @@ const MainPage = (props) => {
                 to={AppRoute.MY_LIST}
               >
                 <div className="user-block__avatar">
-                  <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  <img src={userAvatar} alt="User avatar" width="63" height="63" />
                 </div>
               </Link>
             </div>
@@ -68,8 +64,6 @@ const MainPage = (props) => {
         </header>
 
         <MainPromoFilm
-          film={promoFilm}
-          addToFavorite={addToFavorite}
         />
 
       </section>

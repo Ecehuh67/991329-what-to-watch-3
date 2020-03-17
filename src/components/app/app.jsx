@@ -1,4 +1,4 @@
-import {Switch, Route, Router} from "react-router-dom";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import VideoScreen from '../video-screen/video-screen';
@@ -7,7 +7,6 @@ import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import Review from '../review/review';
 import withPopup from '../../hocs/with-popup/with-popup';
-import history from '../../history';
 import {AppRoute} from '../../utils/consts';
 import Favorites from '../favorite-list/favorite-list';
 
@@ -19,8 +18,7 @@ export default class App extends React.PureComponent {
 
     loadFilms();
     loadPromoFilm();
-    requireAuth();
-    loadFavorites();
+    requireAuth(loadFavorites);
   }
 
   _renderApp() {
@@ -28,17 +26,12 @@ export default class App extends React.PureComponent {
       films,
       isUploaded,
       onFilmCardClick,
-      // isPopupActive,
       activeFilmCard,
       filteredFilms,
       authorizationStatus,
-      login,
       postComment,
-      promoFilm,
-      addToFavorite
+      userAvatar
     } = this.props;
-
-    console.log(addToFavorite)
 
     if (!isUploaded) {
       return (
@@ -52,23 +45,10 @@ export default class App extends React.PureComponent {
           films={films}
           onDataChange={onFilmCardClick}
           authorizationStatus={authorizationStatus}
-          login={login}
-          promoFilm={promoFilm}
-          addToFavorite={addToFavorite}
+          userAvatar={userAvatar}
         />
       );
 
-      // return history.push(AppRoute.MAIN)
-
-    // return (
-    //   <PopupWrapped
-    //     film={activeFilmCard}
-    //     films={filteredFilms}
-    //     onDataChange={onFilmCardClick}
-    //     postComment={postComment}
-    //     authorizationStatus={authorizationStatus}
-    //   />
-    // );
   }
 
   render() {
@@ -85,13 +65,14 @@ export default class App extends React.PureComponent {
       currentCardId,
       promoFilm,
       loadComments,
-      addToFavorite
+      addToFavorite,
+      loadFavorites,
+      loadFilms,
+      loadPromoFilm
     } = this.props;
 
     return (
-      <Router
-        history={history}
-      >
+      <BrowserRouter>
         <Switch>
           <Route exact path={AppRoute.MAIN}>
             {this._renderApp()}
@@ -101,6 +82,9 @@ export default class App extends React.PureComponent {
               <AuthScreen
                 {...props}
                 onSubmit={login}
+                loadFavorites={loadFavorites}
+                loadFilms={loadFilms}
+                loadPromoFilm={loadPromoFilm}
               />
             }
           />
@@ -120,6 +104,7 @@ export default class App extends React.PureComponent {
               postComment={postComment}
               authorizationStatus={authorizationStatus}
               loadComments={loadComments}
+              addToFavorite={addToFavorite}
             />
           </Route>
 
@@ -150,7 +135,7 @@ export default class App extends React.PureComponent {
             }}
           />
         </Switch>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

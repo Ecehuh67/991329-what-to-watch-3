@@ -1,3 +1,5 @@
+import {EstimateValue} from './consts';
+
 const MONTHS = {
   0: `January`,
   1: `February`,
@@ -54,3 +56,47 @@ export const getAttrDate = (date) => {
 
   return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
 }
+
+export const getNewData = (newElement, arrayData) => {
+  const newIndex = arrayData.findIndex((movie) => movie.id === newElement.id);
+  const newData = arrayData.slice(0, newIndex).concat(arrayData.slice(newIndex + 1)).concat(newElement).sort((a, b) => a.id - b.id);
+
+  return newData;
+}
+
+export const sortData = (newElement, arrayData) => {
+  const newIndex = arrayData.findIndex((movie) => movie.id === newElement.id);
+  const oldData = arrayData;
+
+  if (newIndex === -1) {
+    oldData.push(newElement);
+  } else {
+    oldData.splice(newIndex, 1)
+  }
+
+  return oldData;
+}
+
+export const getRank = (count) => {
+  let rank;
+
+  switch (true) {
+    case count > 10:
+      rank = `Awesome`;
+      break;
+    case count > 8 && count <= 10:
+      rank = `Very good`;
+      break;
+    case count > 5 && count <= 8:
+      rank = `Good`;
+      break;
+    case count > 3 && count <= 5:
+      rank = `Normal`;
+      break;
+    case count > 0 && count <= 3:
+      rank = `Bad`;
+      break;
+  }
+
+  return rank;
+};

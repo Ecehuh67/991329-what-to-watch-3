@@ -39,18 +39,18 @@ const ActionCreator = {
       payload: comments
     }
   },
-  addToFavorite: (favoriteData) => {
-    return {
-      type: ActionType.ADD_TO_FAVORITES,
-      payload: favoriteData
-    }
-  },
-  updateFavorites: (resp) => {
-    return {
-      type: ActionType.UPDATE_FAVORITES,
-      payload: resp
-    }
-  }
+  // addToFavorite: (favoriteData) => {
+  //   return {
+  //     type: ActionType.ADD_TO_FAVORITES,
+  //     payload: favoriteData
+  //   }
+  // },
+  // updateFavorites: (resp) => {
+  //   return {
+  //     type: ActionType.UPDATE_FAVORITES,
+  //     payload: resp
+  //   }
+  // }
 };
 
 export {ActionType, ActionCreator};

@@ -5,7 +5,6 @@ import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator} from '../../reducer/state/actions';
 import {
   getUploadingState,
-  // getPopupState,
   getSimilarFilms,
   getMovies,
   getActiveCard,
@@ -13,7 +12,7 @@ import {
   getPromoFilm,
   getFavorites
 } from '../../reducer/state/selectors';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {getAuthorizationStatus, getAvatar} from '../../reducer/user/selectors';
 
 // import {Api} from '../../api';
 
@@ -23,10 +22,10 @@ const mapStateToProps = (state) => {
     favorites: getFavorites(state),
     promoFilm: getPromoFilm(state),
     isUploaded: getUploadingState(state),
-    // isPopupActive: getPopupState(state),
     filteredFilms: getSimilarFilms(state),
     activeFilmCard: getActiveCard(state),
     authorizationStatus: getAuthorizationStatus(state),
+    userAvatar: getAvatar(state),
     currentCardId: getActiveFilmCard(state)
   };
 };
@@ -44,11 +43,11 @@ const mapDispatchToProps = (dispatch) => ({
   loadComments(id) {
     dispatch(DataOperation.loadComments(id));
   },
-  requireAuth() {
-    dispatch(UserOperation.checkAuth());
+  requireAuth(handler) {
+    dispatch(UserOperation.checkAuth(handler));
   },
-  login(authData) {
-    dispatch(UserOperation.login(authData));
+  login(authData, handler, filmsHandler, promoHandler) {
+    dispatch(UserOperation.login(authData, handler, filmsHandler, promoHandler));
   },
   postComment(commentData) {
     dispatch(DataOperation.postComment(commentData));
