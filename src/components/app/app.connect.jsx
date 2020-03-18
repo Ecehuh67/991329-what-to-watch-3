@@ -14,8 +14,6 @@ import {
 } from '../../reducer/state/selectors';
 import {getAuthorizationStatus, getAvatar} from '../../reducer/user/selectors';
 
-// import {Api} from '../../api';
-
 const mapStateToProps = (state) => {
   return {
     films: getMovies(state),
@@ -46,8 +44,8 @@ const mapDispatchToProps = (dispatch) => ({
   requireAuth(handler) {
     dispatch(UserOperation.checkAuth(handler));
   },
-  login(authData, handler, filmsHandler, promoHandler) {
-    dispatch(UserOperation.login(authData, handler, filmsHandler, promoHandler));
+  login(authData, favHandler, filmsHandler, promoHandler) {
+    dispatch(UserOperation.login(authData, favHandler, filmsHandler, promoHandler));
   },
   postComment(commentData) {
     dispatch(DataOperation.postComment(commentData));

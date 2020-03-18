@@ -30,7 +30,7 @@ export default class App extends React.PureComponent {
       filteredFilms,
       authorizationStatus,
       postComment,
-      userAvatar
+      userAvatar,
     } = this.props;
 
     if (!isUploaded) {
@@ -40,14 +40,14 @@ export default class App extends React.PureComponent {
       );
     }
 
-      return (
-        <MainPage
-          films={films}
-          onDataChange={onFilmCardClick}
-          authorizationStatus={authorizationStatus}
-          userAvatar={userAvatar}
-        />
-      );
+    return (
+      <MainPage
+        films={films}
+        onDataChange={onFilmCardClick}
+        authorizationStatus={authorizationStatus}
+        userAvatar={userAvatar}
+      />
+    );
 
   }
 

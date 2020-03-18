@@ -37,7 +37,7 @@ const Operation = {
       });
   },
   postComment: (commentData) => (dispatch, getState, api) => {
-    return api.post(`/comments/${commentData.id}`, {
+    return api.post(`/comments1/${commentData.id}`, {
       rating: commentData.rating,
       comment: commentData.comment
     })
@@ -45,6 +45,9 @@ const Operation = {
         dispatch(ActionCreator.updateComments(response.data));
       })
       .catch((err) => {
+        commentData.submitHandler();
+        commentData.errorHandler();
+        commentData.comeBack();
       });
   },
   addToFavorite: (favData) => (dispatch, getState, api) => {

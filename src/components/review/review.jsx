@@ -3,21 +3,49 @@ import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/consts';
 
 const MAX_RATING = 5;
+const Length = {
+  MIN: 50,
+  MAX: 400
+};
 
 export default class Review extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    // this.textRef = React.createRef();
-
     this._handleSubmit = this._handleSubmit.bind(this);
     this._getRating = this._getRating.bind(this);
     this._getTextReview = this._getTextReview.bind(this);
+    this._validateComment = this._validateComment.bind(this);
+    this._onSubmitForm = this._onSubmitForm.bind(this);
+    this._onErrorHandler = this._onErrorHandler.bind(this);
 
     this.state = {
       rating: MAX_RATING,
-      text: ``
+      text: ``,
+      isDisabled: false,
+      isError: false
     };
+  }
+
+  _onSubmitForm() {
+    this.setState({
+      isDisabled: !this.state.isDisabled
+    });
+  }
+
+  _onErrorHandler() {
+    this.setState({
+      isError: true
+    });
+  }
+
+  _validateComment() {
+    const commentLength = this.state.text.length;
+    if (commentLength > Length.MIN && commentLength < Length.MAX) {
+      return true;
+    }
+
+    return false;
   }
 
   _getRating(evt) {
@@ -32,18 +60,25 @@ export default class Review extends React.PureComponent {
     evt.preventDefault();
 
     const {onSubmit, film, history} = this.props;
-    console.log(this.props)
-    // const text = this.textRef.current.value;
     const text = this.state.text;
     const rating = this.state.rating;
+    const isValid = this._validateComment();
 
-    onSubmit({
-      id: film.id,
-      rating,
-      comment: text
-    });
+    if (isValid) {
+      this._onSubmitForm();
+      onSubmit({
+        id: film.id,
+        rating,
+        comment: text,
+        submitHandler: this._onSubmitForm,
+        comeBack: history.push(AppRoute.REVIEW(film.id))
+      });
 
-    history.goBack();
+      history.goBack();
+    } else {
+
+    }
+
   }
 
   render() {
@@ -97,6 +132,15 @@ export default class Review extends React.PureComponent {
           </div>
         </div>
 
+        {
+          this.state.isError &&
+          <div className="add-review">
+            <p style={{color: "#B22222"}}>
+              Sorry, but your review have not been sent to server. Please, try after a few minutes
+            </p>
+          </div>
+        }
+
         <div className="add-review">
           <form
             action="#"
@@ -116,6 +160,7 @@ export default class Review extends React.PureComponent {
                           name="rating"
                           value={i}
                           onChange={this._getRating}
+                          disabled={this.state.isDisabled}
                         />
                         <label
                           className="rating__label"
@@ -135,7 +180,7 @@ export default class Review extends React.PureComponent {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                // ref={this.textRef}
+                disabled={this.state.isDisabled}
                 onChange={this._getTextReview}
               >
               </textarea>
@@ -143,6 +188,7 @@ export default class Review extends React.PureComponent {
                 <button
                   className="add-review__btn"
                   type="submit"
+                  disabled={this.state.isDisabled}
                 >Post
                 </button>
               </div>

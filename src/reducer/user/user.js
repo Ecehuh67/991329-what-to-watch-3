@@ -13,7 +13,7 @@ const Operation = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-        
+
         // there must be an avatar which got form server - response.data.avatar_url
         const downloadedAvatar = "/img/avatar.jpg";
         dispatch(ActionCreator.setAvatar(downloadedAvatar));
@@ -23,7 +23,7 @@ const Operation = {
         throw err;
       });
   },
-  login: (authData, handler, filmsHandler, promoHandler) => (dispatch, getState, api) => {
+  login: (authData, favHandler, filmsHandler, promoHandler) => (dispatch, getState, api) => {
     return api.post(`/login`, {
       email: authData.email,
       password: authData.password,
@@ -36,10 +36,14 @@ const Operation = {
         dispatch(ActionCreator.setAvatar(downloadedAvatar));
       })
       .then(() => {
-        handler();
+        favHandler();
+        favHandler();
         filmsHandler();
         promoHandler();
-      });
+      })
+      .catch((err) => {
+        favHandler();
+      })
   }
 };
 
