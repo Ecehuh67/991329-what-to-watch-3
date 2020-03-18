@@ -7,7 +7,7 @@ import {Operation as DataOperation} from '../../reducer/data/data';
 
 const MainPromoFilm = (props) => {
   const {film, addToFavorite} = props;
-  
+
   return (
     <div className="movie-card__wrap">
       <div className="movie-card__info">
@@ -25,6 +25,7 @@ const MainPromoFilm = (props) => {
           <div className="movie-card__buttons">
             <Link
               className="btn btn--play movie-card__button"
+              /* eslint-disable-next-line new-cap */
               to={AppRoute.PLAYER(film.id)}
             >
               <svg viewBox="0 0 19 19" width="19" height="19">
@@ -41,7 +42,7 @@ const MainPromoFilm = (props) => {
                 addToFavorite({
                   id: film.id,
                   status: `${film.is_favorite ? 0 : 1}`
-                })
+                });
               }}
             >
               <svg viewBox="0 0 19 20" width="19" height="20">
@@ -78,7 +79,7 @@ MainPromoFilm.propTypes = {
     video_link: PropTypes.string.isRequired,
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
-  onShowHideButtonClick: PropTypes.func.isRequired,
+  addToFavorite: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -90,7 +91,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addToFavorite(favData) {
-    dispatch(DataOperation.addToFavorite(favData))
+    dispatch(DataOperation.addToFavorite(favData));
   }
 });
 

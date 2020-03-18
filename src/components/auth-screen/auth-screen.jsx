@@ -35,7 +35,7 @@ export default class AuthScreen extends React.PureComponent {
         password: this.passwordRef.current.value,
       }, loadFavorites, loadFilms, loadPromoFilm);
 
-      history.push(AppRoute.MAIN)
+      history.push(AppRoute.MAIN);
     }
   }
 
@@ -104,5 +104,9 @@ export default class AuthScreen extends React.PureComponent {
 
 AuthScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onValidateUser: PropTypes.func.isRequired
+  onValidateUser: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
+  loadFavorites: PropTypes.func.isRequired,
+  loadFilms: PropTypes.func.isRequired,
+  loadPromoFilm: PropTypes.func.isRequired
 };

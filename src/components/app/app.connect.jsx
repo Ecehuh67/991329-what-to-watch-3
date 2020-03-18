@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(DataOperation.loadFavorites());
   },
   addToFavorite(favData) {
-    dispatch(DataOperation.addToFavorite(favData))
+    dispatch(DataOperation.addToFavorite(favData));
   }
 });
 

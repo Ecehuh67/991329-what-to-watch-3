@@ -8,7 +8,7 @@ describe(`Render Favorite list correctly`, () => {
           films={movies}
           onDataChange={() => {}}
         />
-        ).toJSON();
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

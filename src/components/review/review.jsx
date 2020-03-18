@@ -71,14 +71,12 @@ export default class Review extends React.PureComponent {
         rating,
         comment: text,
         submitHandler: this._onSubmitForm,
+        // eslint-disable-next-line new-cap
         comeBack: history.push(AppRoute.REVIEW(film.id))
       });
 
       history.goBack();
-    } else {
-
     }
-
   }
 
   render() {
@@ -87,7 +85,7 @@ export default class Review extends React.PureComponent {
     return (
       <section className="movie-card movie-card--full" style={{background: film.background_color}}>
         <div className="movie-card__header">
-            <div className="movie-card__bg">
+          <div className="movie-card__bg">
             <img src={film.background_image} alt={film.name} />
           </div>
 
@@ -95,14 +93,14 @@ export default class Review extends React.PureComponent {
 
           <header className="page-header">
             <div className="logo">
-            <Link
-              className="logo__link"
-              to={AppRoute.MAIN}
-            >
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
+              <Link
+                className="logo__link"
+                to={AppRoute.MAIN}
+              >
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </Link>
             </div>
 
             <nav className="breadcrumbs">
@@ -135,7 +133,7 @@ export default class Review extends React.PureComponent {
         {
           this.state.isError &&
           <div className="add-review">
-            <p style={{color: "#B22222"}}>
+            <p style={{color: `#B22222`}}>
               Sorry, but your review have not been sent to server. Please, try after a few minutes
             </p>
           </div>
@@ -201,3 +199,28 @@ export default class Review extends React.PureComponent {
     );
   }
 }
+
+/* eslint camelcase: ["error", {properties: "never"}] */
+Review.propTypes = {
+  film: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    poster_image: PropTypes.string.isRequired,
+    preview_image: PropTypes.string.isRequired,
+    background_image: PropTypes.string.isRequired,
+    background_color: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    scores_count: PropTypes.number.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string.isRequired),
+    run_time: PropTypes.number.isRequired,
+    genre: PropTypes.string.isRequired,
+    released: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    is_favorite: PropTypes.bool.isRequired,
+    video_link: PropTypes.string.isRequired,
+    preview_video_link: PropTypes.string.isRequired,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired
+};

@@ -1,6 +1,4 @@
 import FilmsList from '../films-list/films-list';
-import VideoScreen from '../video-screen/video-screen';
-import Review from '../review/review';
 import {AuthorizationStatus} from '../../utils/consts';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/consts';
@@ -18,9 +16,6 @@ export default class Popup extends React.PureComponent {
       onDataChange,
       films,
       children,
-      onAddCommentButtonClick,
-      isAddComment,
-      postComment,
       authorizationStatus,
       addToFavorite
     } = this.props;
@@ -82,6 +77,7 @@ export default class Popup extends React.PureComponent {
                 <div className="movie-card__buttons">
                   <Link
                     className="btn btn--play movie-card__button"
+                    /* eslint-disable-next-line new-cap */
                     to={AppRoute.PLAYER(film.id)}
                   >
                     <svg viewBox="0 0 19 19" width="19" height="19">
@@ -96,7 +92,7 @@ export default class Popup extends React.PureComponent {
                       addToFavorite({
                         id: film.id,
                         status: `${film.is_favorite ? 0 : 1}`
-                      })
+                      });
                     }}
                   >
                     <svg viewBox="0 0 19 20" width="19" height="20">
@@ -104,13 +100,12 @@ export default class Popup extends React.PureComponent {
                     </svg>
                     <span>My list</span>
                   </button>
-                    <Link
-                      // href="#"
-                      className="btn movie-card__button"
-                      to={AppRoute.REVIEW(film.id)}
-                      // onClick={onAddCommentButtonClick}
-                    >Add review
-                    </Link>
+                  <Link
+                    className="btn movie-card__button"
+                    /* eslint-disable-next-line new-cap */
+                    to={AppRoute.REVIEW(film.id)}
+                  >Add review
+                  </Link>
                 </div>
               </div>
             </div>
@@ -207,8 +202,7 @@ Popup.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onStopButtonClick: PropTypes.func.isRequired,
-  onShowHideButtonClick: PropTypes.func.isRequired,
-  state: PropTypes.objectOf(PropTypes.bool).isRequired
+  addToFavorite: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  loadComments: PropTypes.func.isRequired
 };

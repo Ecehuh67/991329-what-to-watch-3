@@ -1,8 +1,6 @@
 import FilmsList from '../films-list/films-list';
 import ShowMoreButton from '../show-more-button/show-more-button.connect';
 import Filters from '../filters/filters.connect';
-import VideoScreen from '../video-screen/video-screen';
-import AuthScreen from '../auth-screen/auth-screen';
 import MainPromoFilm from '../main-promo-film/main-promo-film';
 import {AuthorizationStatus} from '../../utils/consts';
 import {Link} from 'react-router-dom';
@@ -13,11 +11,7 @@ const MainPage = (props) => {
     films,
     onDataChange,
     authorizationStatus,
-    // onSignInFormClick,
-    // onValidateUser,
-    login,
     userAvatar,
-    loadFavorites
   } = props;
 
   return (
@@ -126,21 +120,8 @@ MainPage.propTypes = {
       })
   ).isRequired,
   onDataChange: PropTypes.func.isRequired,
-  onShowHideButtonClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onStopButtonClick: PropTypes.func.isRequired,
-  state: PropTypes.objectOf(PropTypes.bool).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  onSignInFormClick: PropTypes.func.isRequired,
-  onValidateUser: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
+  userAvatar: PropTypes.string.isRequired
 };
 
 export default MainPage;
-
-// {state.isSingFormActive &&
-//   <AuthScreen
-//     onSubmit={login}
-//     onValidateUser={onValidateUser}
-//   />
-// }

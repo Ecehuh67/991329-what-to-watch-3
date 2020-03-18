@@ -8,6 +8,7 @@ export default class FilmCard extends React.PureComponent {
     return (
       <article className="small-movie-card catalog__movies-card">
         <Link
+          /* eslint-disable-next-line new-cap */
           to={AppRoute.FILM(film.id)}
         >
           <div

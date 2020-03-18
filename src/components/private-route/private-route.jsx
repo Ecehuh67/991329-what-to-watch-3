@@ -1,7 +1,5 @@
 import {Route, Redirect} from "react-router-dom";
-import {connect} from "react-redux";
 import {AppRoute, AuthorizationStatus} from "../../utils/consts";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
@@ -10,6 +8,7 @@ const PrivateRoute = (props) => {
     <Route
       path={path}
       exact={exact}
+      /* eslint-disable-next-line no-shadow */
       render={(props) => {
         return (
           authorizationStatus === AuthorizationStatus.AUTH ? render(props) : <Redirect to={AppRoute.SIGN_IN}/>
