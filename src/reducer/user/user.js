@@ -1,6 +1,5 @@
 import {extend} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
-
 import {AuthorizationStatus} from '../../utils/consts';
 
 const initialState = {
@@ -11,7 +10,7 @@ const initialState = {
 const Operation = {
   checkAuth: (handler) => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         // there must be an avatar which got form server - response.data.avatar_url
         const downloadedAvatar = `/img/avatar.jpg`;
@@ -27,7 +26,7 @@ const Operation = {
       email: authData.email,
       password: authData.password,
     })
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
 
         // there must be an avatar which got form server - response.data.avatar_url
@@ -36,11 +35,11 @@ const Operation = {
       })
       .then(() => {
         favHandler();
-        favHandler();
+        // favHandler();
         filmsHandler();
         promoHandler();
       })
-      .catch(() => {
+      .catch((err) => {
         favHandler();
       });
   }

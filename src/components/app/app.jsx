@@ -107,9 +107,10 @@ export default class App extends React.PureComponent {
           <PrivateRoute
             exact
             path={AppRoute.MY_LIST}
-            render={() => {
+            render={(props) => {
               return (
                 <Favorites
+                  {...props}
                   films={favorites}
                   onDataChange={onFilmCardClick}
                 />
