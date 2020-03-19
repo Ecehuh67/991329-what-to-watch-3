@@ -10,7 +10,7 @@ const initialState = {
 const Operation = {
   checkAuth: (handler) => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then((response) => {
+      .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         // there must be an avatar which got form server - response.data.avatar_url
         const downloadedAvatar = `/img/avatar.jpg`;
@@ -26,7 +26,7 @@ const Operation = {
       email: authData.email,
       password: authData.password,
     })
-      .then((response) => {
+      .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
 
         // there must be an avatar which got form server - response.data.avatar_url
@@ -39,7 +39,7 @@ const Operation = {
         filmsHandler();
         promoHandler();
       })
-      .catch((err) => {
+      .catch(() => {
         favHandler();
       });
   }

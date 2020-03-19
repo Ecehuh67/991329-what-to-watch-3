@@ -5,14 +5,12 @@ import {Provider} from "react-redux";
 import {createStore, applyMiddleware} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import reducer from "./reducer/reducer";
-import history from './history';
-import {AppRoute} from './utils/consts';
 
 import {createAPI} from './api';
 import thunk from "redux-thunk";
 
 const onUnauthorized = () => {
-  history.push(AppRoute.SIGN_IN);
+  // store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
 };
 
 const api = createAPI(onUnauthorized);

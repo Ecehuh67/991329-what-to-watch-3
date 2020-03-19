@@ -85,6 +85,20 @@ export default class Popup extends React.PureComponent {
                     </svg>
                     <span>Play</span>
                   </Link>
+
+                  {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+                  <Link
+                    className="btn btn--list movie-card__button"
+                    to={AppRoute.SIGN_IN}
+                  >
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
+                    </svg>
+                    <span>My list</span>
+                  </Link>
+                  }
+
+                  {authorizationStatus === AuthorizationStatus.AUTH &&
                   <button
                     className="btn btn--list movie-card__button"
                     type="button"
@@ -100,6 +114,8 @@ export default class Popup extends React.PureComponent {
                     </svg>
                     <span>My list</span>
                   </button>
+                  }
+
                   <Link
                     className="btn movie-card__button"
                     /* eslint-disable-next-line new-cap */

@@ -8,11 +8,13 @@ import AuthScreen from '../auth-screen/auth-screen';
 import Review from '../review/review';
 import withPopup from '../../hocs/with-popup/with-popup';
 import withReview from '../../hocs/with-review/with-review';
+import withVideoScreen from "../../hocs/with-video-screen/with-video-screen";
 import {AppRoute} from '../../utils/consts';
 import Favorites from '../favorite-list/favorite-list';
 
 const PopupWrapped = withPopup(Popup);
 const ReviewWrapped = withReview(Review);
+const VideoScreenWrapped = withVideoScreen(VideoScreen);
 
 export default class App extends React.PureComponent {
   componentDidMount() {
@@ -86,7 +88,7 @@ export default class App extends React.PureComponent {
           />
           <Route exact path="/player/:id"
             render={(props) =>
-              <VideoScreen
+              <VideoScreenWrapped
                 {...props}
                 film={promoFilm}
               />

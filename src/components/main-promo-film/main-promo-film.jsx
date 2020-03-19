@@ -1,8 +1,9 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/consts';
+import {AuthorizationStatus} from '../../utils/consts';
 
 const MainPromoFilm = (props) => {
-  const {film, addToFavorite} = props;
+  const {film, addToFavorite, authorizationStatus} = props;
 
   return (
     <div className="movie-card__wrap">
@@ -31,21 +32,35 @@ const MainPromoFilm = (props) => {
             </Link>
 
 
-            <button
-              className="btn btn--list movie-card__button"
-              type="button"
-              onClick={() => {
-                addToFavorite({
-                  id: film.id,
-                  status: `${film.is_favorite ? 0 : 1}`
-                });
-              }}
-            >
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
-              </svg>
-              <span>My list</span>
-            </button>
+            {authorizationStatus === AuthorizationStatus.NO_AUTH &&
+              <Link
+                className="btn btn--list movie-card__button"
+                to={AppRoute.SIGN_IN}
+              >
+                <svg viewBox="0 0 19 20" width="19" height="20">
+                  <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
+                </svg>
+                <span>My list</span>
+              </Link>
+            }
+
+            {authorizationStatus === AuthorizationStatus.AUTH &&
+              <button
+                className="btn btn--list movie-card__button"
+                type="button"
+                onClick={() => {
+                  addToFavorite({
+                    id: film.id,
+                    status: `${film.is_favorite ? 0 : 1}`
+                  });
+                }}
+              >
+                <svg viewBox="0 0 19 20" width="19" height="20">
+                  <use xlinkHref={`#${film.is_favorite ? `in-list` : `add`}`}></use>
+                </svg>
+                <span>My list</span>
+              </button>
+            }
 
           </div>
         </div>
@@ -76,6 +91,7 @@ MainPromoFilm.propTypes = {
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
   addToFavorite: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 export default MainPromoFilm;

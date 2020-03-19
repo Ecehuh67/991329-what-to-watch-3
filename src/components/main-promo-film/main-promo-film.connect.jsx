@@ -6,7 +6,8 @@ import {getAuthorizationStatus} from '../../reducer/user/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    film: getPromoFilm(state)
+    film: getPromoFilm(state),
+    authorizationStatus: getAuthorizationStatus(state)
   };
 };
 
