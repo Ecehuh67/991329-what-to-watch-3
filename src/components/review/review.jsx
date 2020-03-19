@@ -1,86 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../utils/consts';
-
-const MAX_RATING = 5;
-const Length = {
-  MIN: 50,
-  MAX: 400
-};
+import {AppRoute, MAX_RATING} from '../../utils/consts';
 
 export default class Review extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._handleSubmit = this._handleSubmit.bind(this);
-    this._getRating = this._getRating.bind(this);
-    this._getTextReview = this._getTextReview.bind(this);
-    this._validateComment = this._validateComment.bind(this);
-    this._onSubmitForm = this._onSubmitForm.bind(this);
-    this._onErrorHandler = this._onErrorHandler.bind(this);
-
-    this.state = {
-      rating: MAX_RATING,
-      text: ``,
-      isDisabled: false,
-      isError: false
-    };
-  }
-
-  _onSubmitForm() {
-    this.setState({
-      isDisabled: !this.state.isDisabled
-    });
-  }
-
-  _onErrorHandler() {
-    this.setState({
-      isError: true
-    });
-  }
-
-  _validateComment() {
-    const commentLength = this.state.text.length;
-    if (commentLength > Length.MIN && commentLength < Length.MAX) {
-      return true;
-    }
-
-    return false;
-  }
-
-  _getRating(evt) {
-    this.setState({rating: evt.target.value});
-  }
-
-  _getTextReview(evt) {
-    this.setState({text: evt.target.value});
-  }
-
-  _handleSubmit(evt) {
-    evt.preventDefault();
-
-    const {onSubmit, film, history} = this.props;
-    const text = this.state.text;
-    const rating = this.state.rating;
-    const isValid = this._validateComment();
-
-    if (isValid) {
-      this._onSubmitForm();
-      onSubmit({
-        id: film.id,
-        rating,
-        comment: text,
-        submitHandler: this._onSubmitForm,
-        // eslint-disable-next-line new-cap
-        comeBack: history.push(AppRoute.REVIEW(film.id))
-      });
-
-      history.goBack();
-    }
-  }
-
   render() {
-    const {film} = this.props;
+    const {film, onSubmit, state, getRating, getTextReview} = this.props;
 
     return (
       <section className="movie-card movie-card--full" style={{background: film.background_color}}>
@@ -131,7 +55,7 @@ export default class Review extends React.PureComponent {
         </div>
 
         {
-          this.state.isError &&
+          state.isError &&
           <div className="add-review">
             <p style={{color: `#B22222`}}>
               Sorry, but your review have not been sent to server. Please, try after a few minutes
@@ -143,7 +67,7 @@ export default class Review extends React.PureComponent {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={this._handleSubmit}
+            onSubmit={onSubmit}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -157,8 +81,8 @@ export default class Review extends React.PureComponent {
                           type="radio"
                           name="rating"
                           value={i}
-                          onChange={this._getRating}
-                          disabled={this.state.isDisabled}
+                          onChange={getRating}
+                          disabled={state.isDisabled}
                         />
                         <label
                           className="rating__label"
@@ -178,15 +102,15 @@ export default class Review extends React.PureComponent {
                 name="review-text"
                 id="review-text"
                 placeholder="Review text"
-                disabled={this.state.isDisabled}
-                onChange={this._getTextReview}
+                disabled={state.isDisabled}
+                onChange={getTextReview}
               >
               </textarea>
               <div className="add-review__submit">
                 <button
                   className="add-review__btn"
                   type="submit"
-                  disabled={this.state.isDisabled}
+                  disabled={state.isDisabled}
                 >Post
                 </button>
               </div>
@@ -222,5 +146,7 @@ Review.propTypes = {
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired
+  getRating: PropTypes.func.isRequired,
+  getTextReview: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired
 };

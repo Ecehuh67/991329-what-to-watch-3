@@ -32,6 +32,10 @@ const withActiveCard = (Component) => {
       }
     }
 
+    componentWillUnmount() {
+      clearTimeout(this.timeoutId);
+    }
+
     render() {
       const {film} = this.props;
       return (
@@ -51,10 +55,6 @@ const withActiveCard = (Component) => {
           }
         </Component>
       );
-    }
-
-    componentWillUnmount() {
-      clearTimeout(this.timeoutId);
     }
   }
 

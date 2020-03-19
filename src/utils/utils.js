@@ -1,5 +1,3 @@
-import {EstimateValue} from './consts';
-
 const MONTHS = {
   0: `January`,
   1: `February`,
@@ -13,7 +11,7 @@ const MONTHS = {
   9: `October`,
   10: `November`,
   11: `December`
-}
+};
 
 export const getRandomNumber = (max) => {
   return 1 + Math.floor(Math.random() * max);
@@ -47,7 +45,7 @@ export const getCommentDate = (date) => {
   const year = date.getFullYear();
 
   return `${MONTHS[month]} ${day}, ${year}`;
-}
+};
 
 export const getAttrDate = (date) => {
   const month = date.getMonth();
@@ -55,14 +53,14 @@ export const getAttrDate = (date) => {
   const year = date.getFullYear();
 
   return `${year}-${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
-}
+};
 
 export const getNewData = (newElement, arrayData) => {
   const newIndex = arrayData.findIndex((movie) => movie.id === newElement.id);
   const newData = arrayData.slice(0, newIndex).concat(arrayData.slice(newIndex + 1)).concat(newElement).sort((a, b) => a.id - b.id);
 
   return newData;
-}
+};
 
 export const sortData = (newElement, arrayData) => {
   const newIndex = arrayData.findIndex((movie) => movie.id === newElement.id);
@@ -71,11 +69,11 @@ export const sortData = (newElement, arrayData) => {
   if (newIndex === -1) {
     oldData.push(newElement);
   } else {
-    oldData.splice(newIndex, 1)
+    oldData.splice(newIndex, 1);
   }
 
   return oldData;
-}
+};
 
 export const getRank = (count) => {
   let rank;

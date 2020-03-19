@@ -1,6 +1,5 @@
 import {extend, getNewData, sortData} from "../../utils/utils";
 import {ActionType, ActionCreator} from './actions';
-import NameSpace from "../name-space";
 
 const initialState = {
   films: [],
@@ -37,14 +36,14 @@ const Operation = {
       });
   },
   postComment: (commentData) => (dispatch, getState, api) => {
-    return api.post(`/comments1/${commentData.id}`, {
+    return api.post(`/comments/${commentData.id}`, {
       rating: commentData.rating,
       comment: commentData.comment
     })
       .then((response) => {
         dispatch(ActionCreator.updateComments(response.data));
       })
-      .catch((err) => {
+      .catch(() => {
         commentData.submitHandler();
         commentData.errorHandler();
         commentData.comeBack();

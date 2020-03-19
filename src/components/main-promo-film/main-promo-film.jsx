@@ -1,9 +1,5 @@
-import {connect} from "react-redux";
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/consts';
-
-import {getPromoFilm} from '../../reducer/state/selectors';
-import {Operation as DataOperation} from '../../reducer/data/data';
 
 const MainPromoFilm = (props) => {
   const {film, addToFavorite} = props;
@@ -82,17 +78,4 @@ MainPromoFilm.propTypes = {
   addToFavorite: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    film: getPromoFilm(state),
-
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  addToFavorite(favData) {
-    dispatch(DataOperation.addToFavorite(favData));
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPromoFilm);
+export default MainPromoFilm;

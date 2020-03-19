@@ -1,6 +1,3 @@
-
-import {Link} from 'react-router-dom';
-import {AppRoute} from '../../utils/consts';
 import {convertTimeToProgressBar} from '../../utils/utils';
 
 const DEFAULT_WIDTH_PROGRESS_BAR = 860;
@@ -13,7 +10,7 @@ export default class VideoScreen extends React.PureComponent {
 
     this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
     this._onStopButtonClick = this._onStopButtonClick.bind(this);
-    this._onCloseButtounClick = this._onCloseButtounClick.bind(this);
+    this._onCloseButtonClick = this._onCloseButtonClick.bind(this);
 
     this._stopPlayVideo = this._stopPlayVideo.bind(this);
     this._onTimeUpdate = this._onTimeUpdate.bind(this);
@@ -22,13 +19,12 @@ export default class VideoScreen extends React.PureComponent {
     this.state = {
       duration: null,
       percent: null,
-      // isVideoActive: false,
       isPlaying: true, // fixing autoPlay attribute
       isStopped: false,
     };
   }
 
-  _onCloseButtounClick() {
+  _onCloseButtonClick() {
     const {history} = this.props;
 
     history.goBack();
@@ -57,7 +53,6 @@ export default class VideoScreen extends React.PureComponent {
   }
 
   _stopPlayVideo() {
-    // const {state} = this.props;
     if (this.state.isPlaying) {
       this.videoRef.current.pause();
     } else {
@@ -97,10 +92,9 @@ export default class VideoScreen extends React.PureComponent {
         </video>
 
         <button
-        // to={AppRoute.MAIN}
           type="button"
           className="player__exit"
-          onClick={this._onCloseButtounClick}
+          onClick={this._onCloseButtonClick}
         >Exit
         </button>
 
@@ -164,8 +158,5 @@ VideoScreen.propTypes = {
     video_link: PropTypes.string.isRequired,
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onStopButtonClick: PropTypes.func.isRequired,
-  onShowHideButtonClick: PropTypes.func.isRequired,
-  state: PropTypes.objectOf(PropTypes.bool).isRequired
+  history: PropTypes.func.isRequired,
 };

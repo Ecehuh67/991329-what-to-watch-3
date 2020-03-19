@@ -7,13 +7,13 @@ const TabReviews = (props) => {
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
         {
-          comments.map((comment) => {
+          comments.map((comment, i) => {
             const date = new Date(comment.date);
             const commentDate = getCommentDate(date);
             const attrTime = getAttrDate(date);
 
             return (
-              <div className="review">
+              <div className="review" key={i}>
                 <blockquote className="review__quote">
                   <p className="review__text">{comment.comment}</p>
 
@@ -34,3 +34,19 @@ const TabReviews = (props) => {
 };
 
 export default TabReviews;
+
+TabReviews.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.oneOf([
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      user: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired
+      }),
+      rating: PropTypes.number.isRequired,
+      comment: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired
+    }),
+    PropTypes.any.isRequired
+  ])).isRequired
+};

@@ -7,10 +7,12 @@ import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import Review from '../review/review';
 import withPopup from '../../hocs/with-popup/with-popup';
+import withReview from '../../hocs/with-review/with-review';
 import {AppRoute} from '../../utils/consts';
 import Favorites from '../favorite-list/favorite-list';
 
 const PopupWrapped = withPopup(Popup);
+const ReviewWrapped = withReview(Review);
 
 export default class App extends React.PureComponent {
   componentDidMount() {
@@ -120,7 +122,7 @@ export default class App extends React.PureComponent {
             path="/films/:id/review"
             render={(props) => {
               return (
-                <Review
+                <ReviewWrapped
                   {...props}
                   film={activeFilmCard}
                   onSubmit={postComment}

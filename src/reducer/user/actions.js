@@ -14,7 +14,7 @@ const ActionCreator = {
     return {
       type: ActionType.SET_AVATAR,
       payload: avatar
-    }
+    };
   }
 };
 

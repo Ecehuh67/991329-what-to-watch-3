@@ -37,20 +37,8 @@ const ActionCreator = {
     return {
       type: ActionType.UPDATE_COMMENTS,
       payload: comments
-    }
+    };
   },
-  // addToFavorite: (favoriteData) => {
-  //   return {
-  //     type: ActionType.ADD_TO_FAVORITES,
-  //     payload: favoriteData
-  //   }
-  // },
-  // updateFavorites: (resp) => {
-  //   return {
-  //     type: ActionType.UPDATE_FAVORITES,
-  //     payload: resp
-  //   }
-  // }
 };
 
 export {ActionType, ActionCreator};

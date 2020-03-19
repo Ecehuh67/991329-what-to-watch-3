@@ -5,6 +5,7 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+export const MAX_RATING = 5;
 
 export const AppRoute = {
   MAIN: `/`,
@@ -13,12 +14,12 @@ export const AppRoute = {
   FILM: (id) => `/films/${id}`,
   PLAYER: (id) => `/player/${id}`,
   REVIEW: (id) => `/films/${id}/review`
-}
+};
 
 export const EstimateValue = {
-  3: "Bad",
-  5: "Normal",
-  8: "Good",
-  10: "Very good",
-  11: "Awesome"
+  3: `Bad`,
+  5: `Normal`,
+  8: `Good`,
+  10: `Very good`,
+  11: `Awesome`
 };
