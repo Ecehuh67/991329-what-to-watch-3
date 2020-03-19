@@ -4,6 +4,8 @@ import {AppRoute, AuthorizationStatus} from "../../utils/consts";
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
 
+  console.log(authorizationStatus)
+
   return (
     <Route
       path={path}
