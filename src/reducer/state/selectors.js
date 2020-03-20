@@ -5,7 +5,6 @@ import {DEFAULT_GENRE, DEFAULT_GENRES_AMOUNT} from '../../utils/consts';
 const AMOUT_SIMILAR_FILMS = 4;
 
 export const getUploadingState = (state) => state[NameSpace.DATA].isUploaded;
-// export const getPopupState = (state) => state[NameSpace.STATE].isPopupActive;
 export const getPromoFilm = (state) => state[NameSpace.DATA].promoFilm;
 export const getActiveFilmCard = (state) => state[NameSpace.STATE].activeFilmCard;
 export const getChosenGenre = (state) => state[NameSpace.STATE].chosenGenre;

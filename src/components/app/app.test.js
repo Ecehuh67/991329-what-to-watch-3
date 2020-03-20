@@ -26,7 +26,7 @@ describe(`render App`, () => {
       [NameSpace.DATA]: {
         films: movies,
         favorites: movies[1],
-        promoFilm: movies[0],
+        promoFilm: movies[1],
         comments: comment,
         isUploaded: true
       },

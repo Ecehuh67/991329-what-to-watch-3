@@ -66,7 +66,7 @@ exports[`render App Render Main page 1`] = `
           className="movie-card__poster"
         >
           <img
-            alt="The ghoustbusters"
+            alt="Mortal Combat"
             height="327"
             src="https://player.vimeo.com/external/290130710.sd.mp4?s=7fa79288de952b505d7cc58e014712de048cac87&profile_id=164&oauth2_token_id=57447761"
             width="218"
@@ -78,7 +78,7 @@ exports[`render App Render Main page 1`] = `
           <h2
             className="movie-card__title"
           >
-            The ghoustbusters
+            Mortal Combat
           </h2>
           <p
             className="movie-card__meta"
@@ -86,12 +86,12 @@ exports[`render App Render Main page 1`] = `
             <span
               className="movie-card__genre"
             >
-              action
+              thriller
             </span>
             <span
               className="movie-card__year"
             >
-              2009
+              1999
             </span>
           </p>
           <div
@@ -99,7 +99,7 @@ exports[`render App Render Main page 1`] = `
           >
             <a
               className="btn btn--play movie-card__button"
-              href="/player/12"
+              href="/player/19082"
               onClick={[Function]}
             >
               <svg
