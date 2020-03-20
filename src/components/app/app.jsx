@@ -164,7 +164,6 @@ App.propTypes = {
       })
   ).isRequired,
   onFilmCardClick: PropTypes.func.isRequired,
-  isPopupActive: PropTypes.bool.isRequired,
   activeFilmCard: PropTypes.oneOfType([
     PropTypes.any.isRequired,
     PropTypes.shape({

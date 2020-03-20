@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render LoadScreen correctly Render data the right way 1`] = `
+exports[`Render VideoScreen correctly Render data the right way 1`] = `
 <div
   className="player"
 >
@@ -32,13 +32,13 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
         <progress
           className="player__progress"
           max="100"
-          value={0}
+          value={1000}
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": 0,
+              "left": 8600,
             }
           }
         >
@@ -48,7 +48,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
       <div
         className="player__time-value"
       >
-        0:0:00
+        0:2:00
       </div>
     </div>
     <div
@@ -65,17 +65,17 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
           width="19"
         >
           <use
-            xlinkHref="#play-s"
+            xlinkHref="#pause"
           />
         </svg>
         <span>
-          Play
+          Pause
         </span>
       </button>
       <div
         className="player__name"
       >
-        Play
+        Pause
       </div>
       <button
         className="player__full-screen"

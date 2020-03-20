@@ -42,10 +42,10 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
       <div
         className="movie-card__buttons"
       >
-        <button
+        <a
           className="btn btn--play movie-card__button"
+          href="/player/19082"
           onClick={[Function]}
-          type="button"
         >
           <svg
             height="19"
@@ -59,10 +59,11 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
           <span>
             Play
           </span>
-        </button>
-        <button
+        </a>
+        <a
           className="btn btn--list movie-card__button"
-          type="button"
+          href="/login"
+          onClick={[Function]}
         >
           <svg
             height="20"
@@ -76,7 +77,7 @@ exports[`Render LoadScreen correctly Render data the right way 1`] = `
           <span>
             My list
           </span>
-        </button>
+        </a>
       </div>
     </div>
   </div>

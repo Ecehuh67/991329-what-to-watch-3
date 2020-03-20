@@ -7,19 +7,24 @@ exports[`Render FilmsList correctly Render mock data the right way 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
   >
-    <div
-      className="small-movie-card__image"
+    <a
+      href="/films/12"
       onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
     >
-      <img
-        alt="The ghoustbusters"
-        height="175"
-        src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
-        width="280"
-      />
-    </div>
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <img
+          alt="The ghoustbusters"
+          height="175"
+          src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+          width="280"
+        />
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
@@ -34,19 +39,24 @@ exports[`Render FilmsList correctly Render mock data the right way 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
   >
-    <div
-      className="small-movie-card__image"
+    <a
+      href="/films/19082"
       onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
     >
-      <img
-        alt="Mortal Combat"
-        height="175"
-        src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
-        width="280"
-      />
-    </div>
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <img
+          alt="Mortal Combat"
+          height="175"
+          src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+          width="280"
+        />
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >
@@ -61,19 +71,24 @@ exports[`Render FilmsList correctly Render mock data the right way 1`] = `
   <article
     className="small-movie-card catalog__movies-card"
   >
-    <div
-      className="small-movie-card__image"
+    <a
+      href="/films/1908"
       onClick={[Function]}
-      onMouseEnter={[Function]}
-      onMouseLeave={[Function]}
     >
-      <img
-        alt="The time"
-        height="175"
-        src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
-        width="280"
-      />
-    </div>
+      <div
+        className="small-movie-card__image"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <img
+          alt="The time"
+          height="175"
+          src="https://player.vimeo.com/external/368010126.sd.mp4?s=ed2b36a42d2ac7b22000ed0f4ea187df7091423b&profile_id=139&oauth2"
+          width="280"
+        />
+      </div>
+    </a>
     <h3
       className="small-movie-card__title"
     >

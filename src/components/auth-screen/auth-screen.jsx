@@ -104,7 +104,6 @@ export default class AuthScreen extends React.PureComponent {
 
 AuthScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onValidateUser: PropTypes.func.isRequired,
   history: PropTypes.func.isRequired,
   loadFavorites: PropTypes.func.isRequired,
   loadFilms: PropTypes.func.isRequired,

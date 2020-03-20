@@ -1,15 +1,20 @@
-import FilmsList from './films-list';
+import Review from "./review";
 import {movies} from '../../utils/test-mocks';
 import {Route, BrowserRouter} from "react-router-dom";
 
-describe(`Render FilmsList correctly`, () => {
+const film = movies[1];
+
+describe(`Render Review correctly`, () => {
   it(`Render mock data the right way`, () => {
     const tree = renderer.create(
         <BrowserRouter>
           <Route>
-            <FilmsList
-              films={movies}
-              onDataChange={()=>{}}
+            <Review
+              film={film}
+              onSubmit={() => {}}
+              state={{isDisabled: false}}
+              getRating={() => {}}
+              getTextReview={() => {}}
             />
           </Route>
         </BrowserRouter>

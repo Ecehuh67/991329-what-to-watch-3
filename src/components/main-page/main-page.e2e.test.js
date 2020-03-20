@@ -20,6 +20,7 @@ it(`Should title of the film be clicked`, () => {
         onSignInFormClick={() => {}}
         onValidateUser={() => {}}
         login={() => {}}
+        userAvatar={`/img/true.png`}
       />
   );
 

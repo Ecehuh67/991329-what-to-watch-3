@@ -94,7 +94,7 @@ VideoScreen.propTypes = {
   state: PropTypes.object.isRequired,
   onStopButtonClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
-  videoRef: PropTypes.node.isRequired,
+  videoRef: PropTypes.object.isRequired,
   stopPlayVideo: PropTypes.func.isRequired,
   onTimeUpdate: PropTypes.func.isRequired,
   onCloseButtonClick: PropTypes.func.isRequired,

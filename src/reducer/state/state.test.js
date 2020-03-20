@@ -9,17 +9,15 @@ it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     chosenGenre: DEFAULT_GENRE,
     showedFilms: DEFAULT_SHOWED_FILMS,
-    isPopupActive: false,
     activeFilmCard: null
   });
 });
 
-it(`Reducer should set active film and change flag of Popup`, () => {
+it(`Reducer should set active film`, () => {
   expect(reducer(
       {
         chosenGenre: DEFAULT_GENRE,
         showedFilms: DEFAULT_SHOWED_FILMS,
-        isPopupActive: false,
         activeFilmCard: null
       },
       {
@@ -30,7 +28,6 @@ it(`Reducer should set active film and change flag of Popup`, () => {
       {
         chosenGenre: DEFAULT_GENRE,
         showedFilms: DEFAULT_SHOWED_FILMS,
-        isPopupActive: true,
         activeFilmCard: film.id
       }
   );
@@ -41,7 +38,6 @@ it(`Reducer should change chosen Genre`, () => {
       {
         chosenGenre: DEFAULT_GENRE,
         showedFilms: DEFAULT_SHOWED_FILMS,
-        isPopupActive: false,
         activeFilmCard: null
       },
       {
@@ -52,18 +48,16 @@ it(`Reducer should change chosen Genre`, () => {
       {
         chosenGenre: `Crime`,
         showedFilms: DEFAULT_SHOWED_FILMS,
-        isPopupActive: false,
         activeFilmCard: null
       }
   );
 });
 
-it(`Reducer should change chosen Genre`, () => {
+it(`Reducer should change showMoreButton`, () => {
   expect(reducer(
       {
         chosenGenre: DEFAULT_GENRE,
         showedFilms: DEFAULT_SHOWED_FILMS,
-        isPopupActive: false,
         activeFilmCard: null
       },
       {
@@ -74,7 +68,6 @@ it(`Reducer should change chosen Genre`, () => {
       {
         chosenGenre: DEFAULT_GENRE,
         showedFilms: DEFAULT_SHOWED_FILMS * 2,
-        isPopupActive: false,
         activeFilmCard: null
       }
   );

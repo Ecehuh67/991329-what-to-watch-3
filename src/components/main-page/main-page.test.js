@@ -3,7 +3,8 @@ import {movies} from '../../utils/test-mocks';
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from "../../reducer/name-space";
-import {DEFAULT_GENRE} from '../../utils/consts';
+import {AuthorizationStatus, DEFAULT_GENRE, DEFAULT_SHOWED_FILMS} from '../../utils/consts';
+import {Route, BrowserRouter} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -12,31 +13,42 @@ describe(`render MainPage`, () => {
     const store = mockStore({
       [NameSpace.DATA]: {
         films: movies,
-        isUploaded: true,
+        favorites: movies[1],
+        promoFilm: movies[0],
+        comments: [],
+        isUploaded: true
       },
       [NameSpace.STATE]: {
         chosenGenre: DEFAULT_GENRE,
-        showedFilms: 5,
-        isPopupActive: false,
+        showedFilms: DEFAULT_SHOWED_FILMS,
         activeFilmCard: null
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
+        userAvatar: ``
       }
     });
 
     const tree = renderer
       .create(
           <Provider store={store}>
-            <MainPage
-              films={movies}
-              onDataChange={() => {}}
-              onPlayButtonClick={() => {}}
-              onStopButtonClick={() => {}}
-              onShowHideButtonClick={() => {}}
-              state={{isVideoActive: false}}
-              authorizationStatus={`AUTH`}
-              onSignInFormClick={() => {}}
-              onValidateUser={() => {}}
-              login={() => {}}
-            />
+            <BrowserRouter>
+              <Route>
+                <MainPage
+                  films={movies}
+                  onDataChange={() => {}}
+                  onPlayButtonClick={() => {}}
+                  onStopButtonClick={() => {}}
+                  onShowHideButtonClick={() => {}}
+                  state={{isVideoActive: false}}
+                  authorizationStatus={`AUTH`}
+                  onSignInFormClick={() => {}}
+                  onValidateUser={() => {}}
+                  login={() => {}}
+                  userAvatar={`/img/true.png`}
+                />
+              </Route>
+            </BrowserRouter>
           </Provider>
       )
       .toJSON();
