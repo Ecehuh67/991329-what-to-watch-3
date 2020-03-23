@@ -3,72 +3,70 @@ import {convertTimeToProgressBar} from '../../utils/utils';
 const DEFAULT_WIDTH_PROGRESS_BAR = 860;
 const MAX_VALUE_PROGRESS_BAR = 100;
 
-export default class VideoScreen extends React.PureComponent {
-  render() {
-    const {film, state, onStopButtonClick, onPlayButtonClick, videoRef, stopPlayVideo, onTimeUpdate, onCloseButtonClick, onFullScreenClick} = this.props;
-    const duration = convertTimeToProgressBar(state.duration);
-    const position = state.percent * DEFAULT_WIDTH_PROGRESS_BAR;
-    const progressPosition = Math.round(state.percent * MAX_VALUE_PROGRESS_BAR);
+const VideoScreen = (props) => {
+  const {film, state, onStopButtonClick, onPlayButtonClick, videoRef, stopPlayVideo, onTimeUpdate, onCloseButtonClick, onFullScreenClick} = props;
+  const duration = convertTimeToProgressBar(state.duration);
+  const position = state.percent * DEFAULT_WIDTH_PROGRESS_BAR;
+  const progressPosition = Math.round(state.percent * MAX_VALUE_PROGRESS_BAR);
 
-    return (
-      <div className="player">
-        <video
-          src={film.video_link}
-          className="player__video"
-          autoPlay
-          onPause={onStopButtonClick}
-          onPlay={onPlayButtonClick}
-          ref={videoRef}
-          onClick={stopPlayVideo}
-          onTimeUpdate={onTimeUpdate}
-        >
-        </video>
+  return (
+    <div className="player">
+      <video
+        src={film.video_link}
+        className="player__video"
+        autoPlay
+        onPause={onStopButtonClick}
+        onPlay={onPlayButtonClick}
+        ref={videoRef}
+        onClick={stopPlayVideo}
+        onTimeUpdate={onTimeUpdate}
+      >
+      </video>
 
-        <button
-          type="button"
-          className="player__exit"
-          onClick={onCloseButtonClick}
-        >Exit
-        </button>
+      <button
+        type="button"
+        className="player__exit"
+        onClick={onCloseButtonClick}
+      >Exit
+      </button>
 
-        <div className="player__controls">
-          <div className="player__controls-row">
-            <div className="player__time">
-              <progress className="player__progress" value={progressPosition} max="100"></progress>
-              <div className="player__toggler" style={{left: position}}>Toggler</div>
-            </div>
-            <div className="player__time-value">{duration}</div>
+      <div className="player__controls">
+        <div className="player__controls-row">
+          <div className="player__time">
+            <progress className="player__progress" value={progressPosition} max="100"></progress>
+            <div className="player__toggler" style={{left: position}}>Toggler</div>
           </div>
+          <div className="player__time-value">{duration}</div>
+        </div>
 
-          <div className="player__controls-row">
-            <button
-              type="button"
-              className="player__play"
-              onClick={stopPlayVideo}
-            >
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref={!state.isPlaying ? `#play-s` : `#pause`}></use>
-              </svg>
-              <span>{!state.isPlaying ? `Play` : `Pause`}</span>
-            </button>
-            <div className="player__name">{!state.isPlaying ? `Play` : `Pause`}</div>
+        <div className="player__controls-row">
+          <button
+            type="button"
+            className="player__play"
+            onClick={stopPlayVideo}
+          >
+            <svg viewBox="0 0 19 19" width="19" height="19">
+              <use xlinkHref={!state.isPlaying ? `#play-s` : `#pause`}></use>
+            </svg>
+            <span>{!state.isPlaying ? `Play` : `Pause`}</span>
+          </button>
+          <div className="player__name">{!state.isPlaying ? `Play` : `Pause`}</div>
 
-            <button
-              type="button"
-              className="player__full-screen"
-              onClick={onFullScreenClick}
-            >
-              <svg viewBox="0 0 27 27" width="27" height="27">
-                <use xlinkHref="#full-screen"></use>
-              </svg>
-              <span>Full screen</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            className="player__full-screen"
+            onClick={onFullScreenClick}
+          >
+            <svg viewBox="0 0 27 27" width="27" height="27">
+              <use xlinkHref="#full-screen"></use>
+            </svg>
+            <span>Full screen</span>
+          </button>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 /* eslint camelcase: ["error", {properties: "never"}] */
 VideoScreen.propTypes = {
@@ -100,3 +98,5 @@ VideoScreen.propTypes = {
   onCloseButtonClick: PropTypes.func.isRequired,
   onFullScreenClick: PropTypes.func.isRequired
 };
+
+export default VideoScreen;

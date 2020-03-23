@@ -9,11 +9,7 @@ import reducer from "./reducer/reducer";
 import {createAPI} from './api';
 import thunk from "redux-thunk";
 
-const onUnauthorized = () => {
-  // store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-};
-
-const api = createAPI(onUnauthorized);
+const api = createAPI();
 
 const store = createStore(
     reducer,

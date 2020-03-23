@@ -8,7 +8,7 @@ export default class AuthScreen extends React.PureComponent {
     this.loginRef = React.createRef();
     this.passwordRef = React.createRef();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
     this._validateEmail = this._validateEmail.bind(this);
   }
 
@@ -23,7 +23,7 @@ export default class AuthScreen extends React.PureComponent {
     return true;
   }
 
-  handleSubmit(evt) {
+  _handleSubmit(evt) {
     evt.preventDefault();
 
     const {onSubmit, history, loadFavorites, loadFilms, loadPromoFilm} = this.props;
@@ -62,7 +62,7 @@ export default class AuthScreen extends React.PureComponent {
           <form
             action="#"
             className="sign-in__form"
-            onSubmit={this.handleSubmit}
+            onSubmit={this._handleSubmit}
           >
             <div className="sign-in__fields">
               <div className="sign-in__field">
@@ -104,7 +104,7 @@ export default class AuthScreen extends React.PureComponent {
 
 AuthScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
   loadFavorites: PropTypes.func.isRequired,
   loadFilms: PropTypes.func.isRequired,
   loadPromoFilm: PropTypes.func.isRequired

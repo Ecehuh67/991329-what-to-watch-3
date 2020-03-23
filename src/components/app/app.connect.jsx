@@ -1,7 +1,7 @@
 import App from './app';
 import {connect} from "react-redux";
-import {Operation as DataOperation} from '../../reducer/data/data';
-import {Operation as UserOperation} from '../../reducer/user/user';
+import {Operations as DataOperations} from '../../reducer/data/data';
+import {Operations as UserOperations} from '../../reducer/user/user';
 import {ActionCreator} from '../../reducer/state/actions';
 import {
   getUploadingState,
@@ -33,28 +33,28 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setActiveFilm(id));
   },
   loadFilms() {
-    dispatch(DataOperation.loadFilms());
+    dispatch(DataOperations.loadFilms());
   },
   loadPromoFilm() {
-    dispatch(DataOperation.loadPromoFilm());
+    dispatch(DataOperations.loadPromoFilm());
   },
   loadComments(id) {
-    dispatch(DataOperation.loadComments(id));
+    dispatch(DataOperations.loadComments(id));
   },
   requireAuth(handler) {
-    dispatch(UserOperation.checkAuth(handler));
+    dispatch(UserOperations.checkAuth(handler));
   },
   login(authData, favHandler, filmsHandler, promoHandler) {
-    dispatch(UserOperation.login(authData, favHandler, filmsHandler, promoHandler));
+    dispatch(UserOperations.login(authData, favHandler, filmsHandler, promoHandler));
   },
   postComment(commentData) {
-    dispatch(DataOperation.postComment(commentData));
+    dispatch(DataOperations.postComment(commentData));
   },
   loadFavorites() {
-    dispatch(DataOperation.loadFavorites());
+    dispatch(DataOperations.loadFavorites());
   },
   addToFavorite(favData) {
-    dispatch(DataOperation.addToFavorite(favData));
+    dispatch(DataOperations.addToFavorite(favData));
   }
 });
 

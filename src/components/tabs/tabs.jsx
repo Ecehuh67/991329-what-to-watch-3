@@ -24,8 +24,6 @@ const Tabs = (props) => {
   );
 };
 
-export default Tabs;
-
 // isRequired - template - how to test it in JEST?
 Tabs.propTypes = {
   template: PropTypes.object,
@@ -35,3 +33,5 @@ Tabs.propTypes = {
     listener: PropTypes.func.isRequired
   }).isRequired
 };
+
+export default Tabs;

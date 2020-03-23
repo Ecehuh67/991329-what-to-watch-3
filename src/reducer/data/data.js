@@ -9,7 +9,7 @@ const initialState = {
   isUploaded: false,
 };
 
-const Operation = {
+const Operations = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
@@ -114,4 +114,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, Operation};
+export {reducer, Operations};

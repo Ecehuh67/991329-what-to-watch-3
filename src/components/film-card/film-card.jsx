@@ -1,38 +1,36 @@
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../utils/consts';
 
-export default class FilmCard extends React.PureComponent {
-  render() {
-    const {film, onDataChange, children, onMouseEnter, onMouseLeave} = this.props;
+const FilmCard = (props) => {
+  const {film, onDataChange, children, onMouseEnter, onMouseLeave} = props;
 
-    return (
-      <article className="small-movie-card catalog__movies-card">
-        <Link
-          /* eslint-disable-next-line new-cap */
-          to={AppRoute.FILM(film.id)}
-        >
-          <div
-            className="small-movie-card__image"
-            onClick={
-              () => {
-                onDataChange(film.id);
-              }
+  return (
+    <article className="small-movie-card catalog__movies-card">
+      <Link
+        /* eslint-disable-next-line new-cap */
+        to={AppRoute.FILM(film.id)}
+      >
+        <div
+          className="small-movie-card__image"
+          onClick={
+            () => {
+              onDataChange(film.id);
             }
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
+          }
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
 
-            {children}
+          {children}
 
-          </div>
-        </Link>
-        <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
-        </h3>
-      </article>
-    );
-  }
-}
+        </div>
+      </Link>
+      <h3 className="small-movie-card__title">
+        <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
+      </h3>
+    </article>
+  );
+};
 
 /* eslint camelcase: ["error", {properties: "never"}] */
 FilmCard.propTypes = {
@@ -63,3 +61,5 @@ FilmCard.propTypes = {
     PropTypes.node
   ]).isRequired,
 };
+
+export default FilmCard;

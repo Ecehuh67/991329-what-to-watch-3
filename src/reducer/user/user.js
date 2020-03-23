@@ -7,7 +7,7 @@ const initialState = {
   userAvatar: ``
 };
 
-const Operation = {
+const Operations = {
   checkAuth: (handler) => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then(() => {
@@ -35,7 +35,6 @@ const Operation = {
       })
       .then(() => {
         favHandler();
-        // favHandler();
         filmsHandler();
         promoHandler();
       })
@@ -66,4 +65,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, Operation};
+export {reducer, Operations};

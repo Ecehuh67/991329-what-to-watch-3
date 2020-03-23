@@ -15,8 +15,6 @@ const VideoPlayer = (props) => {
   return null;
 };
 
-export default VideoPlayer;
-
 /* eslint camelcase: ["error", {properties: "never"}] */
 VideoPlayer.propTypes = {
   film: PropTypes.shape({
@@ -40,3 +38,5 @@ VideoPlayer.propTypes = {
   }).isRequired,
   isActive: PropTypes.bool.isRequired
 };
+
+export default VideoPlayer;

@@ -107,7 +107,7 @@ const withVideoScreen = (Component) => {
       video_link: PropTypes.string.isRequired,
       preview_video_link: PropTypes.string.isRequired,
     }).isRequired,
-    history: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   return WithVideoScreen;

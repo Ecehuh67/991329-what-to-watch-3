@@ -1,16 +1,16 @@
-import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainPage from '../main-page/main-page';
 import Popup from '../popup/popup';
 import VideoScreen from '../video-screen/video-screen';
-import PrivateRoute from "../private-route/private-route.connect";
+import PrivateRoute from '../private-route/private-route.connect';
 import LoadScreen from '../load-screen/load-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import Review from '../review/review';
 import withPopup from '../../hocs/with-popup/with-popup';
 import withReview from '../../hocs/with-review/with-review';
 import withVideoScreen from "../../hocs/with-video-screen/with-video-screen";
-import {AppRoute} from '../../utils/consts';
 import Favorites from '../favorite-list/favorite-list';
+import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {AppRoute} from '../../utils/consts';
 
 const PopupWrapped = withPopup(Popup);
 const ReviewWrapped = withReview(Review);

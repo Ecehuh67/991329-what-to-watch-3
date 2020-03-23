@@ -8,7 +8,7 @@ describe(`Render FilmsList correctly`, () => {
           <Route>
             <AuthScreen
               onSubmit={() => {}}
-              history={() => {}}
+              history={{}}
               loadFavorites={() => {}}
               loadPromoFilm={() => {}}
               loadFilms={() => {}}
