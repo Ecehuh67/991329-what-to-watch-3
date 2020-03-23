@@ -1,5 +1,7 @@
 import VideoPlayer from '../../components/video-player/video-player';
 
+const DELAY = 1000;
+
 const withActiveCard = (Component) => {
   class WithActiveCard extends React.PureComponent {
     constructor(props) {
@@ -21,7 +23,7 @@ const withActiveCard = (Component) => {
     }
 
     _onMouseEnter() {
-      this.timeoutId = setTimeout(this._onFocusChange, 1000);
+      this.timeoutId = setTimeout(this._onFocusChange, DELAY);
     }
 
     _onMouseLeave() {

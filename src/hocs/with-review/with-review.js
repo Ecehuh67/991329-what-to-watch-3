@@ -11,8 +11,8 @@ const withReview = (Component) => {
       super(props);
 
       this._handleSubmit = this._handleSubmit.bind(this);
-      this._getRating = this._getRating.bind(this);
-      this._getTextReview = this._getTextReview.bind(this);
+      this._onChangeRating = this._onChangeRating.bind(this);
+      this._onChangeTextReview = this._onChangeTextReview.bind(this);
       this._validateComment = this._validateComment.bind(this);
       this._onSubmitForm = this._onSubmitForm.bind(this);
       this._onErrorHandler = this._onErrorHandler.bind(this);
@@ -46,11 +46,11 @@ const withReview = (Component) => {
       return false;
     }
 
-    _getRating(evt) {
+    _onChangeRating(evt) {
       this.setState({rating: evt.target.value});
     }
 
-    _getTextReview(evt) {
+    _onChangeTextReview(evt) {
       this.setState({text: evt.target.value});
     }
 
@@ -85,8 +85,8 @@ const withReview = (Component) => {
           {...this.props}
           onSubmit={this._handleSubmit}
           state={this.state}
-          getRating={this._getRating}
-          getTextReview={this._getTextReview}
+          getRating={this._onChangeRating}
+          getTextReview={this._onChangeTextReview}
         />
       );
     }

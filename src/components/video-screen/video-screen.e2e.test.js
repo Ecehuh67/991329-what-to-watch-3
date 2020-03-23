@@ -20,7 +20,7 @@ it(`When user click on an image the func return the data of film`, () => {
         onStopButtonClick={() => {}}
         onCloseButtonClick={onCloseClick}
         videoRef={{current: null}}
-        stopPlayVideo={() => {}}
+        onStopPlayVideo={() => {}}
         onTimeUpdate={() => {}}
         onFullScreenClick={() => {}}
       />

@@ -4,7 +4,7 @@ const DEFAULT_WIDTH_PROGRESS_BAR = 860;
 const MAX_VALUE_PROGRESS_BAR = 100;
 
 const VideoScreen = (props) => {
-  const {film, state, onStopButtonClick, onPlayButtonClick, videoRef, stopPlayVideo, onTimeUpdate, onCloseButtonClick, onFullScreenClick} = props;
+  const {film, state, onStopButtonClick, onPlayButtonClick, videoRef, onStopPlayVideo, onTimeUpdate, onCloseButtonClick, onFullScreenClick} = props;
   const duration = convertTimeToProgressBar(state.duration);
   const position = state.percent * DEFAULT_WIDTH_PROGRESS_BAR;
   const progressPosition = Math.round(state.percent * MAX_VALUE_PROGRESS_BAR);
@@ -18,7 +18,7 @@ const VideoScreen = (props) => {
         onPause={onStopButtonClick}
         onPlay={onPlayButtonClick}
         ref={videoRef}
-        onClick={stopPlayVideo}
+        onClick={onStopPlayVideo}
         onTimeUpdate={onTimeUpdate}
       >
       </video>
@@ -43,7 +43,7 @@ const VideoScreen = (props) => {
           <button
             type="button"
             className="player__play"
-            onClick={stopPlayVideo}
+            onClick={onStopPlayVideo}
           >
             <svg viewBox="0 0 19 19" width="19" height="19">
               <use xlinkHref={!state.isPlaying ? `#play-s` : `#pause`}></use>
@@ -93,7 +93,7 @@ VideoScreen.propTypes = {
   onStopButtonClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
   videoRef: PropTypes.object.isRequired,
-  stopPlayVideo: PropTypes.func.isRequired,
+  onStopPlayVideo: PropTypes.func.isRequired,
   onTimeUpdate: PropTypes.func.isRequired,
   onCloseButtonClick: PropTypes.func.isRequired,
   onFullScreenClick: PropTypes.func.isRequired

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {AppRoute, MAX_RATING} from '../../utils/consts';
 
 const Review = (props) => {
-  const {film, onSubmit, state, getRating, getTextReview} = props;
+  const {film, onSubmit, state, onChangeRating, onChangeTextReview} = props;
 
   return (
     <section className="movie-card movie-card--full" style={{background: film.background_color}}>
@@ -80,7 +80,7 @@ const Review = (props) => {
                         type="radio"
                         name="rating"
                         value={i}
-                        onChange={getRating}
+                        onChange={onChangeRating}
                         disabled={state.isDisabled}
                       />
                       <label
@@ -102,7 +102,7 @@ const Review = (props) => {
               id="review-text"
               placeholder="Review text"
               disabled={state.isDisabled}
-              onChange={getTextReview}
+              onChange={onChangeTextReview}
             >
             </textarea>
             <div className="add-review__submit">
@@ -144,8 +144,8 @@ Review.propTypes = {
     preview_video_link: PropTypes.string.isRequired,
   }).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  getRating: PropTypes.func.isRequired,
-  getTextReview: PropTypes.func.isRequired,
+  onChangeRating: PropTypes.func.isRequired,
+  onChangeTextReview: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired
 };
 

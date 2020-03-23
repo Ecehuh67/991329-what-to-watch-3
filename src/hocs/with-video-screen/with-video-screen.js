@@ -9,7 +9,7 @@ const withVideoScreen = (Component) => {
       this._onStopButtonClick = this._onStopButtonClick.bind(this);
       this._onCloseButtonClick = this._onCloseButtonClick.bind(this);
 
-      this._stopPlayVideo = this._stopPlayVideo.bind(this);
+      this._onStopPlayVideo = this._onStopPlayVideo.bind(this);
       this._onTimeUpdate = this._onTimeUpdate.bind(this);
       this._onFullScreenClick = this._onFullScreenClick.bind(this);
 
@@ -49,7 +49,7 @@ const withVideoScreen = (Component) => {
       this.videoRef.current.requestFullscreen();
     }
 
-    _stopPlayVideo() {
+    _onStopPlayVideo() {
       if (this.state.isPlaying) {
         this.videoRef.current.pause();
       } else {
@@ -77,7 +77,7 @@ const withVideoScreen = (Component) => {
           onStopButtonClick={this._onStopButtonClick}
           onPlayButtonClick={this._onPlayButtonClick}
           videoRef={this.videoRef}
-          stopPlayVideo={this._stopPlayVideo}
+          onStopPlayVideo={this._onStopPlayVideo}
           onTimeUpdate={this._onTimeUpdate}
           onCloseButtonClick={this._onCloseButtonClick}
           onFullScreenClick={this._onFullScreenClick}

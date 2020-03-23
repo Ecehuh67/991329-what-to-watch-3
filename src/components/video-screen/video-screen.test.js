@@ -18,7 +18,7 @@ describe(`Render VideoScreen correctly`, () => {
           onStopButtonClick={() => {}}
           onCloseButtonClick={() => {}}
           videoRef={{current: null}}
-          stopPlayVideo={() => {}}
+          onStopPlayVideo={() => {}}
           onTimeUpdate={() => {}}
           onFullScreenClick={() => {}}
         />,

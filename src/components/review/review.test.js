@@ -13,8 +13,8 @@ describe(`Render Review correctly`, () => {
               film={film}
               onSubmit={() => {}}
               state={{isDisabled: false}}
-              getRating={() => {}}
-              getTextReview={() => {}}
+              onChangeRating={() => {}}
+              onChangeTextReview={() => {}}
             />
           </Route>
         </BrowserRouter>

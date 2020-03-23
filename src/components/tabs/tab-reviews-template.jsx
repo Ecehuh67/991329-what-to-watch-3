@@ -36,17 +36,5 @@ const TabReviews = (props) => {
 export default TabReviews;
 
 TabReviews.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.oneOf([
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired
-      }),
-      rating: PropTypes.number.isRequired,
-      comment: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired
-    }),
-    PropTypes.any.isRequired
-  ])).isRequired
+  comments: PropTypes.array.isRequired
 };
